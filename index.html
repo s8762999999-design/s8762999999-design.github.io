@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- 基礎 SEO 與 Open Graph 標籤 -->
     <title>營養師亮亮AI探索研究成果 2026/04/06</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM分析報告、DS與Claude工具分析。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM分析報告、DS/Claude工具分析，以及AI工具綜合比較平台。">
     
-    <!-- Open Graph 標籤 (Facebook, LINE, Telegram 等) -->
     <meta property="og:title" content="營養師亮亮AI探索研究成果 2026/04/06">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、LLM/DS/Claude分析報告。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、LLM/DS/Claude分析報告與AI工具比較平台。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -19,11 +17,10 @@
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="營養師亮亮AI探索研究成果 2026/04/06">
-    <meta name="twitter:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢與LLM/DS/Claude分析報告。">
+    <meta name="twitter:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢與各類AI分析報告。">
     <meta name="twitter:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     
     <style>
-        /* ---------- 全域變數與重置 ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -47,7 +44,6 @@
             margin: 0 auto;
         }
 
-        /* ---------- 頁首設計 ---------- */
         .page-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -77,9 +73,8 @@
             margin-top: 0.5rem;
         }
 
-        /* 快速連結區塊 */
         .quick-links {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 1.5rem auto 0;
             background: rgba(255, 255, 245, 0.75);
             backdrop-filter: blur(8px);
@@ -115,12 +110,6 @@
             box-shadow: 0 5px 12px rgba(43,143,174,0.3);
         }
 
-        .quick-link-btn:focus-visible {
-            outline: 2px solid #2b8fae;
-            outline-offset: 2px;
-        }
-
-        /* 響應式卡片網格 */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -234,7 +223,6 @@
             transform: translateX(4px);
         }
 
-        /* 回到頂部按鈕 */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -263,11 +251,6 @@
             opacity: 1;
         }
 
-        .back-to-top:focus-visible {
-            outline: 3px solid #ffd966;
-        }
-
-        /* 頁尾 */
         .main-footer {
             text-align: center;
             margin-top: 2.5rem;
@@ -343,6 +326,7 @@
         .resource-card:nth-child(4) { animation-delay: 0.2s; }
         .resource-card:nth-child(5) { animation-delay: 0.25s; }
         .resource-card:nth-child(6) { animation-delay: 0.3s; }
+        .resource-card:nth-child(7) { animation-delay: 0.35s; }
     </style>
 </head>
 <body>
@@ -350,15 +334,11 @@
     <header class="page-header">
         <h1>🍎 營養師亮亮AI探索研究成果 2026/04/06</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
-        <div id="quickLinksContainer" class="quick-links">
-            <!-- 快速連結按鈕將由 JavaScript 動態生成 -->
-        </div>
+        <div id="quickLinksContainer" class="quick-links"></div>
     </header>
 
     <main>
-        <div id="cardsContainer" class="catalog-grid" aria-label="AI研究成果與工具目錄">
-            <!-- 卡片將由 JavaScript 動態生成 -->
-        </div>
+        <div id="cardsContainer" class="catalog-grid" aria-label="AI研究成果與工具目錄"></div>
     </main>
 
     <footer class="main-footer">
@@ -370,13 +350,12 @@
     </footer>
 </div>
 
-<!-- 右下浮動回到頂部按鈕 -->
 <button class="back-to-top" id="backToTopBtn" aria-label="回到頂部">↑</button>
 
 <script>
     // ============================================================
-    // 連結卡片資料陣列 (共6個，加入兩個新網址)
-    // 命名與描述根據內容合理設定
+    // 連結卡片資料陣列 (共7個，加入新網址)
+    // 新網址命名為「AI工具綜合比較平台」，描述與特色合理設定
     // ============================================================
     const sitesData = [
         {
@@ -411,7 +390,6 @@
             icon: "🧠📊",
             category: "📑 深度報告"
         },
-        // 新加入的第一個網址：DS研究與AI工具分析2.0
         {
             title: "DS研究與AI工具分析2.0",
             url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/ae5b6b3f2296c0c43b112889628c2800/raw/d341eea9a799b3984f2e191d030439a453af30ae/DS%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
@@ -420,7 +398,6 @@
             icon: "📊⚙️",
             category: "🔬 數據科學"
         },
-        // 新加入的第二個網址：Claude研究與AI工具分析2.0
         {
             title: "Claude研究與AI工具分析2.0",
             url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/4db7ee830671ad37d91fff56da5f9d77/raw/0d28c8015adefaa54e055f9c642b76fdc8c6eff9/CLAUDE%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
@@ -428,6 +405,15 @@
             features: ["Claude模型評測", "多LLM效能比較", "實務應用指南"],
             icon: "🤖🔍",
             category: "🧪 模型研究"
+        },
+        // ========= 新加入的網址 =========
+        {
+            title: "AI工具綜合比較平台",
+            url: "https://aitoolscomp-jaruvq4t.manus.space/?utm_id=97758_v0_s00_e0_tv0",
+            description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。",
+            features: ["多維度工具評測", "即時效能對比", "應用場景推薦"],
+            icon: "⚖️🤖",
+            category: "🔎 工具評測"
         }
     ];
 
