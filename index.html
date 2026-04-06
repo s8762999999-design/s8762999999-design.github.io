@@ -1,70 +1,526 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  
-  <!-- 🔥 關鍵：讓手機正常縮放 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- 基礎 SEO 與 Open Graph 標籤 -->
+    <title>營養師亮亮AI探索研究成果 2026/04/06</title>
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM分析報告、DS與Claude工具分析。">
+    
+    <!-- Open Graph 標籤 (Facebook, LINE, Telegram 等) -->
+    <meta property="og:title" content="營養師亮亮AI探索研究成果 2026/04/06">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、LLM/DS/Claude分析報告。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
+    <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
+    <meta property="og:url" content="https://您的網址.com/此頁面.html">
+    <meta property="og:site_name" content="營養師亮亮AI研究室">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="營養師亮亮AI探索研究成果 2026/04/06">
+    <meta name="twitter:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢與LLM/DS/Claude分析報告。">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
+    
+    <style>
+        /* ---------- 全域變數與重置 ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <title>營養師亮亮 AI 探索</title>
+        html {
+            scroll-behavior: smooth;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f5f5f5;
-    }
+        body {
+            background: radial-gradient(circle at 10% 20%, #eef5fa, #d9e4ed);
+            font-family: 'Microsoft JhengHei', '微軟正黑體', 'PingFang SC', 'Helvetica Neue', 'Noto Sans TC', sans-serif;
+            color: #1a2f3f;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-    }
+        /* ---------- 頁首設計 ---------- */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
 
-    iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      border-radius: 10px;
-    }
+        .page-header h1 {
+            font-size: clamp(2rem, 8vw, 3.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f4c5f, #2b8fae, #6ec3d6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
 
-    /* 📱 手機版 */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
+        .subhead {
+            font-size: clamp(1rem, 4.5vw, 1.3rem);
+            color: #1e6a85;
+            background: rgba(255, 255, 250, 0.7);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
 
-      iframe {
-        height: 70vh;
-      }
-    }
+        /* 快速連結區塊 */
+        .quick-links {
+            max-width: 1100px;
+            margin: 1.5rem auto 0;
+            background: rgba(255, 255, 245, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 3rem;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            border: 1px solid rgba(43, 143, 174, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
 
-    /* 💻 大螢幕 */
-    @media (min-width: 1200px) {
-      h1 {
-        font-size: 2.5rem;
-      }
+        .quick-link-btn {
+            background: rgba(43, 143, 174, 0.12);
+            border: none;
+            padding: 0.45rem 1.1rem;
+            border-radius: 40px;
+            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+            font-weight: 600;
+            color: #0f4c5f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            backdrop-filter: blur(2px);
+            letter-spacing: 0.5px;
+        }
 
-      iframe {
-        height: 85vh;
-      }
-    }
-  </style>
+        .quick-link-btn:hover {
+            background: #2b8fae;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(43,143,174,0.3);
+        }
+
+        .quick-link-btn:focus-visible {
+            outline: 2px solid #2b8fae;
+            outline-offset: 2px;
+        }
+
+        /* 響應式卡片網格 */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 2rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255,255,240,0.6);
+            display: flex;
+            flex-direction: column;
+            scroll-margin-top: 1.5rem;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 28px 40px -16px rgba(21, 95, 122, 0.3);
+        }
+
+        .card-content {
+            padding: 1.8rem 1.8rem 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge-category {
+            display: inline-block;
+            background: rgba(43, 143, 174, 0.15);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            color: #166079;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+            width: fit-content;
+        }
+
+        .site-title a {
+            font-size: clamp(1.25rem, 5vw, 1.75rem);
+            font-weight: 700;
+            color: #0f4c5f;
+            text-decoration: none;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+        }
+
+        .site-title a:hover {
+            color: #2b8fae;
+            border-bottom-color: #2b8fae;
+        }
+
+        .description {
+            font-size: clamp(0.88rem, 3.2vw, 0.98rem);
+            color: #2b4b60;
+            margin: 0.7rem 0 1rem 0;
+            line-height: 1.55;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .feature-list li {
+            font-size: clamp(0.82rem, 3vw, 0.92rem);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #255d77;
+        }
+
+        .feature-list li::before {
+            content: "🌟";
+            font-size: 0.85rem;
+            width: 1.4rem;
+            display: inline-block;
+        }
+
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(95deg, #e1f0f6, #d2e6f0);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0f4c5f;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .visit-link:hover {
+            background: linear-gradient(95deg, #2b8fae, #226f8a);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        /* 回到頂部按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            background: #2b8fae;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            opacity: 0.9;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-top:hover {
+            background: #0f4c5f;
+            transform: scale(1.08);
+            opacity: 1;
+        }
+
+        .back-to-top:focus-visible {
+            outline: 3px solid #ffd966;
+        }
+
+        /* 頁尾 */
+        .main-footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 1.5rem 1rem;
+            border-top: 1px solid rgba(60, 110, 130, 0.2);
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            font-weight: 500;
+            color: #2c7d9c;
+            background: rgba(255, 255, 250, 0.6);
+            border-radius: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .developer {
+            font-weight: 800;
+            background: linear-gradient(120deg, #166079, #2b8fae);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .footer-contact {
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-contact a {
+            color: #1e6a85;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-contact a:hover {
+            color: #0f4c5f;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1.2rem; }
+            .card-content { padding: 1.4rem; }
+            .catalog-grid { gap: 1.3rem; }
+            .quick-links { gap: 0.5rem; padding: 0.6rem 1rem; }
+            .quick-link-btn { padding: 0.35rem 0.8rem; }
+            .back-to-top { bottom: 1.2rem; right: 1rem; width: 42px; height: 42px; font-size: 1.5rem; }
+            .footer-contact { gap: 0.8rem; flex-direction: column; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #2b8fae;
+            outline-offset: 4px;
+            border-radius: 12px;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .resource-card {
+            animation: fadeSlideUp 0.5s ease backwards;
+        }
+        .resource-card:nth-child(1) { animation-delay: 0.05s; }
+        .resource-card:nth-child(2) { animation-delay: 0.1s; }
+        .resource-card:nth-child(3) { animation-delay: 0.15s; }
+        .resource-card:nth-child(4) { animation-delay: 0.2s; }
+        .resource-card:nth-child(5) { animation-delay: 0.25s; }
+        .resource-card:nth-child(6) { animation-delay: 0.3s; }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>營養師亮亮 AI 探索研究成果</h1>
+<div class="container">
+    <header class="page-header">
+        <h1>🍎 營養師亮亮AI探索研究成果 2026/04/06</h1>
+        <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
+        <div id="quickLinksContainer" class="quick-links">
+            <!-- 快速連結按鈕將由 JavaScript 動態生成 -->
+        </div>
+    </header>
 
-    <iframe 
-      src="https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/b785b981f108a098354f0d307f2b25dd/raw/aa8a7202c1533afeab6f749783147264101f567f/%25E7%2587%259F%25E9%25A4%258A%25E5%25B8%25AB%25E4%25BA%25AE%25E4%25BA%25AEAI%25E6%258E%25A2%25E7%25B4%25A2%25E7%25A0%2594%25E7%25A9%25B6%25E6%2588%2590%25E6%259E%259C%2520202604061034">
-    </iframe>
-  </div>
+    <main>
+        <div id="cardsContainer" class="catalog-grid" aria-label="AI研究成果與工具目錄">
+            <!-- 卡片將由 JavaScript 動態生成 -->
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="developer">營養師 李亮頡 開發 20260406</div>
+        <div class="footer-contact">
+            <span>📧 <a href="mailto:s8762999999@gmail.com">s8762999999@gmail.com</a></span>
+            <span>📷 <a href="https://www.instagram.com/son_win_lee?igsh=MWZuaG85d2drcnJjMg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></span>
+        </div>
+    </footer>
+</div>
+
+<!-- 右下浮動回到頂部按鈕 -->
+<button class="back-to-top" id="backToTopBtn" aria-label="回到頂部">↑</button>
+
+<script>
+    // ============================================================
+    // 連結卡片資料陣列 (共6個，加入兩個新網址)
+    // 命名與描述根據內容合理設定
+    // ============================================================
+    const sitesData = [
+        {
+            title: "營養師亮亮 · AI作品探索天地",
+            url: "https://htmlpreview.github.io/?https://raw.githubusercontent.com/s8762999999-design/winson.dietition.lee.github.io/d751e253049c54ff7c5fb9eb6ce2793cd6eaab21/%E7%87%9F%E9%A4%8A%E5%B8%AB%E4%BA%AE%E4%BA%AE%E7%9A%84AI%E4%BD%9C%E5%93%81%E6%8E%A2%E7%B4%A2%E5%A4%A9%E5%9C%B0",
+            description: "結合人工智慧與營養美學的互動展示空間，亮亮營養師生成AI繪圖、創意食譜及數位藝術作品，探索科技與健康的交匯點。",
+            features: ["AI生成圖像藝廊", "營養知識跨界融合", "互動式作品體驗"],
+            icon: "🎨✨",
+            category: "🎭 AI創作"
+        },
+        {
+            title: "自製網頁DIY工具包",
+            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/c0c9bfbfeebf14638d477863302a59a4/raw/8cb1681bbe47e805d12a91fa2517722b7604da33/%25E8%2587%25AA%25E8%25A3%25BD%25E7%25B6%25B2%25E9%25A0%2581DIY%25E5%25B7%25A5%25E5%2585%25B7",
+            description: "收錄前端常用程式碼片段、版型模板與輕量框架，加速自製網頁流程。包含HTML/CSS結構、響應式佈局範例，適合開發者與設計師直接取用。",
+            features: ["複製貼上即可使用", "輕量化開發懶人包", "適合初學者與接案者"],
+            icon: "🛠️🧩",
+            category: "🔧 開發輔助"
+        },
+        {
+            title: "AI人才研究2026",
+            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/21c01e2187e67b6306ff3ce3c831d634/raw/184b7996c85393c0c573092cf0cddd03f45bc897/gistfile1.txt",
+            description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。",
+            features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"],
+            icon: "🤖📈",
+            category: "📊 前瞻研究"
+        },
+        {
+            title: "LLM對傳統程式設計師與AI程式設計的分析研究報告",
+            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/2fe4194c6fc53747843e4015c9e0e768/raw/b4eb70c42fc59259cbe03fd64f867ed9a53e0a71/DeepSeek%25E5%25B0%258D%25E6%2596%25BC%25E5%2582%25B3%25E7%25B5%25B1%25E7%25A8%258B%25E5%25BC%258F%25E8%25A8%25AD%25E8%25A8%2588%25E5%25B8%25AB%25E8%2588%2587AI%25E5%259F%258E%25E5%25B8%2582%25E6%2598%25AF%25E6%258A%2580%25E5%25B8%25AB%25E7%259A%2584%25E5%2588%2586%25E6%259E%2590%25E7%25A0%2594%25E7%25A9%25B6%25E5%25A0%25B1%25E5%2591%258A",
+            description: "LLM 深入剖析 AI 時代下傳統程式設計師與 AI 城市技師的角色轉變、技能重組與未來職涯路徑，提供數據驅動的趨勢洞察。",
+            features: ["職業轉型分析", "AI城市技師需求預測", "技能樹進化建議"],
+            icon: "🧠📊",
+            category: "📑 深度報告"
+        },
+        // 新加入的第一個網址：DS研究與AI工具分析2.0
+        {
+            title: "DS研究與AI工具分析2.0",
+            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/ae5b6b3f2296c0c43b112889628c2800/raw/d341eea9a799b3984f2e191d030439a453af30ae/DS%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
+            description: "深度探討數據科學(DS)與AI工具的整合應用，提供進階分析工作流程、自動化實務與案例研究，協助開發者提升AI專案效率。",
+            features: ["DS與AI工具整合", "自動化工作流程", "實戰案例剖析"],
+            icon: "📊⚙️",
+            category: "🔬 數據科學"
+        },
+        // 新加入的第二個網址：Claude研究與AI工具分析2.0
+        {
+            title: "Claude研究與AI工具分析2.0",
+            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/4db7ee830671ad37d91fff56da5f9d77/raw/0d28c8015adefaa54e055f9c642b76fdc8c6eff9/CLAUDE%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
+            description: "聚焦Claude模型特性與AI工具鏈的協同應用，深入比較不同LLM在程式輔助、內容生成與推理能力的表現，提供實用評估報告。",
+            features: ["Claude模型評測", "多LLM效能比較", "實務應用指南"],
+            icon: "🤖🔍",
+            category: "🧪 模型研究"
+        }
+    ];
+
+    function generateCards() {
+        const container = document.getElementById('cardsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        sitesData.forEach((item, idx) => {
+            const card = document.createElement('article');
+            card.className = 'resource-card';
+            card.id = `card-${idx}`;
+            card.setAttribute('aria-label', `網站卡片：${item.title}`);
+            
+            const featuresHtml = item.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
+            
+            card.innerHTML = `
+                <div class="card-content">
+                    <div class="card-icon">${item.icon || '🔖'}</div>
+                    <div class="badge-category">${escapeHtml(item.category)}</div>
+                    <div class="site-title">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">
+                            ${escapeHtml(item.title)}
+                        </a>
+                    </div>
+                    <div class="description">${escapeHtml(item.description)}</div>
+                    <ul class="feature-list">${featuresHtml}</ul>
+                    <div class="card-footer">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="visit-link">
+                            前往探索 <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+    
+    function generateQuickLinks() {
+        const container = document.getElementById('quickLinksContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        sitesData.forEach((item, idx) => {
+            const btn = document.createElement('button');
+            btn.textContent = item.title;
+            btn.className = 'quick-link-btn';
+            btn.setAttribute('data-target-idx', idx);
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetCard = document.getElementById(`card-${idx}`);
+                if (targetCard) {
+                    targetCard.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    });
+                    targetCard.style.transition = 'box-shadow 0.2s';
+                    targetCard.style.boxShadow = '0 0 0 3px #2b8fae';
+                    setTimeout(() => {
+                        targetCard.style.boxShadow = '';
+                    }, 1000);
+                }
+            });
+            container.appendChild(btn);
+        });
+    }
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    function initBackToTop() {
+        const backBtn = document.getElementById('backToTopBtn');
+        if (!backBtn) return;
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        generateCards();
+        generateQuickLinks();
+        initBackToTop();
+    });
+</script>
 </body>
 </html>
