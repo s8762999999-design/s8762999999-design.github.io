@@ -73,27 +73,43 @@
             margin-top: 0.5rem;
         }
 
+        /* 快速連結區塊 - 優化為整齊網格，並依類別分組顯示 */
         .quick-links {
             max-width: 1300px;
             margin: 1.5rem auto 0;
             background: rgba(255, 255, 245, 0.75);
             backdrop-filter: blur(8px);
-            border-radius: 3rem;
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
+            border-radius: 2rem;
+            padding: 1rem 1.5rem;
             border: 1px solid rgba(43, 143, 174, 0.3);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
+        /* 分組標題 */
+        .link-group {
+            margin-bottom: 1rem;
+        }
+        .link-group-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #166079;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            padding-left: 0.3rem;
+            border-left: 3px solid #2b8fae;
+        }
+        .link-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+        }
         .quick-link-btn {
             background: rgba(43, 143, 174, 0.12);
             border: none;
-            padding: 0.45rem 1.1rem;
+            padding: 0.45rem 1.2rem;
             border-radius: 40px;
-            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+            font-size: clamp(0.75rem, 2.8vw, 0.9rem);
             font-weight: 600;
             color: #0f4c5f;
             cursor: pointer;
@@ -101,8 +117,16 @@
             font-family: inherit;
             backdrop-filter: blur(2px);
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
-
+        /* 較長標題在手機上允許折行 */
+        @media (max-width: 640px) {
+            .quick-link-btn {
+                white-space: normal;
+                word-break: keep-all;
+                padding: 0.35rem 1rem;
+            }
+        }
         .quick-link-btn:hover {
             background: #2b8fae;
             color: white;
@@ -301,8 +325,9 @@
             body { padding: 1.2rem; }
             .card-content { padding: 1.4rem; }
             .catalog-grid { gap: 1.3rem; }
-            .quick-links { gap: 0.5rem; padding: 0.6rem 1rem; }
-            .quick-link-btn { padding: 0.35rem 0.8rem; }
+            .quick-links { padding: 0.8rem 1rem; }
+            .link-buttons { gap: 0.5rem; }
+            .quick-link-btn { padding: 0.35rem 0.8rem; font-size: 0.75rem; }
             .back-to-top { bottom: 1.2rem; right: 1rem; width: 42px; height: 42px; font-size: 1.5rem; }
             .footer-contact { gap: 0.8rem; flex-direction: column; }
         }
@@ -335,7 +360,9 @@
     <header class="page-header">
         <h1>🍎 營養師亮亮AI探索研究成果 2026/04/06</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
-        <div id="quickLinksContainer" class="quick-links"></div>
+        <div id="quickLinksContainer" class="quick-links">
+            <!-- 動態生成分組快速連結按鈕 -->
+        </div>
     </header>
 
     <main>
@@ -355,8 +382,7 @@
 
 <script>
     // ============================================================
-    // 連結卡片資料陣列 (共8個，新增 Gemini 分享連結)
-    // 位置：放在最後，並提供合適的標題、描述與特色
+    // 卡片資料陣列 (共8個)
     // ============================================================
     const sitesData = [
         {
@@ -365,7 +391,8 @@
             description: "結合人工智慧與營養美學的互動展示空間，亮亮營養師生成AI繪圖、創意食譜及數位藝術作品，探索科技與健康的交匯點。",
             features: ["AI生成圖像藝廊", "營養知識跨界融合", "互動式作品體驗"],
             icon: "🎨✨",
-            category: "🎭 AI創作"
+            category: "🎭 AI創作",
+            group: "創作與工具"
         },
         {
             title: "自製網頁DIY工具包",
@@ -373,7 +400,8 @@
             description: "收錄前端常用程式碼片段、版型模板與輕量框架，加速自製網頁流程。包含HTML/CSS結構、響應式佈局範例，適合開發者與設計師直接取用。",
             features: ["複製貼上即可使用", "輕量化開發懶人包", "適合初學者與接案者"],
             icon: "🛠️🧩",
-            category: "🔧 開發輔助"
+            category: "🔧 開發輔助",
+            group: "創作與工具"
         },
         {
             title: "AI人才研究2026",
@@ -381,7 +409,8 @@
             description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。",
             features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"],
             icon: "🤖📈",
-            category: "📊 前瞻研究"
+            category: "📊 前瞻研究",
+            group: "研究報告"
         },
         {
             title: "LLM對傳統程式設計師與AI程式設計的分析研究報告",
@@ -389,7 +418,8 @@
             description: "LLM 深入剖析 AI 時代下傳統程式設計師與 AI 城市技師的角色轉變、技能重組與未來職涯路徑，提供數據驅動的趨勢洞察。",
             features: ["職業轉型分析", "AI城市技師需求預測", "技能樹進化建議"],
             icon: "🧠📊",
-            category: "📑 深度報告"
+            category: "📑 深度報告",
+            group: "研究報告"
         },
         {
             title: "DS研究與AI工具分析2.0",
@@ -397,7 +427,8 @@
             description: "深度探討數據科學(DS)與AI工具的整合應用，提供進階分析工作流程、自動化實務與案例研究，協助開發者提升AI專案效率。",
             features: ["DS與AI工具整合", "自動化工作流程", "實戰案例剖析"],
             icon: "📊⚙️",
-            category: "🔬 數據科學"
+            category: "🔬 數據科學",
+            group: "研究報告"
         },
         {
             title: "Claude研究與AI工具分析2.0",
@@ -405,7 +436,8 @@
             description: "聚焦Claude模型特性與AI工具鏈的協同應用，深入比較不同LLM在程式輔助、內容生成與推理能力的表現，提供實用評估報告。",
             features: ["Claude模型評測", "多LLM效能比較", "實務應用指南"],
             icon: "🤖🔍",
-            category: "🧪 模型研究"
+            category: "🧪 模型研究",
+            group: "研究報告"
         },
         {
             title: "AI工具綜合比較平台",
@@ -413,16 +445,17 @@
             description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。",
             features: ["多維度工具評測", "即時效能對比", "應用場景推薦"],
             icon: "⚖️🤖",
-            category: "🔎 工具評測"
+            category: "🔎 工具評測",
+            group: "平台與對話"
         },
-        // ========= 新加入的 Gemini 分享連結 =========
         {
             title: "Gemini AI 深度對話研究分享",
             url: "https://gemini.google.com/share/fca673215115",
             description: "探索 Google Gemini 模型的真實對話案例與應用潛力。此分享連結收錄了亮亮營養師與 Gemini 的深度交流，涵蓋 AI 倫理、創意生成與技術洞察。",
             features: ["Gemini 對話實錄", "跨領域知識激盪", "AI 互動體驗分享"],
             icon: "🌟🧠",
-            category: "💬 對話式AI"
+            category: "💬 對話式AI",
+            group: "平台與對話"
         }
     ];
 
@@ -461,32 +494,67 @@
         });
     }
     
+    // 產生分組快速連結 (依 group 欄位分組，並保持組內順序)
     function generateQuickLinks() {
         const container = document.getElementById('quickLinksContainer');
         if (!container) return;
         container.innerHTML = '';
         
+        // 定義分組順序與顯示名稱
+        const groupOrder = [
+            { key: "創作與工具", label: "🎨 創作與工具" },
+            { key: "研究報告", label: "📄 研究報告" },
+            { key: "平台與對話", label: "💬 平台與對話" }
+        ];
+        
+        // 依 group 分組
+        const groups = {};
         sitesData.forEach((item, idx) => {
-            const btn = document.createElement('button');
-            btn.textContent = item.title;
-            btn.className = 'quick-link-btn';
-            btn.setAttribute('data-target-idx', idx);
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetCard = document.getElementById(`card-${idx}`);
-                if (targetCard) {
-                    targetCard.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start',
-                    });
-                    targetCard.style.transition = 'box-shadow 0.2s';
-                    targetCard.style.boxShadow = '0 0 0 3px #2b8fae';
-                    setTimeout(() => {
-                        targetCard.style.boxShadow = '';
-                    }, 1000);
-                }
+            const g = item.group || "其他";
+            if (!groups[g]) groups[g] = [];
+            groups[g].push({ ...item, originalIndex: idx });
+        });
+        
+        // 按照 groupOrder 順序輸出
+        groupOrder.forEach(groupInfo => {
+            const groupKey = groupInfo.key;
+            const items = groups[groupKey];
+            if (!items || items.length === 0) return;
+            
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'link-group';
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'link-group-title';
+            titleDiv.textContent = groupInfo.label;
+            groupDiv.appendChild(titleDiv);
+            
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'link-buttons';
+            
+            items.forEach(item => {
+                const btn = document.createElement('button');
+                btn.textContent = item.title;
+                btn.className = 'quick-link-btn';
+                btn.setAttribute('data-target-idx', item.originalIndex);
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetCard = document.getElementById(`card-${item.originalIndex}`);
+                    if (targetCard) {
+                        targetCard.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                        });
+                        targetCard.style.transition = 'box-shadow 0.2s';
+                        targetCard.style.boxShadow = '0 0 0 3px #2b8fae';
+                        setTimeout(() => {
+                            targetCard.style.boxShadow = '';
+                        }, 1000);
+                    }
+                });
+                buttonsDiv.appendChild(btn);
             });
-            container.appendChild(btn);
+            groupDiv.appendChild(buttonsDiv);
+            container.appendChild(groupDiv);
         });
     }
     
