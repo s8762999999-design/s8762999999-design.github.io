@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <meta property="og:title" content="營養師亮亮AI探索研究成果">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告與網頁設計AI提示詞實務。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -355,6 +355,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
+        /* 支援最多 10 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -364,6 +365,7 @@
         .resource-card:nth-child(7) { animation-delay: 0.35s; }
         .resource-card:nth-child(8) { animation-delay: 0.4s; }
         .resource-card:nth-child(9) { animation-delay: 0.45s; }
+        .resource-card:nth-child(10) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -393,9 +395,8 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共9個)
-    // 針對「網頁設計與 AI 提示詞終極實務大辭典」卡片，
-    // 在生成時額外加入 .dev-date 元素顯示 2026/04/07
+    // 卡片資料陣列 (共10個，新增 AI Orchestrator 連結)
+    // 新卡片歸類於「平台與對話」群組，並加上研發日期標記
     // ============================================================
     const sitesData = [
         {
@@ -478,8 +479,18 @@
             icon: "📚💡",
             category: "💬 對話式AI",
             group: "平台與對話",
-            // 此卡片需要加上研發日期標記
-            showDevDate: true
+            showDevDate: true   // 保留原有的日期標記
+        },
+        // ========= 新加入的 AI Orchestrator 連結 =========
+        {
+            title: "AI Orchestrator · 智能工作流協調平台",
+            url: "https://s8762999999-design.github.io/ai-orchestrator/",
+            description: "整合多種 AI 模型與服務的工作流編排工具，支援自定義任務鏈、跨平台 API 串接，實現複雜自動化流程。適合開發者構建 AI 應用生態。",
+            features: ["多模型協同編排", "可視化工作流設計", "API 整合與監控"],
+            icon: "🎼⚙️",
+            category: "🔧 開發輔助",
+            group: "平台與對話",
+            showDevDate: true   // 新卡片也需要顯示研發日期
         }
     ];
 
@@ -496,7 +507,6 @@
             
             const featuresHtml = item.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
             
-            // 基本卡片內容
             let cardInnerHtml = `
                 <div class="card-content">
                     <div class="card-icon">${item.icon || '🔖'}</div>
@@ -515,12 +525,12 @@
                     </div>
             `;
             
-            // 如果需要顯示研發日期（僅針對「網頁設計與 AI 提示詞終極實務大辭典」）
+            // 如果需要顯示研發日期（網頁設計辭典 與 新加入的 AI Orchestrator）
             if (item.showDevDate) {
                 cardInnerHtml += `<div class="dev-date">📅 2026/04/07</div>`;
             }
             
-            cardInnerHtml += `</div>`; // 關閉 card-content
+            cardInnerHtml += `</div>`;
             card.innerHTML = cardInnerHtml;
             container.appendChild(card);
         });
