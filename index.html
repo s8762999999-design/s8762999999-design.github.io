@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <title>營養師亮亮AI探索研究成果 2026/04/06</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台，以及Gemini深度對話分享。">
+    <title>營養師亮亮AI探索研究成果</title>
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
-    <meta property="og:title" content="營養師亮亮AI探索研究成果 2026/04/06">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告與Gemini對話研究。">
+    <meta property="og:title" content="營養師亮亮AI探索研究成果">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="營養師亮亮AI研究室">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="營養師亮亮AI探索研究成果 2026/04/06">
+    <meta name="twitter:title" content="營養師亮亮AI探索研究成果">
     <meta name="twitter:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢與各類AI分析報告。">
     <meta name="twitter:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     
@@ -73,7 +73,7 @@
             margin-top: 0.5rem;
         }
 
-        /* 快速連結區塊 - 優化為整齊網格，並依類別分組顯示 */
+        /* 快速連結區塊 - 依類別分組整齊排列 */
         .quick-links {
             max-width: 1300px;
             margin: 1.5rem auto 0;
@@ -85,7 +85,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        /* 分組標題 */
         .link-group {
             margin-bottom: 1rem;
         }
@@ -119,7 +118,6 @@
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
-        /* 較長標題在手機上允許折行 */
         @media (max-width: 640px) {
             .quick-link-btn {
                 white-space: normal;
@@ -247,6 +245,18 @@
             transform: translateX(4px);
         }
 
+        /* 研發者專用日期標記樣式 - 極小不明顯 */
+        .dev-date {
+            text-align: right;
+            font-size: 0.55rem;
+            color: #9bb7c9;
+            margin-top: 0.8rem;
+            letter-spacing: 0.3px;
+            opacity: 0.6;
+            user-select: none;
+            pointer-events: none;
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -353,12 +363,13 @@
         .resource-card:nth-child(6) { animation-delay: 0.3s; }
         .resource-card:nth-child(7) { animation-delay: 0.35s; }
         .resource-card:nth-child(8) { animation-delay: 0.4s; }
+        .resource-card:nth-child(9) { animation-delay: 0.45s; }
     </style>
 </head>
 <body>
 <div class="container">
     <header class="page-header">
-        <h1>🍎 營養師亮亮AI探索研究成果 2026/04/06</h1>
+        <h1>🍎 營養師亮亮AI探索研究成果</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
         <div id="quickLinksContainer" class="quick-links">
             <!-- 動態生成分組快速連結按鈕 -->
@@ -370,7 +381,7 @@
     </main>
 
     <footer class="main-footer">
-        <div class="developer">營養師 李亮頡 開發 20260406</div>
+        <div class="developer">營養師 李亮頡 研究開發 2026</div>
         <div class="footer-contact">
             <span>📧 <a href="mailto:s8762999999@gmail.com">s8762999999@gmail.com</a></span>
             <span>📷 <a href="https://www.instagram.com/son_win_lee?igsh=MWZuaG85d2drcnJjMg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></span>
@@ -382,7 +393,9 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共8個)
+    // 卡片資料陣列 (共9個)
+    // 針對「網頁設計與 AI 提示詞終極實務大辭典」卡片，
+    // 在生成時額外加入 .dev-date 元素顯示 2026/04/07
     // ============================================================
     const sitesData = [
         {
@@ -449,13 +462,24 @@
             group: "平台與對話"
         },
         {
-            title: "Gemini AI 深度對話研究分享",
-            url: "https://gemini.google.com/share/fca673215115",
-            description: "探索 Google Gemini 模型的真實對話案例與應用潛力。此分享連結收錄了亮亮營養師與 Gemini 的深度交流，涵蓋 AI 倫理、創意生成與技術洞察。",
-            features: ["Gemini 對話實錄", "跨領域知識激盪", "AI 互動體驗分享"],
-            icon: "🌟🧠",
+            title: "Gemini AI 創意應用分享",
+            url: "https://gemini.google.com/share/1a1bb2e33fc4",
+            description: "展示 Gemini 在創意寫作、詩詞生成與故事發想上的驚人能力。透過實際對話案例，體驗 AI 如何激發靈感並協助藝術創作。",
+            features: ["創意寫作實例", "詩詞對聯生成", "靈感啟發對話"],
+            icon: "✍️✨",
             category: "💬 對話式AI",
             group: "平台與對話"
+        },
+        {
+            title: "網頁設計與 AI 提示詞終極實務大辭典",
+            url: "https://g.co/gemini/share/807a938f8995",
+            description: "集結網頁設計領域最實用的 AI 提示詞範例與實戰技巧，從版型生成、CSS 優化到互動效果，幫助設計師與開發者快速產出高品質程式碼。",
+            features: ["提示詞百科全書", "響應式版型生成", "CSS/JS 優化技巧"],
+            icon: "📚💡",
+            category: "💬 對話式AI",
+            group: "平台與對話",
+            // 此卡片需要加上研發日期標記
+            showDevDate: true
         }
     ];
 
@@ -472,7 +496,8 @@
             
             const featuresHtml = item.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
             
-            card.innerHTML = `
+            // 基本卡片內容
+            let cardInnerHtml = `
                 <div class="card-content">
                     <div class="card-icon">${item.icon || '🔖'}</div>
                     <div class="badge-category">${escapeHtml(item.category)}</div>
@@ -488,26 +513,31 @@
                             前往探索 <span>→</span>
                         </a>
                     </div>
-                </div>
             `;
+            
+            // 如果需要顯示研發日期（僅針對「網頁設計與 AI 提示詞終極實務大辭典」）
+            if (item.showDevDate) {
+                cardInnerHtml += `<div class="dev-date">📅 2026/04/07</div>`;
+            }
+            
+            cardInnerHtml += `</div>`; // 關閉 card-content
+            card.innerHTML = cardInnerHtml;
             container.appendChild(card);
         });
     }
     
-    // 產生分組快速連結 (依 group 欄位分組，並保持組內順序)
+    // 產生分組快速連結
     function generateQuickLinks() {
         const container = document.getElementById('quickLinksContainer');
         if (!container) return;
         container.innerHTML = '';
         
-        // 定義分組順序與顯示名稱
         const groupOrder = [
             { key: "創作與工具", label: "🎨 創作與工具" },
             { key: "研究報告", label: "📄 研究報告" },
             { key: "平台與對話", label: "💬 平台與對話" }
         ];
         
-        // 依 group 分組
         const groups = {};
         sitesData.forEach((item, idx) => {
             const g = item.group || "其他";
@@ -515,7 +545,6 @@
             groups[g].push({ ...item, originalIndex: idx });
         });
         
-        // 按照 groupOrder 順序輸出
         groupOrder.forEach(groupInfo => {
             const groupKey = groupInfo.key;
             const items = groups[groupKey];
