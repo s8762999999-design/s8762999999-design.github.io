@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、DC實體音樂學習收藏，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <meta property="og:title" content="營養師亮亮AI探索研究成果">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究與網頁設計AI提示詞實務。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究、DC音樂學習收藏與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -355,7 +355,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 12 張卡片 */
+        /* 支援最多 13 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -368,6 +368,7 @@
         .resource-card:nth-child(10) { animation-delay: 0.5s; }
         .resource-card:nth-child(11) { animation-delay: 0.55s; }
         .resource-card:nth-child(12) { animation-delay: 0.6s; }
+        .resource-card:nth-child(13) { animation-delay: 0.65s; }
     </style>
 </head>
 <body>
@@ -397,8 +398,8 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共12個)
-    // 已更新「營養AI衛教研究」卡片的特色列表文字
+    // 卡片資料陣列 (共13個，新增 DC 實體音樂學習收藏集線器)
+    // 新卡片歸類於「平台與對話」群組，並加上研發日期標記 (2026/04/08)
     // ============================================================
     const sitesData = [
         {
@@ -503,7 +504,6 @@
             group: "平台與對話",
             showDevDate: true
         },
-        // ========= 營養AI衛教研究卡片，特色文字已更新 =========
         {
             title: "營養AI衛教研究",
             url: "https://s8762999999-design.github.io/-/",
@@ -511,6 +511,17 @@
             features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"],
             icon: "🥗🤖",
             category: "🔬 數據科學",
+            group: "平台與對話",
+            showDevDate: true
+        },
+        // ========= 新加入的 DC 實體音樂學習收藏集線器 =========
+        {
+            title: "DC 實體音樂學習收藏集線器",
+            url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top",
+            description: "整合實體音樂專輯收藏、樂理研究與學習資源的數位中心，提供深度音樂知識與實體載體探索體驗，支援收藏管理與互動學習。",
+            features: ["音樂收藏管理", "樂理互動學習", "實體資源導覽"],
+            icon: "🎵📀",
+            category: "🎵 音樂研究",
             group: "平台與對話",
             showDevDate: true
         }
@@ -549,7 +560,7 @@
             
             if (item.showDevDate) {
                 let dateLabel = "📅 2026/04/07";
-                if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究") {
+                if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究" || item.title === "DC 實體音樂學習收藏集線器") {
                     dateLabel = "📅 2026/04/08";
                 }
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
