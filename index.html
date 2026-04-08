@@ -398,8 +398,7 @@
 <script>
     // ============================================================
     // 卡片資料陣列 (共12個)
-    // 已將「AI 實驗工具箱 · 輕量級資源匯集」改為「營養AI衛教研究」
-    // 並調整描述與特色列表以符合營養衛教主軸
+    // 已更新「營養AI衛教研究」卡片的特色列表文字
     // ============================================================
     const sitesData = [
         {
@@ -482,7 +481,7 @@
             icon: "📚💡",
             category: "💬 對話式AI",
             group: "平台與對話",
-            showDevDate: true   // 保留原有的日期標記 (2026/04/07)
+            showDevDate: true
         },
         {
             title: "AI Orchestrator · 智能工作流協調平台",
@@ -492,7 +491,7 @@
             icon: "🎼⚙️",
             category: "🔧 開發輔助",
             group: "平台與對話",
-            showDevDate: true   // 顯示研發日期 2026/04/07
+            showDevDate: true
         },
         {
             title: "AI 工具入口 · 一站式 AI 服務導航",
@@ -502,18 +501,18 @@
             icon: "🚀🔗",
             category: "🔎 工具評測",
             group: "平台與對話",
-            showDevDate: true   // 顯示研發日期 2026/04/08
+            showDevDate: true
         },
-        // ========= 修改後的卡片：營養AI衛教研究 =========
+        // ========= 營養AI衛教研究卡片，特色文字已更新 =========
         {
             title: "營養AI衛教研究",
             url: "https://s8762999999-design.github.io/-/",
             description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。",
-            features: ["AI營養問答", "個人化飲食建議", "衛教素材生成"],
+            features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"],
             icon: "🥗🤖",
             category: "🔬 數據科學",
             group: "平台與對話",
-            showDevDate: true   // 顯示研發日期 2026/04/08
+            showDevDate: true
         }
     ];
 
@@ -548,7 +547,6 @@
                     </div>
             `;
             
-            // 如果需要顯示研發日期
             if (item.showDevDate) {
                 let dateLabel = "📅 2026/04/07";
                 if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究") {
@@ -563,7 +561,6 @@
         });
     }
     
-    // 產生分組快速連結
     function generateQuickLinks() {
         const container = document.getElementById('quickLinksContainer');
         if (!container) return;
