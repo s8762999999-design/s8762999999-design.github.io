@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <meta property="og:title" content="營養師亮亮AI探索研究成果">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口與網頁設計AI提示詞實務。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -355,7 +355,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 11 張卡片 */
+        /* 支援最多 12 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -367,6 +367,7 @@
         .resource-card:nth-child(9) { animation-delay: 0.45s; }
         .resource-card:nth-child(10) { animation-delay: 0.5s; }
         .resource-card:nth-child(11) { animation-delay: 0.55s; }
+        .resource-card:nth-child(12) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -396,8 +397,9 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共11個，新增 AI 工具入口)
-    // 新卡片歸類於「平台與對話」群組，並加上研發日期標記 (2026/04/08)
+    // 卡片資料陣列 (共12個)
+    // 已將「AI 實驗工具箱 · 輕量級資源匯集」改為「營養AI衛教研究」
+    // 並調整描述與特色列表以符合營養衛教主軸
     // ============================================================
     const sitesData = [
         {
@@ -492,7 +494,6 @@
             group: "平台與對話",
             showDevDate: true   // 顯示研發日期 2026/04/07
         },
-        // ========= 新加入的 AI 工具入口網站 =========
         {
             title: "AI 工具入口 · 一站式 AI 服務導航",
             url: "https://s8762999999-design.github.io/AI-.port/",
@@ -501,7 +502,18 @@
             icon: "🚀🔗",
             category: "🔎 工具評測",
             group: "平台與對話",
-            showDevDate: true   // 新卡片顯示研發日期 2026/04/08
+            showDevDate: true   // 顯示研發日期 2026/04/08
+        },
+        // ========= 修改後的卡片：營養AI衛教研究 =========
+        {
+            title: "營養AI衛教研究",
+            url: "https://s8762999999-design.github.io/-/",
+            description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。",
+            features: ["AI營養問答", "個人化飲食建議", "衛教素材生成"],
+            icon: "🥗🤖",
+            category: "🔬 數據科學",
+            group: "平台與對話",
+            showDevDate: true   // 顯示研發日期 2026/04/08
         }
     ];
 
@@ -538,9 +550,8 @@
             
             // 如果需要顯示研發日期
             if (item.showDevDate) {
-                // 根據不同的卡片顯示不同的日期
                 let dateLabel = "📅 2026/04/07";
-                if (item.title === "AI 工具入口 · 一站式 AI 服務導航") {
+                if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究") {
                     dateLabel = "📅 2026/04/08";
                 }
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
