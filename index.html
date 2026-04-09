@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI深度研究音樂與生理狀態，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI音樂生理研究、AI互動協議設計，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <meta property="og:title" content="營養師亮亮AI探索研究成果">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究、AI音樂生理研究與網頁設計AI提示詞實務。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究、AI音樂生理研究、AI互動協議設計與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -355,7 +355,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 13 張卡片 */
+        /* 支援最多 14 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -369,6 +369,7 @@
         .resource-card:nth-child(11) { animation-delay: 0.55s; }
         .resource-card:nth-child(12) { animation-delay: 0.6s; }
         .resource-card:nth-child(13) { animation-delay: 0.65s; }
+        .resource-card:nth-child(14) { animation-delay: 0.7s; }
     </style>
 </head>
 <body>
@@ -398,12 +399,8 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共13個)
-    // 最後一張卡片已依照要求修改：
-    // 標題改為「AI深度研究音樂與生理狀態的相互影響」
-    // 特色項目第一項改為「AI針對音樂與生理影響之深度研究」
-    // 第二項改為「假設狀況相對應之音樂應用」
-    // 第三項維持「實體資源導覽」不變
+    // 卡片資料陣列 (共14個，新增「頂級機密 AI 互動協議設計研究」)
+    // 新卡片歸類於「研究報告」群組，日期標記為 2026/04/09
     // ============================================================
     const sitesData = [
         {
@@ -518,7 +515,6 @@
             group: "平台與對話",
             showDevDate: true
         },
-        // ========= 修改後的卡片：AI深度研究音樂與生理狀態的相互影響 =========
         {
             title: "AI深度研究音樂與生理狀態的相互影響",
             url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top",
@@ -527,6 +523,17 @@
             icon: "🎵📀",
             category: "🎵 音樂研究",
             group: "平台與對話",
+            showDevDate: true
+        },
+        // ========= 新加入的「頂級機密 AI 互動協議設計研究」 =========
+        {
+            title: "頂級機密 AI 互動協議設計研究",
+            url: "https://ilvsilc.github.io/Top-Secret-AI-Interaction-Protocol-Design/",
+            description: "深度探討 AI 與人類之間的安全互動協議架構，設計高強度加密通訊、權限驗證與行為監控機制，確保機密任務中的 AI 協作可靠度。",
+            features: ["安全協議架構", "加密通訊設計", "行為監控與驗證"],
+            icon: "🔒🤖",
+            category: "📑 深度報告",
+            group: "研究報告",
             showDevDate: true
         }
     ];
@@ -566,6 +573,9 @@
                 let dateLabel = "📅 2026/04/07";
                 if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究" || item.title === "AI深度研究音樂與生理狀態的相互影響") {
                     dateLabel = "📅 2026/04/08";
+                }
+                if (item.title === "頂級機密 AI 互動協議設計研究") {
+                    dateLabel = "📅 2026/04/09";
                 }
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
             }
