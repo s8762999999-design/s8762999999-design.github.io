@@ -73,9 +73,9 @@
             margin-top: 0.5rem;
         }
 
-        /* Google 搜尋框樣式 */
+        /* 搜尋區塊 */
         .search-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 1.2rem auto 0;
             background: rgba(255, 255, 245, 0.8);
             backdrop-filter: blur(8px);
@@ -124,6 +124,19 @@
             color: #5f8da3;
             margin-top: 0.3rem;
             text-align: center;
+        }
+
+        /* 即時過濾結果提示 */
+        .filter-result-info {
+            text-align: center;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #2b8fae;
+            background: rgba(255,255,240,0.6);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
         }
 
         /* 快速連結區塊 */
@@ -190,6 +203,7 @@
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin: 2rem 0 2rem;
+            transition: all 0.2s;
         }
 
         .resource-card {
@@ -309,6 +323,17 @@
             pointer-events: none;
         }
 
+        /* 搜尋無結果提示 */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: rgba(255,255,245,0.6);
+            border-radius: 2rem;
+            margin: 2rem 0;
+            font-size: 1rem;
+            color: #5f8da3;
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -409,24 +434,6 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 17 張卡片 */
-        .resource-card:nth-child(1) { animation-delay: 0.05s; }
-        .resource-card:nth-child(2) { animation-delay: 0.1s; }
-        .resource-card:nth-child(3) { animation-delay: 0.15s; }
-        .resource-card:nth-child(4) { animation-delay: 0.2s; }
-        .resource-card:nth-child(5) { animation-delay: 0.25s; }
-        .resource-card:nth-child(6) { animation-delay: 0.3s; }
-        .resource-card:nth-child(7) { animation-delay: 0.35s; }
-        .resource-card:nth-child(8) { animation-delay: 0.4s; }
-        .resource-card:nth-child(9) { animation-delay: 0.45s; }
-        .resource-card:nth-child(10) { animation-delay: 0.5s; }
-        .resource-card:nth-child(11) { animation-delay: 0.55s; }
-        .resource-card:nth-child(12) { animation-delay: 0.6s; }
-        .resource-card:nth-child(13) { animation-delay: 0.65s; }
-        .resource-card:nth-child(14) { animation-delay: 0.7s; }
-        .resource-card:nth-child(15) { animation-delay: 0.75s; }
-        .resource-card:nth-child(16) { animation-delay: 0.8s; }
-        .resource-card:nth-child(17) { animation-delay: 0.85s; }
     </style>
 </head>
 <body>
@@ -435,12 +442,12 @@
         <h1>🍎 營養師亮亮AI探索研究成果</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
         
-        <!-- Google 搜尋框 -->
+        <!-- 搜尋區塊：即時過濾 + Google 站外搜尋 -->
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔎 搜尋本站相關內容 (AI、工具、研究報告...)" aria-label="搜尋關鍵字">
-            <button id="searchBtn">Google 搜尋</button>
+            <input type="text" id="searchInput" placeholder="🔎 輸入關鍵字即時過濾站內資源 (AI、工具、研究...)" aria-label="站內搜尋關鍵字">
+            <button id="searchBtn">Google 站外搜尋</button>
         </div>
-        <div class="search-note">🔍 將自動加上「site:」限定在本網站內，精準找到相關資源</div>
+        <div class="search-note">✨ 輸入關鍵字自動篩選下方卡片，點擊卡片按鈕直接前往對應網頁｜Google 搜尋會加上「site:」限定本站</div>
         
         <div id="quickLinksContainer" class="quick-links">
             <!-- 動態生成分組快速連結按鈕 -->
@@ -464,8 +471,7 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共17個，新增「企業 AI 紅隊測試框架」)
-    // 新卡片歸類於「研究報告」群組，日期標記為 2026/04/10
+    // 卡片資料陣列 (共17個，完整保留所有內容)
     // ============================================================
     const sitesData = [
         { title: "營養師亮亮 · AI作品探索天地", url: "https://htmlpreview.github.io/?https://raw.githubusercontent.com/s8762999999-design/winson.dietition.lee.github.io/d751e253049c54ff7c5fb9eb6ce2793cd6eaab21/%E7%87%9F%E9%A4%8A%E5%B8%AB%E4%BA%AE%E4%BA%AE%E7%9A%84AI%E4%BD%9C%E5%93%81%E6%8E%A2%E7%B4%A2%E5%A4%A9%E5%9C%B0", description: "結合人工智慧與營養美學的互動展示空間，亮亮營養師生成AI繪圖、創意食譜及數位藝術作品，探索科技與健康的交匯點。", features: ["AI生成圖像藝廊", "營養知識跨界融合", "互動式作品體驗"], icon: "🎨✨", category: "🎭 AI創作", group: "創作與工具" },
@@ -484,7 +490,6 @@
         { title: "頂級機密 AI 互動協議設計研究", url: "https://ilvsilc.github.io/Top-Secret-AI-Interaction-Protocol-Design/", description: "深度探討 AI 與人類之間的安全互動協議架構，設計高強度加密通訊、權限驗證與行為監控機制，確保機密任務中的 AI 協作可靠度。", features: ["安全協議架構", "加密通訊設計", "行為監控與驗證"], icon: "🔒🤖", category: "📑 深度報告", group: "研究報告", showDevDate: true },
         { title: "AI安全決策樹 · 風險評估框架", url: "https://s8762999999-design.github.io/AI-Safety-Decision-Tree/", description: "提供 AI 系統安全風險的結構化決策流程，協助開發者識別潛在危害、評估嚴重程度並制定對應緩解策略，落實負責任的人工智慧。", features: ["風險識別與分類", "決策路徑分析", "安全控制建議"], icon: "🌳⚠️", category: "📑 深度報告", group: "研究報告", showDevDate: true },
         { title: "NotebookLM 結構化提示工程研究", url: "https://s8762999999-design.github.io/-NotebookLM-structure-prompt/", description: "探索 NotebookLM 的提示結構化方法，設計高效的文件分析與知識整理框架，提升 AI 輔助研究的準確性與深度，實現精準資訊萃取。", features: ["提示結構設計", "知識框架整理", "研究效率提升"], icon: "📓🔧", category: "📑 深度報告", group: "研究報告", showDevDate: true },
-        // ========= 新加入的「企業 AI 紅隊測試框架」 =========
         { title: "企業 AI 紅隊測試框架", url: "https://s8762999999-design.github.io/Enterprise-AI-Red-Team-Framework/", description: "提供企業級 AI 系統的紅隊演練框架，模擬攻擊者思維，主動發掘模型潛在漏洞、偏誤與安全風險，協助組織建立強健的 AI 防禦機制。", features: ["紅隊演練流程", "漏洞與偏誤偵測", "安全強化建議"], icon: "🔴🛡️", category: "📑 深度報告", group: "研究報告", showDevDate: true }
     ];
 
@@ -539,10 +544,62 @@
     
     function initBackToTop() { const backBtn = document.getElementById('backToTopBtn'); if (backBtn) backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
     
-    function initSearch() {
+    // 站內即時過濾功能：根據輸入關鍵字篩選卡片，比對標題、描述、特色列表文字
+    function initInstantFilter() {
+        const searchInput = document.getElementById('searchInput');
+        const cardsContainer = document.getElementById('cardsContainer');
+        if (!searchInput || !cardsContainer) return;
+        
+        const filterCards = () => {
+            const keyword = searchInput.value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.resource-card');
+            let matchCount = 0;
+            
+            cards.forEach(card => {
+                // 取得卡片內所有可搜尋文字：標題連結文字、描述、特色列表文字
+                const titleElem = card.querySelector('.site-title a');
+                const descElem = card.querySelector('.description');
+                const featureItems = card.querySelectorAll('.feature-list li');
+                
+                let textContent = '';
+                if (titleElem) textContent += titleElem.textContent + ' ';
+                if (descElem) textContent += descElem.textContent + ' ';
+                featureItems.forEach(item => { textContent += item.textContent + ' '; });
+                
+                const matches = keyword === '' || textContent.toLowerCase().includes(keyword);
+                if (matches) {
+                    card.style.display = '';
+                    matchCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 處理無結果提示
+            let noResultDiv = document.getElementById('noResultMessage');
+            if (!noResultDiv) {
+                noResultDiv = document.createElement('div');
+                noResultDiv.id = 'noResultMessage';
+                noResultDiv.className = 'no-results';
+                cardsContainer.parentNode.insertBefore(noResultDiv, cardsContainer.nextSibling);
+            }
+            if (matchCount === 0 && keyword !== '') {
+                noResultDiv.textContent = '🔍 沒有找到與「' + escapeHtml(keyword) + '」相關的資源，請嘗試其他關鍵字。';
+                noResultDiv.style.display = 'block';
+            } else {
+                noResultDiv.style.display = 'none';
+            }
+        };
+        
+        searchInput.addEventListener('input', filterCards);
+        // 初始執行一次確保無結果區塊隱藏
+        filterCards();
+    }
+    
+    function initExternalSearch() {
         const searchBtn = document.getElementById('searchBtn');
         const searchInput = document.getElementById('searchInput');
-        const performSearch = () => {
+        const performExternalSearch = () => {
             let query = searchInput.value.trim();
             if (query === "") return;
             let hostname = window.location.hostname;
@@ -551,15 +608,16 @@
             const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(finalQuery)}`;
             window.open(googleUrl, '_blank');
         };
-        searchBtn.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+        searchBtn.addEventListener('click', performExternalSearch);
+        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performExternalSearch(); });
     }
     
     document.addEventListener('DOMContentLoaded', () => {
         generateCards();
         generateQuickLinks();
         initBackToTop();
-        initSearch();
+        initInstantFilter();   // 站內即時過濾
+        initExternalSearch();  // Google 站外搜尋
     });
 </script>
 </body>
