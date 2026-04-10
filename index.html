@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹、NotebookLM提示工程、企業AI紅隊測試，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <meta property="og:title" content="營養師亮亮AI探索研究成果">
-    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹與網頁設計AI提示詞實務。">
+    <meta property="og:description" content="亮亮營養師的AI研究成果：AI藝術創作、開發工具、人才趨勢、各類AI分析報告、AI Orchestrator、AI工具入口、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹、NotebookLM提示工程、企業AI紅隊測試與網頁設計AI提示詞實務。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/155f7a/ffffff?text=AI+Research+2026">
     <meta property="og:image:alt" content="營養師亮亮AI探索研究成果">
@@ -73,7 +73,60 @@
             margin-top: 0.5rem;
         }
 
-        /* 快速連結區塊 - 依類別分組整齊排列 */
+        /* Google 搜尋框樣式 */
+        .search-container {
+            max-width: 500px;
+            margin: 1.2rem auto 0;
+            background: rgba(255, 255, 245, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.3rem 0.3rem 0.3rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(43, 143, 174, 0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .search-container input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            color: #1a2f3f;
+        }
+        .search-container input::placeholder {
+            color: #8aaec0;
+        }
+        .search-container button {
+            background: #2b8fae;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .search-container button:hover {
+            background: #0f4c5f;
+            transform: scale(0.97);
+        }
+        .search-note {
+            font-size: 0.7rem;
+            color: #5f8da3;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+
+        /* 快速連結區塊 */
         .quick-links {
             max-width: 1300px;
             margin: 1.5rem auto 0;
@@ -245,7 +298,6 @@
             transform: translateX(4px);
         }
 
-        /* 研發者專用日期標記樣式 - 極小不明顯 */
         .dev-date {
             text-align: right;
             font-size: 0.55rem;
@@ -340,6 +392,8 @@
             .quick-link-btn { padding: 0.35rem 0.8rem; font-size: 0.75rem; }
             .back-to-top { bottom: 1.2rem; right: 1rem; width: 42px; height: 42px; font-size: 1.5rem; }
             .footer-contact { gap: 0.8rem; flex-direction: column; }
+            .search-container { margin: 1rem auto 0; padding-left: 0.8rem; }
+            .search-container button { padding: 0.4rem 1rem; font-size: 0.8rem; }
         }
 
         a:focus-visible, button:focus-visible {
@@ -355,7 +409,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 15 張卡片 */
+        /* 支援最多 17 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -371,6 +425,8 @@
         .resource-card:nth-child(13) { animation-delay: 0.65s; }
         .resource-card:nth-child(14) { animation-delay: 0.7s; }
         .resource-card:nth-child(15) { animation-delay: 0.75s; }
+        .resource-card:nth-child(16) { animation-delay: 0.8s; }
+        .resource-card:nth-child(17) { animation-delay: 0.85s; }
     </style>
 </head>
 <body>
@@ -378,6 +434,14 @@
     <header class="page-header">
         <h1>🍎 營養師亮亮AI探索研究成果</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
+        
+        <!-- Google 搜尋框 -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔎 搜尋本站相關內容 (AI、工具、研究報告...)" aria-label="搜尋關鍵字">
+            <button id="searchBtn">Google 搜尋</button>
+        </div>
+        <div class="search-note">🔍 將自動加上「site:」限定在本網站內，精準找到相關資源</div>
+        
         <div id="quickLinksContainer" class="quick-links">
             <!-- 動態生成分組快速連結按鈕 -->
         </div>
@@ -400,153 +464,28 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共15個，新增「AI安全決策樹 · 風險評估框架」)
-    // 新卡片歸類於「研究報告」群組，日期標記為 2026/04/09
+    // 卡片資料陣列 (共17個，新增「企業 AI 紅隊測試框架」)
+    // 新卡片歸類於「研究報告」群組，日期標記為 2026/04/10
     // ============================================================
     const sitesData = [
-        {
-            title: "營養師亮亮 · AI作品探索天地",
-            url: "https://htmlpreview.github.io/?https://raw.githubusercontent.com/s8762999999-design/winson.dietition.lee.github.io/d751e253049c54ff7c5fb9eb6ce2793cd6eaab21/%E7%87%9F%E9%A4%8A%E5%B8%AB%E4%BA%AE%E4%BA%AE%E7%9A%84AI%E4%BD%9C%E5%93%81%E6%8E%A2%E7%B4%A2%E5%A4%A9%E5%9C%B0",
-            description: "結合人工智慧與營養美學的互動展示空間，亮亮營養師生成AI繪圖、創意食譜及數位藝術作品，探索科技與健康的交匯點。",
-            features: ["AI生成圖像藝廊", "營養知識跨界融合", "互動式作品體驗"],
-            icon: "🎨✨",
-            category: "🎭 AI創作",
-            group: "創作與工具"
-        },
-        {
-            title: "自製網頁DIY工具包",
-            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/c0c9bfbfeebf14638d477863302a59a4/raw/8cb1681bbe47e805d12a91fa2517722b7604da33/%25E8%2587%25AA%25E8%25A3%25BD%25E7%25B6%25B2%25E9%25A0%2581DIY%25E5%25B7%25A5%25E5%2585%25B7",
-            description: "收錄前端常用程式碼片段、版型模板與輕量框架，加速自製網頁流程。包含HTML/CSS結構、響應式佈局範例，適合開發者與設計師直接取用。",
-            features: ["複製貼上即可使用", "輕量化開發懶人包", "適合初學者與接案者"],
-            icon: "🛠️🧩",
-            category: "🔧 開發輔助",
-            group: "創作與工具"
-        },
-        {
-            title: "AI人才研究2026",
-            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/21c01e2187e67b6306ff3ce3c831d634/raw/184b7996c85393c0c573092cf0cddd03f45bc897/gistfile1.txt",
-            description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。",
-            features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"],
-            icon: "🤖📈",
-            category: "📊 前瞻研究",
-            group: "研究報告"
-        },
-        {
-            title: "LLM對傳統程式設計師與AI程式設計的分析研究報告",
-            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/2fe4194c6fc53747843e4015c9e0e768/raw/b4eb70c42fc59259cbe03fd64f867ed9a53e0a71/DeepSeek%25E5%25B0%258D%25E6%2596%25BC%25E5%2582%25B3%25E7%25B5%25B1%25E7%25A8%258B%25E5%25BC%258F%25E8%25A8%25AD%25E8%25A8%2588%25E5%25B8%25AB%25E8%2588%2587AI%25E5%259F%258E%25E5%25B8%2582%25E6%2598%25AF%25E6%258A%2580%25E5%25B8%25AB%25E7%259A%2584%25E5%2588%2586%25E6%259E%2590%25E7%25A0%2594%25E7%25A9%25B6%25E5%25A0%25B1%25E5%2591%258A",
-            description: "LLM 深入剖析 AI 時代下傳統程式設計師與 AI 城市技師的角色轉變、技能重組與未來職涯路徑，提供數據驅動的趨勢洞察。",
-            features: ["職業轉型分析", "AI城市技師需求預測", "技能樹進化建議"],
-            icon: "🧠📊",
-            category: "📑 深度報告",
-            group: "研究報告"
-        },
-        {
-            title: "DS研究與AI工具分析2.0",
-            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/ae5b6b3f2296c0c43b112889628c2800/raw/d341eea9a799b3984f2e191d030439a453af30ae/DS%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
-            description: "深度探討數據科學(DS)與AI工具的整合應用，提供進階分析工作流程、自動化實務與案例研究，協助開發者提升AI專案效率。",
-            features: ["DS與AI工具整合", "自動化工作流程", "實戰案例剖析"],
-            icon: "📊⚙️",
-            category: "🔬 數據科學",
-            group: "研究報告"
-        },
-        {
-            title: "Claude研究與AI工具分析2.0",
-            url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/4db7ee830671ad37d91fff56da5f9d77/raw/0d28c8015adefaa54e055f9c642b76fdc8c6eff9/CLAUDE%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0",
-            description: "聚焦Claude模型特性與AI工具鏈的協同應用，深入比較不同LLM在程式輔助、內容生成與推理能力的表現，提供實用評估報告。",
-            features: ["Claude模型評測", "多LLM效能比較", "實務應用指南"],
-            icon: "🤖🔍",
-            category: "🧪 模型研究",
-            group: "研究報告"
-        },
-        {
-            title: "AI工具綜合比較平台",
-            url: "https://aitoolscomp-jaruvq4t.manus.space/?utm_id=97758_v0_s00_e0_tv0",
-            description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。",
-            features: ["多維度工具評測", "即時效能對比", "應用場景推薦"],
-            icon: "⚖️🤖",
-            category: "🔎 工具評測",
-            group: "平台與對話"
-        },
-        {
-            title: "Gemini AI 創意應用分享",
-            url: "https://gemini.google.com/share/1a1bb2e33fc4",
-            description: "展示 Gemini 在創意寫作、詩詞生成與故事發想上的驚人能力。透過實際對話案例，體驗 AI 如何激發靈感並協助藝術創作。",
-            features: ["創意寫作實例", "詩詞對聯生成", "靈感啟發對話"],
-            icon: "✍️✨",
-            category: "💬 對話式AI",
-            group: "平台與對話"
-        },
-        {
-            title: "網頁設計與 AI 提示詞終極實務大辭典",
-            url: "https://g.co/gemini/share/807a938f8995",
-            description: "集結網頁設計領域最實用的 AI 提示詞範例與實戰技巧，從版型生成、CSS 優化到互動效果，幫助設計師與開發者快速產出高品質程式碼。",
-            features: ["提示詞百科全書", "響應式版型生成", "CSS/JS 優化技巧"],
-            icon: "📚💡",
-            category: "💬 對話式AI",
-            group: "平台與對話",
-            showDevDate: true
-        },
-        {
-            title: "AI Orchestrator · 智能工作流協調平台",
-            url: "https://s8762999999-design.github.io/ai-orchestrator/",
-            description: "整合多種 AI 模型與服務的工作流編排工具，支援自定義任務鏈、跨平台 API 串接，實現複雜自動化流程。適合開發者構建 AI 應用生態。",
-            features: ["多模型協同編排", "可視化工作流設計", "API 整合與監控"],
-            icon: "🎼⚙️",
-            category: "🔧 開發輔助",
-            group: "平台與對話",
-            showDevDate: true
-        },
-        {
-            title: "AI 工具入口 · 一站式 AI 服務導航",
-            url: "https://s8762999999-design.github.io/AI-.port/",
-            description: "匯集 Gmail、Gemini、ChatGPT、Claude、DeepSeek、Perplexity 等主流 AI 服務的快速啟動入口，提供一鍵打開全部工具的便捷體驗，大幅提升工作效率。",
-            features: ["主流 AI 工具整合", "一鍵快速啟動", "直覺化導航面板"],
-            icon: "🚀🔗",
-            category: "🔎 工具評測",
-            group: "平台與對話",
-            showDevDate: true
-        },
-        {
-            title: "營養AI衛教研究",
-            url: "https://s8762999999-design.github.io/-/",
-            description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。",
-            features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"],
-            icon: "🥗🤖",
-            category: "🔬 數據科學",
-            group: "平台與對話",
-            showDevDate: true
-        },
-        {
-            title: "AI深度研究音樂與生理狀態的相互影響",
-            url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top",
-            description: "整合實體音樂專輯收藏、樂理研究與學習資源的數位中心，提供深度音樂知識與實體載體探索體驗，支援收藏管理與互動學習。",
-            features: ["AI針對音樂與生理影響之深度研究", "假設狀況相對應之音樂應用", "實體資源導覽"],
-            icon: "🎵📀",
-            category: "🎵 音樂研究",
-            group: "平台與對話",
-            showDevDate: true
-        },
-        {
-            title: "頂級機密 AI 互動協議設計研究",
-            url: "https://ilvsilc.github.io/Top-Secret-AI-Interaction-Protocol-Design/",
-            description: "深度探討 AI 與人類之間的安全互動協議架構，設計高強度加密通訊、權限驗證與行為監控機制，確保機密任務中的 AI 協作可靠度。",
-            features: ["安全協議架構", "加密通訊設計", "行為監控與驗證"],
-            icon: "🔒🤖",
-            category: "📑 深度報告",
-            group: "研究報告",
-            showDevDate: true
-        },
-        // ========= 新加入的「AI安全決策樹 · 風險評估框架」 =========
-        {
-            title: "AI安全決策樹 · 風險評估框架",
-            url: "https://s8762999999-design.github.io/AI-Safety-Decision-Tree/",
-            description: "提供 AI 系統安全風險的結構化決策流程，協助開發者識別潛在危害、評估嚴重程度並制定對應緩解策略，落實負責任的人工智慧。",
-            features: ["風險識別與分類", "決策路徑分析", "安全控制建議"],
-            icon: "🌳⚠️",
-            category: "📑 深度報告",
-            group: "研究報告",
-            showDevDate: true
-        }
+        { title: "營養師亮亮 · AI作品探索天地", url: "https://htmlpreview.github.io/?https://raw.githubusercontent.com/s8762999999-design/winson.dietition.lee.github.io/d751e253049c54ff7c5fb9eb6ce2793cd6eaab21/%E7%87%9F%E9%A4%8A%E5%B8%AB%E4%BA%AE%E4%BA%AE%E7%9A%84AI%E4%BD%9C%E5%93%81%E6%8E%A2%E7%B4%A2%E5%A4%A9%E5%9C%B0", description: "結合人工智慧與營養美學的互動展示空間，亮亮營養師生成AI繪圖、創意食譜及數位藝術作品，探索科技與健康的交匯點。", features: ["AI生成圖像藝廊", "營養知識跨界融合", "互動式作品體驗"], icon: "🎨✨", category: "🎭 AI創作", group: "創作與工具" },
+        { title: "自製網頁DIY工具包", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/c0c9bfbfeebf14638d477863302a59a4/raw/8cb1681bbe47e805d12a91fa2517722b7604da33/%25E8%2587%25AA%25E8%25A3%25BD%25E7%25B6%25B2%25E9%25A0%2581DIY%25E5%25B7%25A5%25E5%2585%25B7", description: "收錄前端常用程式碼片段、版型模板與輕量框架，加速自製網頁流程。包含HTML/CSS結構、響應式佈局範例，適合開發者與設計師直接取用。", features: ["複製貼上即可使用", "輕量化開發懶人包", "適合初學者與接案者"], icon: "🛠️🧩", category: "🔧 開發輔助", group: "創作與工具" },
+        { title: "AI人才研究2026", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/21c01e2187e67b6306ff3ce3c831d634/raw/184b7996c85393c0c573092cf0cddd03f45bc897/gistfile1.txt", description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。", features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"], icon: "🤖📈", category: "📊 前瞻研究", group: "研究報告" },
+        { title: "LLM對傳統程式設計師與AI程式設計的分析研究報告", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/2fe4194c6fc53747843e4015c9e0e768/raw/b4eb70c42fc59259cbe03fd64f867ed9a53e0a71/DeepSeek%25E5%25B0%258D%25E6%2596%25BC%25E5%2582%25B3%25E7%25B5%25B1%25E7%25A8%258B%25E5%25BC%258F%25E8%25A8%25AD%25E8%25A8%2588%25E5%25B8%25AB%25E8%2588%2587AI%25E5%259F%258E%25E5%25B8%2582%25E6%2598%25AF%25E6%258A%2580%25E5%25B8%25AB%25E7%259A%2584%25E5%2588%2586%25E6%259E%2590%25E7%25A0%2594%25E7%25A9%25B6%25E5%25A0%25B1%25E5%2591%258A", description: "LLM 深入剖析 AI 時代下傳統程式設計師與 AI 城市技師的角色轉變、技能重組與未來職涯路徑，提供數據驅動的趨勢洞察。", features: ["職業轉型分析", "AI城市技師需求預測", "技能樹進化建議"], icon: "🧠📊", category: "📑 深度報告", group: "研究報告" },
+        { title: "DS研究與AI工具分析2.0", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/ae5b6b3f2296c0c43b112889628c2800/raw/d341eea9a799b3984f2e191d030439a453af30ae/DS%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0", description: "深度探討數據科學(DS)與AI工具的整合應用，提供進階分析工作流程、自動化實務與案例研究，協助開發者提升AI專案效率。", features: ["DS與AI工具整合", "自動化工作流程", "實戰案例剖析"], icon: "📊⚙️", category: "🔬 數據科學", group: "研究報告" },
+        { title: "Claude研究與AI工具分析2.0", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/4db7ee830671ad37d91fff56da5f9d77/raw/0d28c8015adefaa54e055f9c642b76fdc8c6eff9/CLAUDE%25E7%25A0%2594%25E7%25A9%25B6%25E4%25B9%258BAI%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2586%25E6%259E%25902.0", description: "聚焦Claude模型特性與AI工具鏈的協同應用，深入比較不同LLM在程式輔助、內容生成與推理能力的表現，提供實用評估報告。", features: ["Claude模型評測", "多LLM效能比較", "實務應用指南"], icon: "🤖🔍", category: "🧪 模型研究", group: "研究報告" },
+        { title: "AI工具綜合比較平台", url: "https://aitoolscomp-jaruvq4t.manus.space/?utm_id=97758_v0_s00_e0_tv0", description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。", features: ["多維度工具評測", "即時效能對比", "應用場景推薦"], icon: "⚖️🤖", category: "🔎 工具評測", group: "平台與對話" },
+        { title: "Gemini AI 創意應用分享", url: "https://gemini.google.com/share/1a1bb2e33fc4", description: "展示 Gemini 在創意寫作、詩詞生成與故事發想上的驚人能力。透過實際對話案例，體驗 AI 如何激發靈感並協助藝術創作。", features: ["創意寫作實例", "詩詞對聯生成", "靈感啟發對話"], icon: "✍️✨", category: "💬 對話式AI", group: "平台與對話" },
+        { title: "網頁設計與 AI 提示詞終極實務大辭典", url: "https://g.co/gemini/share/807a938f8995", description: "集結網頁設計領域最實用的 AI 提示詞範例與實戰技巧，從版型生成、CSS 優化到互動效果，幫助設計師與開發者快速產出高品質程式碼。", features: ["提示詞百科全書", "響應式版型生成", "CSS/JS 優化技巧"], icon: "📚💡", category: "💬 對話式AI", group: "平台與對話", showDevDate: true },
+        { title: "AI Orchestrator · 智能工作流協調平台", url: "https://s8762999999-design.github.io/ai-orchestrator/", description: "整合多種 AI 模型與服務的工作流編排工具，支援自定義任務鏈、跨平台 API 串接，實現複雜自動化流程。適合開發者構建 AI 應用生態。", features: ["多模型協同編排", "可視化工作流設計", "API 整合與監控"], icon: "🎼⚙️", category: "🔧 開發輔助", group: "平台與對話", showDevDate: true },
+        { title: "AI 工具入口 · 一站式 AI 服務導航", url: "https://s8762999999-design.github.io/AI-.port/", description: "匯集 Gmail、Gemini、ChatGPT、Claude、DeepSeek、Perplexity 等主流 AI 服務的快速啟動入口，提供一鍵打開全部工具的便捷體驗，大幅提升工作效率。", features: ["主流 AI 工具整合", "一鍵快速啟動", "直覺化導航面板"], icon: "🚀🔗", category: "🔎 工具評測", group: "平台與對話", showDevDate: true },
+        { title: "營養AI衛教研究", url: "https://s8762999999-design.github.io/-/", description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。", features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"], icon: "🥗🤖", category: "🔬 數據科學", group: "平台與對話", showDevDate: true },
+        { title: "AI深度研究音樂與生理狀態的相互影響", url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top", description: "整合實體音樂專輯收藏、樂理研究與學習資源的數位中心，提供深度音樂知識與實體載體探索體驗，支援收藏管理與互動學習。", features: ["AI針對音樂與生理影響之深度研究", "假設狀況相對應之音樂應用", "實體資源導覽"], icon: "🎵📀", category: "🎵 音樂研究", group: "平台與對話", showDevDate: true },
+        { title: "頂級機密 AI 互動協議設計研究", url: "https://ilvsilc.github.io/Top-Secret-AI-Interaction-Protocol-Design/", description: "深度探討 AI 與人類之間的安全互動協議架構，設計高強度加密通訊、權限驗證與行為監控機制，確保機密任務中的 AI 協作可靠度。", features: ["安全協議架構", "加密通訊設計", "行為監控與驗證"], icon: "🔒🤖", category: "📑 深度報告", group: "研究報告", showDevDate: true },
+        { title: "AI安全決策樹 · 風險評估框架", url: "https://s8762999999-design.github.io/AI-Safety-Decision-Tree/", description: "提供 AI 系統安全風險的結構化決策流程，協助開發者識別潛在危害、評估嚴重程度並制定對應緩解策略，落實負責任的人工智慧。", features: ["風險識別與分類", "決策路徑分析", "安全控制建議"], icon: "🌳⚠️", category: "📑 深度報告", group: "研究報告", showDevDate: true },
+        { title: "NotebookLM 結構化提示工程研究", url: "https://s8762999999-design.github.io/-NotebookLM-structure-prompt/", description: "探索 NotebookLM 的提示結構化方法，設計高效的文件分析與知識整理框架，提升 AI 輔助研究的準確性與深度，實現精準資訊萃取。", features: ["提示結構設計", "知識框架整理", "研究效率提升"], icon: "📓🔧", category: "📑 深度報告", group: "研究報告", showDevDate: true },
+        // ========= 新加入的「企業 AI 紅隊測試框架」 =========
+        { title: "企業 AI 紅隊測試框架", url: "https://s8762999999-design.github.io/Enterprise-AI-Red-Team-Framework/", description: "提供企業級 AI 系統的紅隊演練框架，模擬攻擊者思維，主動發掘模型潛在漏洞、偏誤與安全風險，協助組織建立強健的 AI 防禦機制。", features: ["紅隊演練流程", "漏洞與偏誤偵測", "安全強化建議"], icon: "🔴🛡️", category: "📑 深度報告", group: "研究報告", showDevDate: true }
     ];
 
     function generateCards() {
@@ -559,38 +498,15 @@
             card.className = 'resource-card';
             card.id = `card-${idx}`;
             card.setAttribute('aria-label', `網站卡片：${item.title}`);
-            
             const featuresHtml = item.features.map(f => `<li>${escapeHtml(f)}</li>`).join('');
-            
-            let cardInnerHtml = `
-                <div class="card-content">
-                    <div class="card-icon">${item.icon || '🔖'}</div>
-                    <div class="badge-category">${escapeHtml(item.category)}</div>
-                    <div class="site-title">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">
-                            ${escapeHtml(item.title)}
-                        </a>
-                    </div>
-                    <div class="description">${escapeHtml(item.description)}</div>
-                    <ul class="feature-list">${featuresHtml}</ul>
-                    <div class="card-footer">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="visit-link">
-                            前往探索 <span>→</span>
-                        </a>
-                    </div>
-            `;
-            
+            let cardInnerHtml = `<div class="card-content"><div class="card-icon">${item.icon || '🔖'}</div><div class="badge-category">${escapeHtml(item.category)}</div><div class="site-title"><a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></div><div class="description">${escapeHtml(item.description)}</div><ul class="feature-list">${featuresHtml}</ul><div class="card-footer"><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="visit-link">前往探索 <span>→</span></a></div>`;
             if (item.showDevDate) {
                 let dateLabel = "📅 2026/04/07";
-                if (item.title === "AI 工具入口 · 一站式 AI 服務導航" || item.title === "營養AI衛教研究" || item.title === "AI深度研究音樂與生理狀態的相互影響") {
-                    dateLabel = "📅 2026/04/08";
-                }
-                if (item.title === "頂級機密 AI 互動協議設計研究" || item.title === "AI安全決策樹 · 風險評估框架") {
-                    dateLabel = "📅 2026/04/09";
-                }
+                if (["AI 工具入口 · 一站式 AI 服務導航", "營養AI衛教研究", "AI深度研究音樂與生理狀態的相互影響"].includes(item.title)) dateLabel = "📅 2026/04/08";
+                if (["頂級機密 AI 互動協議設計研究", "AI安全決策樹 · 風險評估框架"].includes(item.title)) dateLabel = "📅 2026/04/09";
+                if (item.title === "NotebookLM 結構化提示工程研究" || item.title === "企業 AI 紅隊測試框架") dateLabel = "📅 2026/04/10";
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
             }
-            
             cardInnerHtml += `</div>`;
             card.innerHTML = cardInnerHtml;
             container.appendChild(card);
@@ -601,87 +517,49 @@
         const container = document.getElementById('quickLinksContainer');
         if (!container) return;
         container.innerHTML = '';
-        
-        const groupOrder = [
-            { key: "創作與工具", label: "🎨 創作與工具" },
-            { key: "研究報告", label: "📄 研究報告" },
-            { key: "平台與對話", label: "💬 平台與對話" }
-        ];
-        
+        const groupOrder = [{ key: "創作與工具", label: "🎨 創作與工具" }, { key: "研究報告", label: "📄 研究報告" }, { key: "平台與對話", label: "💬 平台與對話" }];
         const groups = {};
-        sitesData.forEach((item, idx) => {
-            const g = item.group || "其他";
-            if (!groups[g]) groups[g] = [];
-            groups[g].push({ ...item, originalIndex: idx });
-        });
-        
+        sitesData.forEach((item, idx) => { const g = item.group || "其他"; if (!groups[g]) groups[g] = []; groups[g].push({ ...item, originalIndex: idx }); });
         groupOrder.forEach(groupInfo => {
-            const groupKey = groupInfo.key;
-            const items = groups[groupKey];
+            const items = groups[groupInfo.key];
             if (!items || items.length === 0) return;
-            
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'link-group';
-            const titleDiv = document.createElement('div');
-            titleDiv.className = 'link-group-title';
-            titleDiv.textContent = groupInfo.label;
-            groupDiv.appendChild(titleDiv);
-            
-            const buttonsDiv = document.createElement('div');
-            buttonsDiv.className = 'link-buttons';
-            
+            const groupDiv = document.createElement('div'); groupDiv.className = 'link-group';
+            const titleDiv = document.createElement('div'); titleDiv.className = 'link-group-title'; titleDiv.textContent = groupInfo.label; groupDiv.appendChild(titleDiv);
+            const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'link-buttons';
             items.forEach(item => {
-                const btn = document.createElement('button');
-                btn.textContent = item.title;
-                btn.className = 'quick-link-btn';
-                btn.setAttribute('data-target-idx', item.originalIndex);
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetCard = document.getElementById(`card-${item.originalIndex}`);
-                    if (targetCard) {
-                        targetCard.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start',
-                        });
-                        targetCard.style.transition = 'box-shadow 0.2s';
-                        targetCard.style.boxShadow = '0 0 0 3px #2b8fae';
-                        setTimeout(() => {
-                            targetCard.style.boxShadow = '';
-                        }, 1000);
-                    }
-                });
+                const btn = document.createElement('button'); btn.textContent = item.title; btn.className = 'quick-link-btn'; btn.setAttribute('data-target-idx', item.originalIndex);
+                btn.addEventListener('click', (e) => { e.preventDefault(); const targetCard = document.getElementById(`card-${item.originalIndex}`); if (targetCard) { targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' }); targetCard.style.transition = 'box-shadow 0.2s'; targetCard.style.boxShadow = '0 0 0 3px #2b8fae'; setTimeout(() => { targetCard.style.boxShadow = ''; }, 1000); } });
                 buttonsDiv.appendChild(btn);
             });
-            groupDiv.appendChild(buttonsDiv);
-            container.appendChild(groupDiv);
+            groupDiv.appendChild(buttonsDiv); container.appendChild(groupDiv);
         });
     }
     
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
     
-    function initBackToTop() {
-        const backBtn = document.getElementById('backToTopBtn');
-        if (!backBtn) return;
-        backBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+    function initBackToTop() { const backBtn = document.getElementById('backToTopBtn'); if (backBtn) backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+    
+    function initSearch() {
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        const performSearch = () => {
+            let query = searchInput.value.trim();
+            if (query === "") return;
+            let hostname = window.location.hostname;
+            const siteQuery = `site:${hostname}`;
+            const finalQuery = `${query} ${siteQuery}`;
+            const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(finalQuery)}`;
+            window.open(googleUrl, '_blank');
+        };
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
     }
     
     document.addEventListener('DOMContentLoaded', () => {
         generateCards();
         generateQuickLinks();
         initBackToTop();
+        initSearch();
     });
 </script>
 </body>
