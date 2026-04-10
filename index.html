@@ -75,7 +75,7 @@
 
         /* 搜尋區塊 */
         .search-container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 1.2rem auto 0;
             background: rgba(255, 255, 245, 0.8);
             backdrop-filter: blur(8px);
@@ -125,18 +125,8 @@
             margin-top: 0.3rem;
             text-align: center;
         }
-
-        /* 即時過濾結果提示 */
-        .filter-result-info {
-            text-align: center;
-            margin-top: 0.8rem;
-            font-size: 0.85rem;
+        .search-note strong {
             color: #2b8fae;
-            background: rgba(255,255,240,0.6);
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            backdrop-filter: blur(2px);
         }
 
         /* 快速連結區塊 */
@@ -323,7 +313,6 @@
             pointer-events: none;
         }
 
-        /* 搜尋無結果提示 */
         .no-results {
             text-align: center;
             padding: 3rem 1rem;
@@ -442,12 +431,16 @@
         <h1>🍎 營養師亮亮AI探索研究成果</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
         
-        <!-- 搜尋區塊：即時過濾 + Google 站外搜尋 -->
+        <!-- 搜尋區塊：即時過濾目前頁面卡片 + 完整網站全文搜尋 -->
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔎 輸入關鍵字即時過濾站內資源 (AI、工具、研究...)" aria-label="站內搜尋關鍵字">
-            <button id="searchBtn">Google 站外搜尋</button>
+            <input type="text" id="searchInput" placeholder="🔎 輸入關鍵字，即時篩選下方資源 (AI、工具、研究...)" aria-label="站內搜尋關鍵字">
+            <button id="searchBtn">🌐 Google 搜尋整個網站</button>
         </div>
-        <div class="search-note">✨ 輸入關鍵字自動篩選下方卡片，點擊卡片按鈕直接前往對應網頁｜Google 搜尋會加上「site:」限定本站</div>
+        <div class="search-note">
+            ✨ <strong>即時過濾</strong>：輸入文字自動篩選「本頁面」的卡片，點擊「前往探索」直接開啟對應網頁。<br>
+            🔎 點擊 <strong>「Google 搜尋整個網站」</strong> 會以 <strong>site:s8762999999-design.github.io</strong> 搜尋，<br>
+            &nbsp;&nbsp;&nbsp;可查找該網站「所有頁面」中出現的關鍵字，並直接提供對應的網頁連結（由 Google 索引決定）。
+        </div>
         
         <div id="quickLinksContainer" class="quick-links">
             <!-- 動態生成分組快速連結按鈕 -->
@@ -544,7 +537,7 @@
     
     function initBackToTop() { const backBtn = document.getElementById('backToTopBtn'); if (backBtn) backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
     
-    // 站內即時過濾功能：根據輸入關鍵字篩選卡片，比對標題、描述、特色列表文字
+    // 即時過濾當前頁面卡片
     function initInstantFilter() {
         const searchInput = document.getElementById('searchInput');
         const cardsContainer = document.getElementById('cardsContainer');
@@ -556,16 +549,13 @@
             let matchCount = 0;
             
             cards.forEach(card => {
-                // 取得卡片內所有可搜尋文字：標題連結文字、描述、特色列表文字
                 const titleElem = card.querySelector('.site-title a');
                 const descElem = card.querySelector('.description');
                 const featureItems = card.querySelectorAll('.feature-list li');
-                
                 let textContent = '';
                 if (titleElem) textContent += titleElem.textContent + ' ';
                 if (descElem) textContent += descElem.textContent + ' ';
                 featureItems.forEach(item => { textContent += item.textContent + ' '; });
-                
                 const matches = keyword === '' || textContent.toLowerCase().includes(keyword);
                 if (matches) {
                     card.style.display = '';
@@ -575,7 +565,6 @@
                 }
             });
             
-            // 處理無結果提示
             let noResultDiv = document.getElementById('noResultMessage');
             if (!noResultDiv) {
                 noResultDiv = document.createElement('div');
@@ -592,19 +581,22 @@
         };
         
         searchInput.addEventListener('input', filterCards);
-        // 初始執行一次確保無結果區塊隱藏
         filterCards();
     }
     
+    // 站外 Google 全文搜尋：固定 site:s8762999999-design.github.io
+    // 能夠查找該網站所有頁面內容中出現的關鍵字，並提供對應的網頁連結
     function initExternalSearch() {
         const searchBtn = document.getElementById('searchBtn');
         const searchInput = document.getElementById('searchInput');
         const performExternalSearch = () => {
             let query = searchInput.value.trim();
-            if (query === "") return;
-            let hostname = window.location.hostname;
-            const siteQuery = `site:${hostname}`;
-            const finalQuery = `${query} ${siteQuery}`;
+            if (query === "") {
+                alert("請輸入要搜尋的關鍵字，將搜尋整個 s8762999999-design.github.io 網站");
+                return;
+            }
+            const siteDomain = "s8762999999-design.github.io";
+            const finalQuery = `${query} site:${siteDomain}`;
             const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(finalQuery)}`;
             window.open(googleUrl, '_blank');
         };
@@ -616,8 +608,8 @@
         generateCards();
         generateQuickLinks();
         initBackToTop();
-        initInstantFilter();   // 站內即時過濾
-        initExternalSearch();  // Google 站外搜尋
+        initInstantFilter();
+        initExternalSearch();
     });
 </script>
 </body>
