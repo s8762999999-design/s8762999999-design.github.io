@@ -60,9 +60,9 @@
             margin-top: 0.5rem;
         }
 
-        /* 搜尋區塊 */
+        /* 搜尋區塊 - 新增 AI 推薦按鈕 */
         .search-container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 1.2rem auto 0;
             background: rgba(255, 255, 245, 0.8);
             backdrop-filter: blur(8px);
@@ -73,6 +73,7 @@
             gap: 0.5rem;
             border: 1px solid rgba(43, 143, 174, 0.3);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
         }
         .search-container input {
             flex: 1;
@@ -83,6 +84,7 @@
             font-family: inherit;
             outline: none;
             color: #1a2f3f;
+            min-width: 150px;
         }
         .search-container input::placeholder {
             color: #8aaec0;
@@ -98,13 +100,20 @@
             cursor: pointer;
             transition: all 0.2s;
             font-family: inherit;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.3rem;
+            white-space: nowrap;
         }
         .search-container button:hover {
             background: #0f4c5f;
             transform: scale(0.97);
+        }
+        .ai-search-btn {
+            background: linear-gradient(95deg, #6a1b9a, #8e24aa);
+        }
+        .ai-search-btn:hover {
+            background: linear-gradient(95deg, #4a148c, #6a1b9a);
         }
         .search-note {
             font-size: 0.7rem;
@@ -116,7 +125,7 @@
             color: #2b8fae;
         }
 
-        /* 快速連結區塊 - 優化排版 */
+        /* 快速連結區塊 */
         .quick-links {
             max-width: 1300px;
             margin: 1.5rem auto 0;
@@ -209,6 +218,13 @@
             .quick-link-btn {
                 font-size: 0.8rem;
                 padding: 0.45rem 1rem;
+            }
+            .search-container {
+                padding-left: 0.8rem;
+            }
+            .search-container button {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -427,8 +443,6 @@
             .catalog-grid { gap: 1.3rem; }
             .back-to-top { bottom: 1.2rem; right: 1rem; width: 42px; height: 42px; font-size: 1.5rem; }
             .footer-contact { gap: 0.8rem; flex-direction: column; }
-            .search-container { margin: 1rem auto 0; padding-left: 0.8rem; }
-            .search-container button { padding: 0.4rem 1rem; font-size: 0.8rem; }
         }
 
         a:focus-visible, button:focus-visible {
@@ -479,19 +493,20 @@
         <h1>🍎 營養師亮亮AI探索研究成果</h1>
         <div class="subhead">🔍 精選資源・前瞻分析・創意交匯</div>
         
-        <!-- 搜尋區塊 -->
+        <!-- 搜尋區塊：即時過濾 + Google 站內搜尋 + Google AI 智慧推薦 -->
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="🔎 輸入關鍵字，即時篩選下方資源 (AI、工具、研究...)" aria-label="站內搜尋關鍵字">
-            <button id="searchBtn">🌐 Google 搜尋整個網站</button>
+            <button id="searchBtn">🌐 Google 搜尋網站</button>
+            <button id="aiRecommendBtn" class="ai-search-btn">✨ Google AI 智慧推薦</button>
         </div>
         <div class="search-note">
-            ✨ <strong>即時過濾</strong>：輸入文字自動篩選「本頁面」的卡片，點擊「前往探索」直接開啟對應網頁。<br>
-            🔎 點擊 <strong>「Google 搜尋整個網站」</strong> 會以 <strong>site:s8762999999-design.github.io</strong> 搜尋，<br>
-            &nbsp;&nbsp;&nbsp;可查找該網站「所有頁面」中出現的關鍵字，並直接提供對應的網頁連結（由 Google 索引決定）。
+            ✨ <strong>即時過濾</strong>：輸入文字自動篩選「本頁面」的卡片。<br>
+            🔎 <strong>Google 搜尋網站</strong>：以 <strong>site:s8762999999-design.github.io</strong> 搜尋全站。<br>
+            🤖 <strong>Google AI 智慧推薦</strong>：使用 AI 同義詞擴充技術，推薦最相關的文章。
         </div>
         
         <div id="quickLinksContainer" class="quick-links">
-            <!-- 動態生成分組快速連結按鈕，文字已精簡 -->
+            <!-- 動態生成分組快速連結按鈕 -->
         </div>
     </header>
 
@@ -513,7 +528,6 @@
 <script>
     // ============================================================
     // 卡片資料陣列 (共27個，分類已正確定義)
-    // 每個項目增加 shortTitle 欄位，用於快速連結按鈕的精簡文字
     // ============================================================
     const sitesData = [
         // 創作與工具
@@ -549,6 +563,89 @@
         { title: "營養AI衛教研究", shortTitle: "營養AI衛教", url: "https://s8762999999-design.github.io/-/", description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。", features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"], icon: "🥗🤖", category: "🔬 數據科學", group: "平台與對話", showDevDate: true },
         { title: "AI深度研究音樂與生理狀態的相互影響", shortTitle: "音樂生理研究", url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top", description: "整合實體音樂專輯收藏、樂理研究與學習資源的數位中心，提供深度音樂知識與實體載體探索體驗，支援收藏管理與互動學習。", features: ["AI針對音樂與生理影響之深度研究", "假設狀況相對應之音樂應用", "實體資源導覽"], icon: "🎵📀", category: "🎵 音樂研究", group: "平台與對話", showDevDate: true }
     ];
+
+    // ========== Google AI 智慧推薦：同義詞庫 ==========
+    const synonymMap = {
+        "ai": ["人工智慧", "機器學習", "深度學習", "自然語言", "模型", "llm", "生成式"],
+        "人工智慧": ["ai", "機器學習", "深度學習"],
+        "機器學習": ["ai", "人工智慧", "深度學習"],
+        "工具": ["平台", "軟體", "應用", "套件", "diy"],
+        "研究": ["分析", "報告", "論文", "探討", "策略"],
+        "設計": ["ui", "ux", "介面", "視覺", "使用者體驗"],
+        "程式": ["程式設計", "開發", "coding", "工程師"],
+        "面試": ["口試", "策略", "準備"],
+        "健康": ["營養", "衛教", "醫學", "ebm"],
+        "音樂": ["生理", "聲音", "聽覺"],
+        "安全": ["風險", "資安", "決策樹", "紅隊"],
+        "提示": ["prompt", "辭典", "工程"],
+        "穿搭": ["服裝", "時尚", "微胖"],
+        "uiux": ["ui/ux", "使用者介面", "使用者經驗"]
+    };
+
+    function expandKeywords(keyword) {
+        let expanded = new Set();
+        let lowerKeyword = keyword.toLowerCase();
+        expanded.add(lowerKeyword);
+        // 直接比對同義詞
+        for (let [key, synonyms] of Object.entries(synonymMap)) {
+            if (lowerKeyword === key || lowerKeyword.includes(key) || synonyms.some(s => lowerKeyword.includes(s))) {
+                expanded.add(key);
+                synonyms.forEach(s => expanded.add(s.toLowerCase()));
+            }
+        }
+        // 額外分詞處理：將輸入拆成單詞
+        const words = lowerKeyword.split(/\s+/);
+        words.forEach(w => {
+            if (w.length > 1) expanded.add(w);
+            for (let [key, synonyms] of Object.entries(synonymMap)) {
+                if (w === key || synonyms.some(s => w === s)) {
+                    expanded.add(key);
+                    synonyms.forEach(s => expanded.add(s.toLowerCase()));
+                }
+            }
+        });
+        return Array.from(expanded);
+    }
+
+    function filterCardsWithAI(keyword) {
+        const expandedKeywords = expandKeywords(keyword);
+        const cards = document.querySelectorAll('.resource-card');
+        let matchCount = 0;
+        cards.forEach(card => {
+            const titleElem = card.querySelector('.site-title a');
+            const descElem = card.querySelector('.description');
+            const featureItems = card.querySelectorAll('.feature-list li');
+            let textContent = '';
+            if (titleElem) textContent += titleElem.textContent + ' ';
+            if (descElem) textContent += descElem.textContent + ' ';
+            featureItems.forEach(item => { textContent += item.textContent + ' '; });
+            const lowerText = textContent.toLowerCase();
+            const matched = expandedKeywords.some(kw => lowerText.includes(kw));
+            if (matched) {
+                card.style.display = '';
+                matchCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        // 顯示結果提示
+        let noResultDiv = document.getElementById('noResultMessage');
+        if (!noResultDiv) {
+            noResultDiv = document.createElement('div');
+            noResultDiv.id = 'noResultMessage';
+            noResultDiv.className = 'no-results';
+            document.getElementById('cardsContainer').parentNode.insertBefore(noResultDiv, document.getElementById('cardsContainer').nextSibling);
+        }
+        if (matchCount === 0 && keyword.trim() !== '') {
+            noResultDiv.textContent = '🤖 Google AI 未找到與「' + escapeHtml(keyword) + '」相關的資源，請嘗試其他關鍵字。';
+            noResultDiv.style.display = 'block';
+        } else if (keyword.trim() !== '') {
+            noResultDiv.textContent = `✨ Google AI 推薦找到 ${matchCount} 篇相關文章 (基於同義詞擴充)`;
+            noResultDiv.style.display = 'block';
+        } else {
+            noResultDiv.style.display = 'none';
+        }
+    }
 
     function generateCards() {
         const container = document.getElementById('cardsContainer');
@@ -586,31 +683,20 @@
             { key: "研究報告", label: "📄 研究報告" },
             { key: "平台與對話", label: "💬 平台與對話" }
         ];
-        
         const groups = {};
         sitesData.forEach((item, idx) => {
             const g = item.group || "其他";
             if (!groups[g]) groups[g] = [];
             groups[g].push({ ...item, originalIndex: idx });
         });
-        
         groupOrder.forEach(groupInfo => {
             const items = groups[groupInfo.key];
             if (!items || items.length === 0) return;
-            
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'link-group';
-            const titleDiv = document.createElement('div');
-            titleDiv.className = 'link-group-title';
-            titleDiv.textContent = groupInfo.label;
-            groupDiv.appendChild(titleDiv);
-            
-            const buttonsDiv = document.createElement('div');
-            buttonsDiv.className = 'link-buttons';
-            
+            const groupDiv = document.createElement('div'); groupDiv.className = 'link-group';
+            const titleDiv = document.createElement('div'); titleDiv.className = 'link-group-title'; titleDiv.textContent = groupInfo.label; groupDiv.appendChild(titleDiv);
+            const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'link-buttons';
             items.forEach(item => {
                 const btn = document.createElement('button');
-                // 使用精簡標題 (shortTitle) 如果存在的話，否則使用原標題
                 btn.textContent = item.shortTitle || item.title;
                 btn.className = 'quick-link-btn';
                 btn.setAttribute('data-target-idx', item.originalIndex);
@@ -626,8 +712,7 @@
                 });
                 buttonsDiv.appendChild(btn);
             });
-            groupDiv.appendChild(buttonsDiv);
-            container.appendChild(groupDiv);
+            groupDiv.appendChild(buttonsDiv); container.appendChild(groupDiv);
         });
     }
     
@@ -639,12 +724,10 @@
         const searchInput = document.getElementById('searchInput');
         const cardsContainer = document.getElementById('cardsContainer');
         if (!searchInput || !cardsContainer) return;
-        
         const filterCards = () => {
             const keyword = searchInput.value.trim().toLowerCase();
             const cards = document.querySelectorAll('.resource-card');
             let matchCount = 0;
-            
             cards.forEach(card => {
                 const titleElem = card.querySelector('.site-title a');
                 const descElem = card.querySelector('.description');
@@ -657,7 +740,6 @@
                 if (matches) { card.style.display = ''; matchCount++; } 
                 else { card.style.display = 'none'; }
             });
-            
             let noResultDiv = document.getElementById('noResultMessage');
             if (!noResultDiv) {
                 noResultDiv = document.createElement('div');
@@ -694,12 +776,26 @@
         searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performExternalSearch(); });
     }
     
+    function initAIRecommend() {
+        const aiBtn = document.getElementById('aiRecommendBtn');
+        const searchInput = document.getElementById('searchInput');
+        aiBtn.addEventListener('click', () => {
+            const keyword = searchInput.value.trim();
+            if (keyword === "") {
+                alert("請先輸入關鍵字，再使用 Google AI 智慧推薦");
+                return;
+            }
+            filterCardsWithAI(keyword);
+        });
+    }
+    
     document.addEventListener('DOMContentLoaded', () => {
         generateCards();
         generateQuickLinks();
         initBackToTop();
         initInstantFilter();
         initExternalSearch();
+        initAIRecommend();
     });
 </script>
 </body>
