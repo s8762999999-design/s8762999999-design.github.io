@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>營養師亮亮AI探索研究成果</title>
-    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹、NotebookLM提示工程、企業AI紅隊測試、敏感資料去識別化系統、AI任務轉移提示工程、NIU生物資源面試策略、電子系統可靠性研究、NIU面試策略儀表板、EBM健康資訊解碼器、健康資訊解碼器v3、微胖男性穿搭指南、AI資深vs初階技能差異研究、UI/UX學習全攻略、從測試邏輯到萬用思維、PPI決策中樞、會計實務工具箱，以及網頁設計AI提示詞辭典與Gemini創意應用。">
+    <meta name="description" content="營養師亮亮AI探索研究成果彙整：AI藝術創作、自製網頁工具、AI人才前瞻、LLM/DS/Claude分析報告、AI工具比較平台、AI Orchestrator、AI工具入口導航、營養AI衛教研究、AI音樂生理研究、AI互動協議設計、AI安全決策樹、NotebookLM提示工程、企業AI紅隊測試、敏感資料去識別化系統、AI任務轉移提示工程、NIU生物資源面試策略、電子系統可靠性研究、NIU面試策略儀表板、EBM健康資訊解碼器、健康資訊解碼器v3、微胖男性穿搭指南、AI資深vs初階技能差異研究、UI/UX學習全攻略、從測試邏輯到萬用思維、PPI決策中樞、會計實務工具箱、智能驗屋雙系統，以及網頁設計AI提示詞辭典與Gemini創意應用。">
     
     <style>
         * {
@@ -458,7 +458,7 @@
         .resource-card {
             animation: fadeSlideUp 0.5s ease backwards;
         }
-        /* 支援最多 30 張卡片 */
+        /* 支援最多 31 張卡片 */
         .resource-card:nth-child(1) { animation-delay: 0.05s; }
         .resource-card:nth-child(2) { animation-delay: 0.1s; }
         .resource-card:nth-child(3) { animation-delay: 0.15s; }
@@ -489,6 +489,7 @@
         .resource-card:nth-child(28) { animation-delay: 1.4s; }
         .resource-card:nth-child(29) { animation-delay: 1.45s; }
         .resource-card:nth-child(30) { animation-delay: 1.5s; }
+        .resource-card:nth-child(31) { animation-delay: 1.55s; }
     </style>
 </head>
 <body>
@@ -531,7 +532,7 @@
 
 <script>
     // ============================================================
-    // 卡片資料陣列 (共30個，新增「會計實務工具箱」)
+    // 卡片資料陣列 (共31個，新增「智能驗屋雙系統 ＋ 專業勾稽清單」)
     // 歸類於「創作與工具」群組，日期標記為 2026/04/13
     // ============================================================
     const sitesData = [
@@ -542,8 +543,9 @@
         { title: "UI/UX 學習全攻略 · 設計與研究資源", shortTitle: "UI/UX學習", url: "https://s8762999999-design.github.io/UI-UX-learning/", description: "完整收錄 UI/UX 設計與使用者研究的學習路徑，涵蓋 Figma 實戰、設計系統、可用性測試、心理學原則及作品集建構，幫助設計師從入門到專業。", features: ["Figma 實戰教學", "設計系統指南", "作品集建構技巧"], icon: "🎨📱", category: "🔧 開發輔助", group: "創作與工具", showDevDate: true },
         { title: "從測試邏輯到萬用思維", shortTitle: "測試邏輯到萬用思維", url: "https://s8762999999-design.github.io/object-orient-solve-system/", description: "原始圖表提出的「測什麼(What)」、「怎麼測(How)」、「給什麼資料(Data)」是軟體工程的核心。將其抽象化後，這構成了一個能破解任何複雜問題、研究或生活挑戰的底層邏輯黃金三角 (WHD 架構)。", features: ["三大問題解決原則", "系統失衡分析模擬", "實體資源導覽"], icon: "🧩💡", category: "🔧 開發輔助", group: "創作與工具", showDevDate: true },
         { title: "PPI 三元泛用型決策與實證檢索中樞", shortTitle: "PPI決策中樞", url: "https://s8762999999-design.github.io/PPI-SOLVE-PATHWAY/", description: "將複雜挑戰解構為「動機根源(Why) - 利害視角(Who) - 影響力衡量(What)」。輸入情境後，系統將生成融合 Chain-of-Thought、LATS 推理與實證約束的 LLM 指令，並提供精準學術/實務檢索入口。", features: ["利用Why-Who-What輸入問題", "選擇想要套用的知識領域", "產生建議的檢索策略"], icon: "⚙️🔍", category: "🔧 開發輔助", group: "創作與工具", showDevDate: true },
-        // ========= 新加入的「會計實務工具箱」 =========
         { title: "會計實務工具箱", shortTitle: "會計實務工具箱", url: "https://s8762999999-design.github.io/Accounting-Practice-Toolbox/", description: "參考跨領域會計需求，協同研究開發之線上實用工具。 整合資料分析、精簡企業資源規劃，提升會計作業效率。", features: ["會計數據科學工作台 —— 專為財務分析、預測建模與視覺化儀表板設計", "輕量企業資源管理 + AI 對話輔助", "簡易會計傳票及日記帳", "內建簡易異常偵測模組", "訂單/採購/庫存三層連動管理"], icon: "📊🧮", category: "🔧 開發輔助", group: "創作與工具", showDevDate: true },
+        // ========= 新加入的「智能驗屋雙系統 ＋ 專業勾稽清單」 =========
+        { title: "智能驗屋雙系統 ＋ 專業勾稽清單", shortTitle: "智能驗屋雙系統", url: "https://s8762999999-design.github.io/new-house-check-system/", description: "整合「缺失分級對抗策略」、「全室快速檢查」以及「未安裝廚具/衛浴版詳細勾稽清單」，參考住宅品質檢驗規範、室內設計缺失資料庫開發。三種工具互補：分級談判、逐項驗收、深度勾稽，全面提升交屋品質。", features: ["驗屋報告系統", "全室互動檢查系統 · 快速逐項", "專業驗屋勾稽清單 未安裝廚具／衛浴版｜依驗屋順序"], icon: "🏠🔧", category: "🔧 開發輔助", group: "創作與工具", showDevDate: true },
         
         // 研究報告
         { title: "AI人才研究2026", shortTitle: "AI人才研究", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/21c01e2187e67b6306ff3ce3c831d634/raw/184b7996c85393c0c573092cf0cddd03f45bc897/gistfile1.txt", description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。", features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"], icon: "🤖📈", category: "📊 前瞻研究", group: "研究報告" },
@@ -591,7 +593,8 @@
         "uiux": ["ui/ux", "使用者介面", "使用者經驗"],
         "測試邏輯": ["what", "how", "data", "whd", "黃金三角"],
         "ppi": ["決策", "三元", "why", "who", "what", "動機", "利害", "影響力"],
-        "會計": ["財務", "帳務", "記帳", "傳票", "ERP"]
+        "會計": ["財務", "帳務", "記帳", "傳票", "ERP"],
+        "驗屋": ["交屋", "缺失", "檢查", "勾稽", "分級對抗"]
     };
 
     function expandKeywords(keyword) {
@@ -675,7 +678,7 @@
                 if (item.title === "NotebookLM 結構化提示工程研究" || item.title === "企業 AI 紅隊測試框架" || item.title === "敏感資料去識別化系統 v4.1") dateLabel = "📅 2026/04/10";
                 if (item.title === "AI 任務轉移提示工程研究" || item.title === "NIU 生物資源在職碩士面試策略研究" || item.title === "電子系統可靠性研究") dateLabel = "📅 2026/04/11";
                 if (item.title === "NIU 面試策略儀表板" || item.title === "EBM 健康資訊解碼器" || item.title === "健康資訊解碼器 v3" || item.title === "微胖男性穿搭指南" || item.title === "AI 資深 vs 初階 · 技能差異研究" || item.title === "UI/UX 學習全攻略 · 設計與研究資源") dateLabel = "📅 2026/04/12";
-                if (item.title === "從測試邏輯到萬用思維" || item.title === "PPI 三元泛用型決策與實證檢索中樞" || item.title === "會計實務工具箱") dateLabel = "📅 2026/04/13";
+                if (item.title === "從測試邏輯到萬用思維" || item.title === "PPI 三元泛用型決策與實證檢索中樞" || item.title === "會計實務工具箱" || item.title === "智能驗屋雙系統 ＋ 專業勾稽清單") dateLabel = "📅 2026/04/13";
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
             }
             cardInnerHtml += `</div>`;
