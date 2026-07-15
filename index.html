@@ -638,6 +638,7 @@
         { title: "Ruby-Med 臨床與醫療數據分析 (Phase 1)", shortTitle: "Ruby-Med 分析 I", url: "https://s8762999999-design.github.io/RUBY-MED-ANALYSIS/", description: "宜蘭高商校犬RUBY醫療分析處置1。", features: ["臨床數據框架", "生理指標關聯", "初步處置評估"], icon: "🧬🏥", category: "🏥 醫療資訊", group: "研究報告", showDevDate: true },
         { title: "Ruby-Med 臨床與醫療數據分析 (Phase 2)", shortTitle: "Ruby-Med 分析 II", url: "https://s8762999999-design.github.io/RUBY-MED-ANALYSIS-2/", description: "延續前一階段的研究，導入進階分析模型或追蹤數據，提供更深入的醫療洞察。", features: ["進階數據追蹤", "犬科醫學", "深度臨床洞察"], icon: "🔬🏥", category: "🏥 醫療資訊", group: "研究報告", showDevDate: true },
         { title: "AI 學習生成學校 · 創新教育應用", shortTitle: "AI 學習生成學校", url: "https://s8762999999-design.github.io/AI-STUDY-GENERNATION-SCHOOL/", description: "探索生成式 AI 在教育與校園學習場域的應用。涵蓋自動化教材生成、客製化學習路徑規劃，以及提升數位教學效率的實務研究。", features: ["生成式 AI 教育應用", "教材與測驗自動生成", "客製化學習路徑規劃"], icon: "🏫🧠", category: "🎓 教育應用", group: "研究報告", showDevDate: true },
+        { title: "伴侶 AI OS 關係研究計畫", shortTitle: "伴侶 AI OS", url: "https://s8762999999-design.github.io/Couple-AI-OS-Research-Plan/", description: "探索將 AI 技術應用於伴侶關係經營與互動模式，建構專屬的情感溝通作業系統 (Couple OS)，提供心理學框架與數據化的情感維繫策略。", features: ["專屬情感溝通框架", "關係動態數據分析", "伴侶共同成長規劃"], icon: "💖🤖", category: "💖 關係研究", group: "研究報告", showDevDate: true },
         
         // 平台與對話
         { title: "AI工具綜合比較平台", shortTitle: "工具比較平台", url: "https://aitoolscomp-jaruvq4t.manus.space/?utm_id=97758_v0_s00_e0_tv0", description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。", features: ["多維度工具評測", "即時效能對比", "應用場景推薦"], icon: "⚖️🤖", category: "🔎 工具評測", group: "平台與對話" },
@@ -679,7 +680,9 @@
         "教育": ["學習", "學校", "school", "study", "教學"],
         "學習": ["教育", "study", "教材", "測驗"],
         "照片": ["相片", "上傳", "新生", "圖"],
-        "校務": ["行政", "系統", "宜蘭高商", "ilvs"]
+        "校務": ["行政", "系統", "宜蘭高商", "ilvs"],
+        "伴侶": ["情侶", "關係", "couple", "戀愛", "情感"],
+        "關係": ["伴侶", "心理", "互動", "溝通"]
     };
 
     function expandKeywords(keyword) {
@@ -771,13 +774,17 @@
                     dateLabel = "📅 2026/05/15";
                 }
 
-                // 動態賦予本次新增內容之開發日期
                 if (item.title === "AI 學習生成學校 · 創新教育應用") {
                     dateLabel = "📅 2026/06/09";
                 }
                 
                 if (item.title === "宜蘭高商115學年新生照片上傳系統") {
                     dateLabel = "📅 2026/07/11";
+                }
+
+                // 動態賦予本次新增內容之開發日期
+                if (item.title === "伴侶 AI OS 關係研究計畫") {
+                    dateLabel = "📅 2026/07/15";
                 }
 
                 cardInnerHtml += `<div class="dev-date">${dateLabel}</div>`;
