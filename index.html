@@ -617,6 +617,7 @@
         { title: "伴侶狀態橋接器 · 關係同步工具", shortTitle: "伴侶狀態橋接器", url: "https://s8762999999-design.github.io/Partner-State-Bridge/", description: "專為伴侶設計的情緒與日常狀態同步工具。透過視覺化儀表板與狀態橋接機制，促進非同步溝通與即時理解，打造更有溫度的關係互動體驗。", features: ["情緒與日常狀態同步", "非同步溝通橋接機制", "視覺化關係互動儀表板"], icon: "🌉💞", category: "💖 關係研究", group: "創作與工具", showDevDate: true },
         
         // 研究報告
+        { title: "AI 替代率分析與職涯轉型 (營養師篇)", shortTitle: "AI 職涯衝擊分析", url: "https://s8762999999-design.github.io/AI-REPLACE-RD/#occupation=nutritionist", description: "探討 AI 技術對營養師 (RD) 等專業職能的衝擊與替代率分析，提供數據化的職涯危機評估與未來轉型策略。", features: ["職業替代率量化分析", "營養師專屬衝擊評估", "AI 時代職涯轉型策略"], icon: "🍎⚖️", category: "📊 職涯前瞻", group: "研究報告", showDevDate: true },
         { title: "2026/08/18 LLM 深度分析與趨勢報告", shortTitle: "LLM 深度分析", url: "https://s8762999999-design.github.io/20260818-LLM-ANALYSIS/", description: "針對大型語言模型 (LLM) 的最新發展進行深度解析，涵蓋技術趨勢預測、模型效能評估與實務落地應用策略。", features: ["LLM 效能綜合評估", "最新技術趨勢解析", "實務導入應用策略"], icon: "🧠📊", category: "📑 深度報告", group: "研究報告", showDevDate: true },
         { title: "AI人才研究2026", shortTitle: "AI人才研究", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/21c01e2187e67b6306ff3ce3c831d634/raw/184b7996c85393c0c573092cf0cddd03f45bc897/gistfile1.txt", description: "探索AI領域人才趨勢、技能地圖與未來發展研究。透過即時預覽工具展示互動報告，提供2026年人工智慧人才培育關鍵洞察與學習資源。", features: ["AI人才需求分析", "技能樹圖譜預覽", "前瞻研究與職涯建議"], icon: "🤖📈", category: "📊 前瞻研究", group: "研究報告" },
         { title: "LLM對傳統程式設計師與AI程式設計的分析研究報告", shortTitle: "LLM程式設計研究", url: "https://htmlpreview.github.io/?https://gist.githubusercontent.com/s8762999999-design/2fe4194c6fc53747843e4015c9e0e768/raw/b4eb70c42fc59259cbe03fd64f867ed9a53e0a71/DeepSeek%25E5%25B0%258D%25E6%2596%25BC%25E5%2582%25B3%25E7%25B5%25B1%25E7%25A8%258B%25E5%25BC%258F%25E8%25A8%25AD%25E8%25A8%2588%25E5%25B8%25AB%25E8%2588%2587AI%25E5%259F%258E%25E5%25B8%2582%25E6%2598%25AF%25E6%258A%2580%25E5%25B8%25AB%25E7%259A%2584%25E5%2588%2586%25E6%259E%2590%25E7%25A0%2594%25E7%25A9%25B6%25E5%25A0%25B1%25E5%2591%258A", description: "LLM 深入剖析 AI 時代下傳統程式設計師與 AI 城市技師的角色轉變、技能重組與未來職涯路徑，提供數據驅動的趨勢洞察。", features: ["職業轉型分析", "AI城市技師需求預測", "技能樹進化建議"], icon: "🧠📊", category: "📑 深度報告", group: "研究報告" },
@@ -696,7 +697,10 @@
         "manus": ["智能體", "代理", "agent", "工作台", "workbench", "高效", "指南"],
         "工作流": ["workflow", "推薦", "recommender", "匹配"],
         "推薦": ["recommender", "工作流"],
-        "llm": ["大型語言模型", "分析", "趨勢", "評估"]
+        "llm": ["大型語言模型", "分析", "趨勢", "評估"],
+        "職涯": ["替代率", "轉型", "營養師", "衝擊", "工作"],
+        "營養師": ["rd", "dietitian", "nutritionist", "職涯", "替代率", "亮亮"],
+        "替代": ["replace", "取代", "失業", "ai替代率", "衝擊"]
     };
 
     function expandKeywords(keyword) {
@@ -805,7 +809,7 @@
                 }
 
                 // 動態賦予本次新增內容之開發日期
-                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告"].includes(item.title)) {
+                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告", "AI 替代率分析與職涯轉型 (營養師篇)"].includes(item.title)) {
                     dateLabel = "📅 2026/08/18";
                 }
 
