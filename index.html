@@ -652,8 +652,12 @@
         { title: "AI 工具入口 · 一站式 AI 服務導航", shortTitle: "工具入口", url: "https://s8762999999-design.github.io/AI-.port/", description: "匯集 Gmail、Gemini、ChatGPT、Claude、DeepSeek、Perplexity 等主流 AI 服務的快速啟動入口，提供一鍵打開全部工具的便捷體驗，大幅提升工作效率。", features: ["主流 AI 工具整合", "一鍵快速啟動", "直覺化導航面板"], icon: "🚀🔗", category: "🔎 工具評測", group: "平台與對話", showDevDate: true },
         { title: "營養AI衛教研究", shortTitle: "營養AI衛教", url: "https://s8762999999-design.github.io/-/", description: "運用 AI 技術發展個人化營養衛教內容與互動式學習工具，提供飲食建議、食材分析與健康識能提升的創新研究平台。", features: ["AI營養衛教研究", "飲食選擇互動", "實證衛教素材生成"], icon: "🥗🤖", category: "🔬 數據科學", group: "平台與對話", showDevDate: true },
         { title: "AI深度研究音樂與生理狀態的相互影響", shortTitle: "音樂生理研究", url: "https://s8762999999-design.github.io/DC-collection-physical-music-study-hub/#top", description: "整合實體音樂專輯收藏、樂理研究與學習資源的數位中心，提供深度音樂知識與實體載體探索體驗，支援收藏管理與互動學習。", features: ["AI針對音樂與生理影響之深度研究", "假設狀況相對應之音樂應用", "實體資源導覽"], icon: "🎵📀", category: "🎵 音樂研究", group: "平台與對話", showDevDate: true },
-        // ========= 新加入的「Manus AI 高效指南與實作工作台」 =========
-        { title: "Manus AI 高效指南與實作工作台", shortTitle: "Manus 高效指南", url: "https://s8762999999-design.github.io/manus-efficient-guide-complete-source/#workbench", description: "針對 Manus AI 智能體平台編撰的高效使用指南與完整資源庫。涵蓋工作台 (Workbench) 操作、自動化任務部署與指令優化，協助使用者極大化 AI 效能。", features: ["Manus 工作台實務應用", "智能體自動化部署", "高效指令優化資源"], icon: "📘🤖", category: "📖 工具指南", group: "平台與對話", showDevDate: true }
+        { title: "Manus AI 高效指南與實作工作台", shortTitle: "Manus 高效指南", url: "https://s8762999999-design.github.io/manus-efficient-guide-complete-source/#workbench", description: "針對 Manus AI 智能體平台編撰的高效使用指南與完整資源庫。涵蓋工作台 (Workbench) 操作、自動化任務部署與指令優化，協助使用者極大化 AI 效能。", features: ["Manus 工作台實務應用", "智能體自動化部署", "高效指令優化資源"], icon: "📘🤖", category: "📖 工具指南", group: "平台與對話", showDevDate: true },
+        
+        // ========= 新加入的 Manus App 三項專案 =========
+        { title: "LLM 智慧工作流推薦系統", shortTitle: "工作流推薦系統", url: "https://llmworkflow-mzghy7ws.manus.space/#recommender", description: "基於 Manus AI 平台開發的大型語言模型工作流推薦系統，協助使用者根據特定任務需求，精準匹配並推薦最適合的 AI 工作流與智能體架構。", features: ["工作流精準匹配", "多模型架構推薦", "任務需求自動分析"], icon: "🔄🤖", category: "⚙️ 智能推薦", group: "平台與對話", showDevDate: true },
+        { title: "Manus AI 平台實戰導覽手冊", shortTitle: "Manus 實戰導覽", url: "https://manusguide-ejoy7yfs.manus.space/", description: "針對 Manus AI 智能體平台開發的互動式導覽手冊，提供從基礎設定、指令優化到多智能體協作的完整學習路徑與實作範例。", features: ["互動式導覽手冊", "多智能體協作教學", "實作範例整合"], icon: "🧭📘", category: "📖 工具指南", group: "平台與對話", showDevDate: true },
+        { title: "伴侶溝通橋接器 (Manus App)", shortTitle: "溝通橋接器 App", url: "https://partnerbridg-b8fhycjs.manus.space/", description: "部署於 Manus AI 平台的伴侶狀態橋接與溝通輔助應用。透過 AI 驅動的情緒分析與非同步狀態同步機制，降低溝通摩擦並增進關係理解。", features: ["AI 驅動情緒分析", "非同步狀態橋接", "伴侶互動輔助"], icon: "🌉📱", category: "💖 關係輔助", group: "平台與對話", showDevDate: true }
     ];
 
     // ========== Google AI 智慧推薦：同義詞庫 (已擴充新增網站之關鍵字) ==========
@@ -690,7 +694,9 @@
         "伴侶": ["情侶", "關係", "couple", "partner", "戀愛", "情感", "橋接", "狀態", "同步"],
         "關係": ["伴侶", "心理", "互動", "溝通", "橋接", "bridge"],
         "橋接": ["bridge", "同步", "狀態", "伴侶", "溝通"],
-        "manus": ["智能體", "代理", "agent", "工作台", "workbench", "高效", "指南"]
+        "manus": ["智能體", "代理", "agent", "工作台", "workbench", "高效", "指南"],
+        "工作流": ["workflow", "推薦", "recommender", "匹配"],
+        "推薦": ["recommender", "工作流"]
     };
 
     function expandKeywords(keyword) {
@@ -794,8 +800,12 @@
                     dateLabel = "📅 2026/07/15";
                 }
 
-                // 動態賦予本次新增內容之開發日期
                 if (["伴侶狀態橋接器 · 關係同步工具", "Manus AI 高效指南與實作工作台"].includes(item.title)) {
+                    dateLabel = "📅 2026/08/18";
+                }
+
+                // 動態賦予本次新增內容之開發日期
+                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)"].includes(item.title)) {
                     dateLabel = "📅 2026/08/18";
                 }
 
