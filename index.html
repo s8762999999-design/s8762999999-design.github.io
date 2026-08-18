@@ -615,6 +615,8 @@
         { title: "ILVS 校園安全防護與通報管理系統", shortTitle: "ILVS 校安系統", url: "https://ilvsilc.github.io/ILVS-Campus-Security/", description: "專為國立宜蘭高商（ILVS）開發的校園安全監控與通報儀表板。涵蓋突發事件標準作業流程 (SOP)、風險熱點分析與防護資源調度。", features: ["突發事件 SOP 整合", "風險熱點分析", "資源調度儀表板"], icon: "🛡️🏫", category: "🛡️ 校安管理", group: "創作與工具", showDevDate: true },
         { title: "宜蘭高商115學年新生照片上傳系統", shortTitle: "新生照片系統", url: "https://s8762999999-design.github.io/ILVS-115Freshman-Photo-Collection-System/", description: "為宜蘭高商115學年度新生開發的專屬照片收集系統。內建前端 Canvas 自動化圖片壓縮技術，降低伺服器負載，並結合 Google Apps Script 實現無伺服器 (Serverless) 資料自動歸檔。", features: ["前端 Canvas 圖片壓縮", "GAS 無伺服器資料整合", "RWD 行動端拍照上傳"], icon: "📸🏫", category: "🏫 校務系統", group: "創作與工具", showDevDate: true },
         { title: "伴侶狀態橋接器 · 關係同步工具", shortTitle: "伴侶狀態橋接器", url: "https://s8762999999-design.github.io/Partner-State-Bridge/", description: "專為伴侶設計的情緒與日常狀態同步工具。透過視覺化儀表板與狀態橋接機制，促進非同步溝通與即時理解，打造更有溫度的關係互動體驗。", features: ["情緒與日常狀態同步", "非同步溝通橋接機制", "視覺化關係互動儀表板"], icon: "🌉💞", category: "💖 關係研究", group: "創作與工具", showDevDate: true },
+        // ========= 新加入的「FlowMark 智能標記與工作流編輯器 (Manus 開發版)」 =========
+        { title: "FlowMark 智能標記與工作流編輯器 (Manus 開發版)", shortTitle: "FlowMark 編輯器", url: "https://3000-i2tipc2iv4598v1d2zi0t-fa514f4d.us3.manus.computer/", description: "部署於 Manus AI 平台的開發端預覽環境 (Port 3000)。推估為結合智能標記與工作流的開發測試工具 (FlowMark)，提供即時的網頁開發與互動體驗。", features: ["Manus 開發端即時預覽", "智能標記與排版", "動態開發測試環境"], icon: "📝💻", category: "🛠️ 開發輔助", group: "創作與工具", showDevDate: true },
         
         // 研究報告
         { title: "多智能體工作流 (Multi-Agent Workflow) 研究與實作", shortTitle: "多智能體工作流", url: "https://s8762999999-design.github.io/Multi-Agent-Workflow/", description: "深入探討多智能體 (Multi-Agent) 協同作業架構，設計與實作自動化 AI 工作流，提升複雜任務的處理效率與系統決策品質。", features: ["多智能體協同架構", "自動化工作流設計", "複雜任務拆解與執行"], icon: "🤖🔄", category: "⚙️ AI工作流", group: "研究報告", showDevDate: true },
@@ -709,7 +711,9 @@
         "多智能體": ["multi-agent", "工作流", "workflow", "agent", "協同"],
         "影音": ["影片", "腳本", "短影音", "video", "youtube", "儀表板", "dash"],
         "腳本": ["script", "分鏡", "口白", "文案", "影音"],
-        "儀表板": ["dashboard", "管理", "專案", "進度", "aivideodash"]
+        "儀表板": ["dashboard", "管理", "專案", "進度", "aivideodash"],
+        "flowmark": ["標記", "編輯器", "markdown", "工作流", "預覽", "manus", "3000"],
+        "開發": ["預覽", "測試", "port"]
     };
 
     function expandKeywords(keyword) {
@@ -818,7 +822,7 @@
                 }
 
                 // 動態賦予本次新增內容之開發日期
-                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告", "AI 替代率分析與職涯轉型 (營養師篇)", "台灣法律時效 AI 助手 (Manus App)", "多智能體工作流 (Multi-Agent Workflow) 研究與實作", "AI 影音腳本生成器 (Manus App)", "AI 影音創作儀表板 (Manus App)"].includes(item.title)) {
+                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告", "AI 替代率分析與職涯轉型 (營養師篇)", "台灣法律時效 AI 助手 (Manus App)", "多智能體工作流 (Multi-Agent Workflow) 研究與實作", "AI 影音腳本生成器 (Manus App)", "AI 影音創作儀表板 (Manus App)", "FlowMark 智能標記與工作流編輯器 (Manus 開發版)"].includes(item.title)) {
                     dateLabel = "📅 2026/08/18";
                 }
 
