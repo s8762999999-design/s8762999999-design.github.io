@@ -648,6 +648,7 @@
         { title: "伴侶 AI OS 關係研究計畫", shortTitle: "伴侶 AI OS", url: "https://s8762999999-design.github.io/Couple-AI-OS-Research-Plan/", description: "探索將 AI 技術應用於伴侶關係經營與互動模式，建構專屬的情感溝通作業系統 (Couple OS)，提供心理學框架與數據化的情感維繫策略。", features: ["專屬情感溝通框架", "關係動態數據分析", "伴侶共同成長規劃"], icon: "💖🤖", category: "💖 關係研究", group: "研究報告", showDevDate: true },
         
         // 平台與對話
+        { title: "AI 影音腳本生成器 (Manus App)", shortTitle: "影音腳本生成器", url: "https://videoscript-hnfmjl3k.manus.space", description: "部署於 Manus AI 平台的影音腳本生成工具。提供自動化分鏡設計、口白撰寫與視覺提示，協助創作者快速將靈感轉化為結構化的短影音腳本。", features: ["自動化分鏡與口白生成", "短影音結構化設計", "創作者靈感轉化工具"], icon: "🎬📝", category: "🎬 腳本生成", group: "平台與對話", showDevDate: true },
         { title: "台灣法律時效 AI 助手 (Manus App)", shortTitle: "台灣法律 AI", url: "https://twlawtime-3azdxxrz.manus.space", description: "部署於 Manus AI 平台的台灣法律實務輔助應用。專注於法規時效解析（如消滅時效、追訴期等）與基礎法律諮詢，協助使用者快速釐清法律程序中的關鍵時間節點。", features: ["台灣法規時效解析", "民刑事追訴期計算", "AI 基礎法律諮詢"], icon: "⚖️🤖", category: "⚖️ 法律輔助", group: "平台與對話", showDevDate: true },
         { title: "AI工具綜合比較平台", shortTitle: "工具比較平台", url: "https://aitoolscomp-jaruvq4t.manus.space/?utm_id=97758_v0_s00_e0_tv0", description: "一站式AI工具評測與比較平台，收錄主流人工智慧服務，提供效能數據、價格對比與使用場景建議，幫助開發者與企業快速選型。", features: ["多維度工具評測", "即時效能對比", "應用場景推薦"], icon: "⚖️🤖", category: "🔎 工具評測", group: "平台與對話" },
         { title: "Gemini AI 創意應用分享", shortTitle: "Gemini創意", url: "https://gemini.google.com/share/1a1bb2e33fc4", description: "展示 Gemini 在創意寫作、詩詞生成與故事發想上的驚人能力。透過實際對話案例，體驗 AI 如何激發靈感並協助藝術創作。", features: ["創意寫作實例", "詩詞對聯生成", "靈感啟發對話"], icon: "✍️✨", category: "💬 對話式AI", group: "平台與對話" },
@@ -704,7 +705,9 @@
         "營養師": ["rd", "dietitian", "nutritionist", "職涯", "替代率", "亮亮"],
         "替代": ["replace", "取代", "失業", "ai替代率", "衝擊"],
         "法律": ["law", "法規", "時效", "諮詢", "twlawtime", "追訴期", "民法", "刑法"],
-        "多智能體": ["multi-agent", "工作流", "workflow", "agent", "協同"]
+        "多智能體": ["multi-agent", "工作流", "workflow", "agent", "協同"],
+        "影音": ["影片", "腳本", "短影音", "video", "youtube"],
+        "腳本": ["script", "分鏡", "口白", "文案", "影音"]
     };
 
     function expandKeywords(keyword) {
@@ -813,7 +816,7 @@
                 }
 
                 // 動態賦予本次新增內容之開發日期
-                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告", "AI 替代率分析與職涯轉型 (營養師篇)", "台灣法律時效 AI 助手 (Manus App)", "多智能體工作流 (Multi-Agent Workflow) 研究與實作"].includes(item.title)) {
+                if (["LLM 智慧工作流推薦系統", "Manus AI 平台實戰導覽手冊", "伴侶溝通橋接器 (Manus App)", "2026/08/18 LLM 深度分析與趨勢報告", "AI 替代率分析與職涯轉型 (營養師篇)", "台灣法律時效 AI 助手 (Manus App)", "多智能體工作流 (Multi-Agent Workflow) 研究與實作", "AI 影音腳本生成器 (Manus App)"].includes(item.title)) {
                     dateLabel = "📅 2026/08/18";
                 }
 
@@ -889,7 +892,7 @@
                 featureItems.forEach(item => { textContent += item.textContent + ' '; });
                 const lowerText = textContent.toLowerCase();
                 const matched = expandedKeywords.some(kw => lowerText.includes(kw));
-                if (matches) { card.style.display = ''; matchCount++; } 
+                if (matched) { card.style.display = ''; matchCount++; } 
                 else { card.style.display = 'none'; }
             });
             let noResultDiv = document.getElementById('noResultMessage');
