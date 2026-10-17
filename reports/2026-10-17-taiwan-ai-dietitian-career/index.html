@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>臺灣 AI 應用人才：營養師與團膳顧問如何跟上</title>
+<style>
+:root{--fg:#111;--bg:#fff;--accent:#0b4f8a;--muted:#555;--line:#ccc;--err:#b00020;--ok:#0a6b3d}
+*{box-sizing:border-box}
+html{font-size:18px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+header{padding:1rem;border-bottom:3px solid var(--accent)}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+h2{font-size:1.2rem;margin:1.5rem 0 .5rem;padding-bottom:.2rem;border-bottom:2px solid var(--line)}
+h3{font-size:1.05rem;margin:1rem 0 .3rem}
+p,li{font-size:1rem}
+a{color:var(--accent);text-decoration:underline}
+nav{padding:.8rem 1rem;background:#f2f6fa;border-bottom:1px solid var(--line)}
+nav ol{margin:0;padding-left:1.2rem}
+nav li{margin:.15rem 0}
+main{padding:1rem;max-width:60rem;margin:0 auto}
+section{margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;margin:.5rem 0;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:.4rem;text-align:left;vertical-align:top}
+th{background:#eef3f8}
+.note{color:var(--muted);font-size:.9rem}
+.calc{background:#f7f9fb;border:2px solid var(--accent);border-radius:8px;padding:1rem;margin:1rem 0}
+.calc label{display:block;margin:.5rem 0 .2rem;font-weight:600}
+.calc input{width:100%;padding:.5rem;font-size:1rem;border:1px solid #777;border-radius:4px}
+.calc button{margin-top:.8rem;padding:.6rem 1.2rem;font-size:1rem;background:var(--accent);color:#fff;border:0;border-radius:4px;cursor:pointer}
+.calc button:hover{background:#083a66}
+#err{color:var(--err);font-weight:600;min-height:1.4em;margin:.5rem 0}
+#out{font-size:1.15rem;font-weight:700;color:var(--ok);min-height:1.5em}
+footer{padding:1rem;border-top:3px solid var(--accent);text-align:center;font-size:.95rem}
+@media print{nav,.calc button{display:none}body{font-size:12pt}a{color:#000}header,footer{border-color:#000}}
+header,nav{max-width:64rem;margin-inline:auto}header{padding:clamp(1rem,4vw,3rem)}h1{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.35}main{max-width:58rem;padding:clamp(1rem,3vw,2rem)}.eyebrow{letter-spacing:.08em;color:#536574}.table-scroll{overflow-x:auto;margin:1rem 0;max-width:100%}table{min-width:580px}caption{text-align:left;font-weight:700;padding:.5rem 0}.callout{background:#eef5fb;padding:1rem;border-left:4px solid var(--accent)}:focus-visible{outline:3px solid #a64b00;outline-offset:4px}.skip-link{position:absolute;left:1rem;top:-5rem;background:white;padding:.6rem;z-index:10}.skip-link:focus{top:1rem}a{overflow-wrap:anywhere}section{scroll-margin-top:1rem}.calc input,.calc button{min-height:44px}.calc input[aria-invalid="true"]{border:2px solid var(--err)}#out.loss{color:#a32720}@media print{html{font-size:10pt}main,header{max-width:none;padding:0}.table-scroll{overflow:visible}table{min-width:0}tr{break-inside:avoid}thead{display:table-header-group}.skip-link{display:none}h2,h3{break-after:avoid}}</style>
+</head>
+<body><a class="skip-link" href="#main">跳至報告正文</a>
+<header id="top"><p class="eyebrow">研究報告 · 臺灣 · 2026</p><h1>臺灣 AI 應用人才：營養師與團膳顧問如何跟上</h1><p>從既有專業到可驗收的工作流程與顧問服務</p><p class="note">資料截止：2026-10-17 20:16 Asia/Taipei｜審查修訂 v3</p><a href="https://s8762999999-design.github.io/reports/2026-10-17-taiwan-ai-dietitian-career/review-inputs/v3/taiwan-ai-dietitian-report.pdf">下載完整 PDF（v3 定版）</a></header>
+<nav aria-label="報告目錄">
+<ol>
+<li><a href="#summary">摘要</a></li>
+<li><a href="#intro">前言</a></li>
+<li><a href="#method">方法</a></li>
+<li><a href="#market">市場</a></li>
+<li><a href="#skills">能力</a></li>
+<li><a href="#works">作品</a></li>
+<li><a href="#plan90">90天路線</a></li>
+<li><a href="#bizrisk">商業與風險</a></li>
+<li><a href="#participants">AI參與</a></li>
+<li><a href="#limits">限制與文獻</a></li>
+<li><a href="#calculator">淨省時估算</a></li></ol>
+</nav>
+<main id="main" tabindex="-1">
+<section id="summary"><h2>1．摘要與關鍵結論</h2><p class="callout">【建議】優先定位為「營養／團膳 AI 流程顧問」：把專業判斷、資料整理、來源查核與可交付工具結合，先在現有服務中證明成效，再拓展收入。</p><p>使用者已確認目標為提升現有工作效率並增加顧問收入。本報告以臺灣營養師、正拓展團膳顧問服務，且已接觸多 AI、報告與 HTML 產出的角色規劃；沒有核驗其執業狀態、程式能力、客戶量或財務資料。每週可投入 5 小時是規劃假設，可依實況調整。</p><ul><li>先補資料結構與單位、公式覆核、來源版本、流程驗收及維護能力；把學到的技能立刻用在一件實際作品。</li><li>90 天先完成一件可交接、可重現的作品，另兩件做成雛形；以實際付款、驗收與續約檢查商業需求。</li><li>證照可補知識架構；Python、API、RAG 的投入應由瓶頸與總成本決定，沒有通用文件數或筆數門檻。</li><li>省時必須扣掉資料整理、人工覆核、返工與維護；省時本身不保證新增收入。</li></ul></section>
+<section id="intro"><h2>2．前言、簡介與研究問題</h2><p>研究問題是：在臺灣 AI 應用人才發展下，一位具有營養專業且正在發展顧問服務的人，應先投資哪些能力、拿什麼成果證明價值，以及如何避免學習投入與客戶需求脫節？讀者為希望強化既有專業服務的在職者。研究地區為臺灣，政策與工具狀態以查核當日為準，路線規劃涵蓋接續 90 天。</p><p>【分析推論】你已展現提出研究問題、要求來源追溯與整合報告的意識。下一階段可把這些要求變成固定輸入、可重複處理、可驗收輸出與維護紀錄。指揮 AI 產出文件的經驗，仍需透過他人操作與案例驗收，才能確認資料處理和交付能力。</p><p>關鍵字：AI 應用人才、營養師、團膳顧問、資料治理、工作流程、驗收、商業驗證、人工覆核。</p></section>
+<section id="method"><h2>3．研究方法與材料</h2><p>本次為有限範圍的資料查核與跨 AI 分析，非系統性回顧，也未執行代表性雇主或顧問市場調查。查詢日為 2026-10-17；主要材料為 2026 年臺灣政策、平台原始報告、現行法規、官方技術文件與原始工作實驗。研究文獻回溯早期版本以避免把舊工作論文與正式出版混用。</p><ul><li>實際搜尋工具：內建瀏覽器中的指定 AI 平台；整合者另用網頁搜尋工具開啟政府、iPAS、104、研究原文與 Microsoft／OWASP 文件。</li><li>實際搜尋詞包含：『site.ipas.org.tw AI 應用規劃師 初級 中級 能力 鑑定 2026』、『site.moda.gov.tw 2026 AI 人才 應用 培訓』、『site.law.moj.gov.tw 個人資料保護法 第6條 病歷 健康檢查』、『Noy Zhang 2023 experimental evidence productivity effects generative artificial intelligence Science 453 professionals original study』、『site.hbs.edu Navigating Jagged Technological Frontier 2023 758 consultants paper』及『site.learn.microsoft.com zh-tw power-query power query 什麼是』。</li><li>納入：可開啟的原始機構發布、現行條文、原始研究及官方產品文件。排除或降權：未開啟的 AI 引用、媒體轉述數字、廣泛市場報價、無來源收入承諾與固定技術門檻。</li><li>第一輪查核：回到來源核對日期、數字口徑、研究對象、條文與上下文。第二輪：比較數產署與行政院的日期及分類、104 的產業口徑、研究正式出版與早期版本、法規修正及未施行註記，並用反例檢查建議。</li><li>iPAS 考試資訊由內建瀏覽器實際讀取；網頁搜尋工具無法讀取該動態頁。OpenEvidence 的文獻只作線索，部分 DOI／PubMed 原頁未能讀取，未將其數值或安全比較寫為已查證結論。</li></ul></section>
+<section id="market"><h2>4．臺灣市場訊號與證據邊界</h2><div class="table-scroll" role="region" tabindex="0" aria-label="表 1．已核對的市場、政策與研究訊號，可左右捲動"><table><caption>表 1．已核對的市場、政策與研究訊號</caption><thead><tr><th scope="col">已查證事實</th><th scope="col">能支持什麼／限制</th></tr></thead><tbody><tr><td>數產署 2026-05-19 發布指引 3.0，新增 AI 治理素養及 AI 協作與開發。<a href="#ref1" aria-label="參考文獻 1">[1]</a> 行政院 2026-05-21 說明應用、開發、研究三類人才。<a href="#ref2" aria-label="參考文獻 2">[2]</a></td><td>支持跨領域應用與治理能力的學習方向；政策分類不能證明你的客戶會付費。兩日期分別是署方發布與行政院說明，並非衝突。</td></tr><tr><td>104 於 2026-07-22 發布民生服務業白皮書新聞稿，稱 2026 年每月平均招募約 1.7 萬名 AI 人才。<a href="#ref3" aria-label="參考文獻 3">[3]</a></td><td>這是該平台六大民生服務產業的招募口徑，非全臺唯一職缺總量、年度新增就業人數或團膳顧問市場規模。該新聞稿未逐月交代統計涵蓋期間，本報告未取得其底層資料重算。</td></tr><tr><td>Dell’Acqua 等 2026 正式出版的預註冊實驗納入 758 名顧問，隨機分配 AI 使用條件；不同任務呈現改善及變差。<a href="#ref4" aria-label="參考文獻 4">[4]</a></td><td>支持逐任務驗證的做法；研究採當時 GPT-4、特定顧問工作，不是臺灣營養師服務試驗，也不是 2026 模型能力或個人收入預測。</td></tr><tr><td>iPAS 115 年度初級科目為人工智慧基礎概論、生成式 AI 應用與規劃；中級分數據分析／機器學習獲證路徑。<a href="#ref5" aria-label="參考文獻 5">[5]</a></td><td>可作學習清單。通過能力鑑定不足以證明能做需求訪談、維護系統或成交；本次未評估證照對顧問收入的因果效果。</td></tr></tbody></table></div><p>【分析推論】對你的優先機會，是把營養、供餐與文件工作的問題描述清楚，整理可用資料，並交付可追溯成果。目前無法從這些資料推算臺灣『營養師 AI 顧問』的代表性成交價、客戶總量或你未來收入。</p></section>
+<section id="skills"><h2>5．優先能力、工具與學習順序</h2><div class="table-scroll" role="region" tabindex="0" aria-label="表 2．建議能力清單與實作證明，可左右捲動"><table><caption>表 2．建議能力清單與實作證明</caption><thead><tr><th scope="col">順序與能力</th><th scope="col">你要能做出的結果</th></tr></thead><tbody><tr><td>1．資料整理與確定計算</td><td>建立欄位字典，分開每 100 g／每份、生重／熟重、可食率與缺值；用試算表公式計算並人工覆核。AI 可協助寫公式，計算結果仍須驗收。</td></tr><tr><td>2．來源與版本管理</td><td>每個要求記來源、條號／頁碼、適用對象、版本日期與待確認事項。AI 說法一致時，仍回到原文。</td></tr><tr><td>3．流程拆解與驗收</td><td>能寫出輸入、處理步驟、輸出、例外情境、負責人與核准點；他人依說明可以重現，出錯能退回人工流程。</td></tr><tr><td>4．輕量工具與維護</td><td>能修改 HTML／CSS、理解基礎 JavaScript、保存 Git 版本、回復前版；不在公開網頁放私鑰、個案資料或客戶機密。</td></tr><tr><td>5．需求訪談與服務設計</td><td>能問出誰使用、誰付款、痛點頻率、目前成本、必要結果與驗收人，並寫成有限範圍的提案。</td></tr></tbody></table></div><p>【工具事實】Power Query 提供圖形介面的資料取得與轉換，可保存為可重新整理的查詢。<a href="#ref6" aria-label="參考文獻 6">[6]</a>【建議】先選一套現有試算表工具、一個主要 AI 及一套版本管理方式，針對同一流程反覆練習；需要查證或重大異議時再啟用其他模型。每週可暫分配 3 小時實作、1 小時資料查核、1 小時訪談／復盤，這是排程建議。</p><h3>什麼時候升級技術？</h3><ul><li>Python：整理、合併、批次輸出等規則已穩定，現有表格難以可靠處理，且節省的總工時能支應開發與維護時。少量但高頻的工作也可能值得自動化。</li><li>API：需要受控地串接既有系統、排程或重複執行；先確認授權、費用上限、錯誤重試、日誌、權限與人工接管。</li><li>RAG（檢索增強生成）：反覆跨文件問答確有需求，單純搜尋或固定範本不足時再評估。先定義正確答案與來源版本，檢查漏檢、錯引、越權及外傳路徑。OWASP 列有 RAG 權限與資料洩漏風險，地端部署本身不保證安全。<a href="#ref10" aria-label="參考文獻 10">[10]</a></li><li>涉及多租戶個資、權限、付款或長期維運的系統，應找資訊／資安合作者；你負責需求、專業規則與驗收，不單獨承諾尚無能力維護的服務。</li></ul><p>【證照建議】可先用 iPAS 初級內容盤點基礎概念，若有雇主／客戶要求或需要外部學習目標再報考；同時保留作品驗收與實際成效。考期、費用、報名資格與名額要在報名前重查。<a href="#ref5" aria-label="參考文獻 5">[5]</a> 數發部一項人才淬煉計畫的 2026 更新頁明載已於 2025 年 12 月結束，不能把仍在線上的頁面當作仍可報名。<a href="#ref12" aria-label="參考文獻 12">[12]</a></p></section>
+<section id="works"><h2>6．三件可驗收的作品與教學步驟</h2><h3>作品一：招標需求原文對照表（優先完成）</h3><p>【建議】用一份公開招標文件，擷取資格、服務、文件、期限等要求。欄位為原文摘錄、頁碼／條號、適用條件、應備證據、負責人、期限、待確認事項。先人工標準化，再讓 AI 擷取並逐列比對。工具只協助整理，不替你認定投標資格或保證得標。</p><p>驗收：每項可回原文定位；關鍵漏項與錯引逐項列出並修正；另一人能依說明完成操作。先用一份文件完成閉環，再換一份未看過的文件檢查可移轉性。</p><h3>作品二：可稽核的菜單營養與成本表</h3><p>輸入食材、資料來源版本、重量基準、份量、採購單價與損耗假設。用確定公式計算每份營養與成本，缺資料即警示，保留人工覆核欄。驗收要涵蓋缺值、重複食材、單位錯誤、換算與替代品，並與人工基準比對。本報告不提供通用的臨床菜單或營養閾值；實際標準須依服務對象與適用文件另查。</p><h3>作品三：履約缺失與改善追蹤 HTML</h3><p>欄位為缺失描述、原始依據、責任人、期限、改善證據、複核狀態及週報。以合成資料示範逾期提醒、篩選和可攜匯出；實際使用前先處理存取權、備份、資料位置及維護責任。公開作品集只放公開或合成資料。</p><p class="callout">共同步驟：選單一痛點 → 定義輸入與人工基準 → AI 協助處理 → 確定計算與來源覆核 → 實際使用者驗收 → 保存版本與例外 → 衡量總工時，再決定擴充。這是建議工作法，非已完成的導入成效。</p><p>建議先建立 20 個固定案例，包含正常與錯誤輸入；20 是練習規模，不是統計充分性或安全認證。重大錯誤未處理前不讓工具自動對外發布。作品展示附問題、輸入、流程、人工基準、已知限制、總工時比較及可重現操作說明。</p></section>
+<section id="plan90"><h2>7．90 天路線與今天可做的事</h2><div class="table-scroll" role="region" tabindex="0" aria-label="表 3．每週 5 小時的規劃假設，可左右捲動"><table><caption>表 3．每週 5 小時的規劃假設</caption><thead><tr><th scope="col">階段</th><th scope="col">行動與完成條件</th></tr></thead><tbody><tr><td>第 1–14 天：盤點</td><td>列出五項重複工作，記頻率、人工耗時、錯誤代價及資料敏感度；選一項。做一次人工基準，列出要交付的欄位與核准人。</td></tr><tr><td>第 15–30 天：一件完整作品</td><td>完成作品一或實際最急的流程；保存原文、範本、操作說明及版本。找一位使用者依說明操作，記下卡住處並修正。</td></tr><tr><td>第 31–60 天：驗證與訪談</td><td>用固定案例和未見文件檢查；另兩作品做雛形即可。與 3–5 位目標業者／使用者訪談，問痛點、決策者、預算與驗收方式，避免只問喜不喜歡 AI。</td></tr><tr><td>第 61–90 天：付費試作</td><td>完成一次限定範圍、修改次數及時程的付費試作。比對含覆核、返工與維護的總時間，記實際成本、付款及驗收，再決定續約、縮範圍或停止。</td></tr></tbody></table></div><p>以上天數、案例數及訪談數為建議目標，非完成保證。每週只有 2 小時時，90 天聚焦一件作品與一次需求驗證；有 10 小時時，可增加案例與使用者驗收，不必同時增加平台數或功能數。</p><h3>今天 60 分鐘</h3><ul><li>15 分鐘：挑一份公開團膳招標文件或一張合成菜單，列出最耗時的一步。</li><li>20 分鐘：先人工完成一小段，建立答案與原文頁碼。</li><li>15 分鐘：請 AI 用指定欄位擷取，逐項對照，標出錯誤與未知。</li><li>10 分鐘：保存範本、版本與總耗時；寫下一位可訪談的目標使用者及三個痛點問題。</li></ul></section>
+<section id="bizrisk"><h2>8．商業驗證、風險與跨 AI 討論</h2><h3>把服務分成三段</h3><ul><li>需求診斷：確認文件數、場址／據點、使用者、痛點、資料權利、交付與不含項目，交一份差距及流程建議。</li><li>付費試作：單一流程、單一版本、限定期間與修改次數；約定驗收方法、付款、資料處理、著作權及終止方式。</li><li>持續服務：再按菜單／文件量、更新頻率、現場工作、維護與異常處理另議。法定營養師業務與一般工具建置，依實際工作區分。</li></ul><p>【估價建議】內部成本＝需求盤點、資料清理、建置、專業覆核、返工、交接與維護的工時成本＋工具／交通等直接成本；再談服務風險與利潤。這是管理估算，非市場行情。客戶願付金額低於可持續交付成本時，縮小範圍、調整方法或停止。每種報價都要記是否真的付款與續用，不把免費試用或稱讚算成成交。</p><p>【成效公式】每月淨節省小時＝〔（人工每件分鐘－AI 處理、覆核、返工合計分鐘）×每月件數－每月維護分鐘〕÷60。示例 30、15、20、60 得 4 小時；這是算式示例，非你的量測結果，也不直接換算收入。另追蹤關鍵漏項、錯算、準時交付及實際利潤。</p><h3>法遵與資料風險</h3><p>【查證】營養師法規定執業登記、業務範圍、親自執行、紀錄及保密等義務。<a href="#ref8" aria-label="參考文獻 8">[8]</a> 使用 AI 不會自動免除這些要求；工具輔助、一般管理顧問與實際營養師業務要依內容判斷。個資法第 5、6、8 條涉及目的必要性、特種個資及告知；第 6 條列有病歷、醫療、健康檢查等，並非任何健康文字都當然落入該條。<a href="#ref7" aria-label="參考文獻 7">[7]</a></p><p>【建議】練習和公開作品先用公開／合成資料。客戶資料上雲前先確認合法依據、合約、必要範圍、供應商資料處理與刪除方式；只拿掉姓名仍可能可重新識別。公開 GitHub 不放個案資料、未公開標案附件或私鑰。具體執業、通訊服務與多機構工作要另依當時規範及主管機關確認。</p><p>【查證與解讀】人工智慧基本法於 2026-01-14 公布施行，第 4 條主要規範政府推動 AI 應遵循的原則，不能當作『責任全由營養師承擔』的法源。<a href="#ref9" aria-label="參考文獻 9">[9]</a> 民法第 184 條有故意過失侵權責任的一般規定；具體責任仍須看行為、因果、契約及適用法規，不能概括排除系統商或任何一方。<a href="#ref11" aria-label="參考文獻 11">[11]</a></p><h3>實際交叉討論與裁決</h3><div class="table-scroll" role="region" tabindex="0" aria-label="表 4．爭點、反方與整合結論，可左右捲動"><table><caption>表 4．爭點、反方與整合結論</caption><thead><tr><th scope="col">爭點與收到的意見</th><th scope="col">整合者裁決</th></tr></thead><tbody><tr><td>Claude 首輪提三個月不寫程式，第二輪改為依證據投入；DeepSeek 提每週三次／五十份文件門檻；Gemini 提百筆門檻。GPT 與 Antigravity High 均質疑通用門檻。</td><td>採實際頻率、錯誤代價、可靠性及總成本；不採固定筆數或禁寫程式期間。具體數字可作自訂實驗目標。</td></tr><tr><td>Gemini 3.1 Pro 提時間價值 50% 加價與責任完全歸屬；第二輪撤回部分數值，仍保留未充分支持的責任說法。GPT、Claude及 Antigravity High 質疑。</td><td>刪除無據加價公式及完全責任歸屬；以範圍、成本與實際付款驗證商業需求，個案責任另判。</td></tr><tr><td>有平台偏免費試用，有平台偏付費試作；均認同要有真實使用者。</td><td>免費展示可驗證可用性；付費及續約才是較直接的商業訊號。先設範圍、工時上限與退出條件。</td></tr><tr><td>多平台支持作品優先；Gemini 建議放棄初級證照，但沒有證明其完全無用。</td><td>作品與證照分別驗證交付能力及知識面；依目標需求選擇，不承諾證照溢價，也不一律否定。</td></tr></tbody></table></div><p>上述共識是分析意見；事實仍由來源裁決。反例包括低頻任務用既有範本更省、既有營養軟體已足夠、客戶只願付現場服務費、覆核與維護吞噬省時。尚未取得你的實際工時或付費客戶資料，無法判定哪一作品一定最賺。</p></section>
+<section id="participants"><h2>9．各 AI 實際參與情形</h2><p>以下只計本次取得的非空回答。指定平台均以 Codex 內建瀏覽器操作；整合者本身不冒充 ChatGPT Work 指定模型。首輪未提供他方結論；第二輪實際送交首輪論點摘要與待驗證主張。開頁或模型自述不當成完成查證。</p><div class="table-scroll" role="region" tabindex="0" aria-label="表 5．平台與可見設定、完成情形及限制，可左右捲動"><table><caption>表 5．平台與可見設定、完成情形及限制</caption><thead><tr><th scope="col">平台／介面設定</th><th scope="col">實際完成與限制</th></tr></thead><tbody><tr><td>ChatGPT Work：GPT-6.1 Sol／高</td><td>首輪、第二輪及 v1 品質審查完成。20:26 實讀固定 v1 HTML、JSON 及 17 頁 PDF，核對雜湊、10 章／12 文獻、連結與計算器，並渲染檢視 PDF 第 1、4、12–17 頁。20:41 實讀固定 v2 三檔，HTML SHA256 相符；再次檢查修正項與 16 頁 PDF，實際渲染檢視第 12–16 頁，未發現新的重大內容錯誤。指出 PDF 連結尚未帶 commit，及第 12 頁重複表頭；公開版 HTML 已改用固定 commit PDF 連結並整理單一參與者表格。未渲染 HTML 或做手機／鍵盤實操；未重核全部 12 項來源。</td></tr><tr><td>Grok：快速</td><td>介面顯示快速；已登入，獨立首輪附搜尋引用。底層版本／搜尋開關未確認；未收交叉摘要，未參加第二輪；未核政策數字不採。</td></tr><tr><td>DeepSeek：深度思考＋智能搜索開啟</td><td>已登入，深度思考與智能搜索開啟；首輪及收到交叉摘要後第二輪完成，撤回通用文件量／頻率門檻與報價外推；提供完整單檔 HTML 框架。版本未顯示。</td></tr><tr><td>Google Gemini：3.1 Pro／高點</td><td>介面選 3.1 Pro／High；首輪、第二輪完成。兩次檢視 DeepSeek HTML 後均無法提供可用 UI/UX 審查；無據數值及過度法律歸責不採。搜尋狀態未確認。</td></tr><tr><td>Google Gemini：4 Argon／高點</td><td>介面確認 4 Argon／High；先前僅依研究摘要提出品質建議，未另開來源原文。20:45 依要求檢視 v2 時，模型回報無法開啟 raw GitHub 網址；改給公開 Pages 與固定 commit GitHub 網址後，仍回報無法連線。未讀取候選 HTML、JSON、PDF，故本輪檔案審查未完成；不替代 Antigravity 審查。</td></tr><tr><td>Claude：Sonnet 5.5／中</td><td>介面確認 Sonnet 5.5／Medium；首輪、第二輪與 HTML UI/UX 審查完成，提供 CSS/JS 建議。整合者套用表格捲動、表頭、焦點、ID 與輸入檢查；非 Claude 直接改檔。</td></tr><tr><td>OpenEvidence：模型／推理未顯示</td><td>已登入；穩定回答聚焦營養 AI 輸出可靠性與人工覆核。非臺灣勞動市場；部分原文無法取得，未採臨床比較數字；未參加交叉辯論。</td></tr><tr><td>Perplexity：Free／搜尋開啟</td><td>Free/Search 開啟，已登入並完成獨立首輪。實際模型未顯示；政策／市場數字回源核驗；未收到交叉摘要。</td></tr><tr><td>Duck.ai：Haiku 4.5</td><td>介面顯示 Claude Haiku 4.5，但每日額度已滿、輸入停用；本題未送出，未參與；搜尋／推理設定未確認。</td></tr><tr><td>Antigravity：Gemini 4 Argon High</td><td>介面確認 Gemini 4 Argon High；讀取交叉摘要後完成主持裁決。遠端中斷後未送 PDF／HTML，未做最終品質查核。</td></tr><tr><td>Antigravity：Opus 5.5</td><td>本次未選取／啟用；遠端連線中斷，未送報告，未審查。</td></tr><tr><td>Antigravity：Sonnet 5.5</td><td>本次未選取／啟用；同一遠端連線中斷，未送 HTML，未修正。</td></tr></tbody></table></div><p>本題以文字、表格與操作步驟即可說明，未生成照片或示意圖片，亦未宣稱完成 Gemini／DeepSeek 圖像審核。模型對網頁原碼審查與實際畫面檢視分開記錄。依 GPT 固定 v1 審查，已修正 Microsoft 文件日期、計算器無障礙狀態與微小負值顯示、AI 參與章節分頁，以及文獻與連結跨頁分離；資料截止仍為 20:16。GPT 對固定 v2 的複核確認主要修正完成、未發現重大新錯誤，另指出需將公開 HTML 的 PDF 連結固定至 commit，並建議避免參與者表格重複表頭；已在定版 HTML 與 PDF 排版中處理。Google Gemini 4 Argon High 兩種網址路徑均無法讀取候選檔，未視為完成審查。整合者另以 390×844 檢查公開 v2 HTML：五個表格容器可橫向捲動、文件無水平溢位；Tab 鍵焦點框清楚。估算器預設得 4.0 小時；無效件數會警示，修改其他欄位後清除舊欄位標記並標示目前無效欄；分鐘小數可輸入，極小負值有明確提示。v3 延用同一計算器與手機版 CSS，更新內容與 PDF 連結。最終 v3 PDF 共 17 頁，已渲染並逐頁檢視，未見缺頁、裁切或字體問題。</p></section>
+<section id="limits"><h2>10．結論、限制與參考文獻</h2><p class="callout">【結論建議】你可以把營養專業與 AI 操作經驗，逐步轉為可稽核、可交接、可維護的服務。下一步是選一個真實痛點，完成一件可驗收作品，讓客戶的使用、付款與續用結果決定擴充方向。</p><ul><li>證據限制：平台招募資料非全國普查；政府培訓與政策不等於顧問訂單；國外顧問實驗不能直接外推臺灣營養師或最新模型。</li><li>個人限制：每週工時、技術程度、執業資格／地點、客戶與工具預算尚未核驗；此計畫需先以個人基準校準。</li><li>來源限制：部分動態頁與醫學原文無法由搜尋工具讀取；iPAS 另以瀏覽器核對。未取得完整人才指引附件全文，不把新聞稿當完整評分標準。</li><li>法律時間：個資法頁列 2025-11-11 修正，但部分條文尚未施行；本報告不把待施行條文當現行義務。所核對法規資料庫頁面的整編截止顯示 2026-10-08；新發布事項仍需向主管機關確認。</li><li>尚待驗證：哪些服務有人願意付費、可節省多少總工時、維護成本、證照的實際商業效果與 2027 年後市場走向。沒有足夠資料提供個人成功率或收入預測。</li><li>交付品質修訂：v1 審查後修正 Power Query 頁面日期（原頁顯示 2026-10-01）、計算器欄位狀態及極小負值提示、PDF 章節與書目連結分頁。品質審查在資料截止後進行，但所更正文件日期仍早於資料截止；未因此延伸研究搜尋截止時間。</li><li>最後品質複核：GPT-6.1 Sol／高讀取 v2 三檔並渲染 PDF 第 12–16 頁；未測 HTML 版面／鍵盤及未重新核對全部來源。Google Gemini 4 Argon／高因其介面無法讀取 raw GitHub 與公開 Pages 網址，未完成文件審查。最終 HTML 將 PDF 連結固定至 v3 檔案所在 commit；PDF 表格使用單一表格避免同頁重複表頭。整合者在公開 v2 頁面完成 390×844 排版、焦點、表格捲動與計算器操作檢查；最終 v3 PDF 17 頁逐頁檢視。</li></ul><p>參考文獻全部查閱於 2026-10-17。以下為實際採用的來源；AI 提供但未核對的其他書目不列為證據。</p><h3>參考文獻</h3><ol><li id="ref1">數位發展部數位產業署。AI 產業人才認定指引升級 3.0。發布／更新 2026-05-19；臺灣；官方政策新聞稿，非完整附件。 <a href="https://web.moda.gov.tw/ADI/news/latest-news/19724" target="_blank" rel="noopener">原文 [1]</a></li><li id="ref2">行政院新聞傳播處。建立 AI 人才認定指引 3.0，形塑產業人才生態系。2026-05-21；臺灣；官方政策說明。 <a href="https://www.ey.gov.tw/Page/9277F759E41CCD91/082215d1-ebe7-40dc-b258-f74ef00657f5" target="_blank" rel="noopener">原文 [2]</a></li><li id="ref3">104 公共事務處。2026 民生服務業人才白皮書發布新聞稿。2026-07-22；臺灣六類民生服務業；平台原始發布，標稱 2026 每月平均，未細列統計月份。 <a href="https://blog.104.com.tw/104data-service-industry-report-2026/" target="_blank" rel="noopener">原文 [3]</a></li><li id="ref4">Dell’Acqua F, McFowland E III, Mollick E, et al. Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality. Organization Science. Articles in Advance, 2026-03-11. doi:10.1287/orsc.2025.21838. 原始隨機實驗，758 名 BCG 知識工作者；PDF 為正式出版版本。 <a href="https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf" target="_blank" rel="noopener">原文 [4]</a></li><li id="ref5">經濟部產業發展署／工研院 iPAS。AI 應用規劃師考試資訊。115 年度／2026；頁面更新日期未標示；臺灣；以內建瀏覽器核對初中級科目，非引用舊簡章。 <a href="https://ipd.nat.gov.tw/certification/AIAP/exam-info" target="_blank" rel="noopener">原文 [5]</a></li><li id="ref6">Microsoft Learn。什麼是 Power Query？頁面上次更新 2026-10-01；2026-10-17 20:32（臺北）再次核對；官方產品文件；適用功能依承載產品／版本而異。 <a href="https://learn.microsoft.com/zh-tw/power-query/power-query-what-is-power-query" target="_blank" rel="noopener">原文 [6]</a></li><li id="ref7">法務部全國法規資料庫。個人資料保護法，第 2、5、6、8 條。頁列修正 2025-11-11，部分修正尚未施行；臺灣；本報告引用條文與施行註記分開。 <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" target="_blank" rel="noopener">原文 [7]</a></li><li id="ref8">法務部全國法規資料庫。營養師法，第 7、10、12、13、14、16 條。修正 2023-04-26；臺灣；執業、紀錄與保密之法規原文。 <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040006" target="_blank" rel="noopener">原文 [8]</a></li><li id="ref9">中華民國總統府。制定人工智慧基本法，總統府公報第 7837 號。2026-01-14 公布施行；臺灣；已讀公告連結之 20 條全文 PDF。 <a href="https://www.president.gov.tw/Page/294/50131" target="_blank" rel="noopener">原文 [9]</a></li><li id="ref10">OWASP Gen AI Security Project. LLM08:2025 Vector and Embedding Weaknesses. 2025 版；具體頁面更新日未標示；跨地區技術風險指引，非臺灣法規。 <a href="https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/" target="_blank" rel="noopener">原文 [10]</a></li><li id="ref11">法務部全國法規資料庫。民法第 184 條。臺灣；現行條文查閱，涉及一般侵權責任，非對任何 AI 個案之法律判決。 <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=184" target="_blank" rel="noopener">原文 [11]</a></li><li id="ref12">數位發展部。AI 產業實戰應用人才淬煉計畫。更新 2026-03-23，頁載計畫已於 2025 年 12 月結束；臺灣；用以核對課程時效，不列為正在招生的推薦。 <a href="https://moda.gov.tw/major-policies/ai/talent/19264" target="_blank" rel="noopener">原文 [12]</a></li></ol></section>
+<section id="calculator" class="calc" aria-labelledby="calcTitle">
+<h2 id="calcTitle">每月省時估算（不換算收入、不存資料）</h2>
+<p class="note">僅供流程檢核；淨節省可為負。數值範圍：分鐘1–600、件數1–10000、維護0–10000。</p>
+<label for="manual">人工每件分鐘</label>
+<input id="manual" type="number" min="1" max="600" step="any" value="30" inputmode="decimal" autocomplete="off" aria-describedby="err">
+<label for="ai">AI處理＋覆核＋返工總分鐘／件</label>
+<input id="ai" type="number" min="1" max="600" step="any" value="15" inputmode="decimal" autocomplete="off" aria-describedby="err">
+<label for="count">每月件數</label>
+<input id="count" type="number" min="1" max="10000" step="1" value="20" inputmode="numeric" autocomplete="off" aria-describedby="err">
+<label for="maintain">每月維護分鐘</label>
+<input id="maintain" type="number" min="0" max="10000" step="any" value="60" inputmode="decimal" autocomplete="off" aria-describedby="err">
+<button type="button" id="calcBtn">計算淨節省</button>
+<p id="err" role="status" aria-live="polite"></p>
+<p id="out" aria-live="polite"></p>
+</section>
+</main>
+<footer>[亮亮營養師 AI研究開發]</footer>
+<script>
+(function(){
+  const ids=['manual','ai','count','maintain'];
+  const rules={manual:[1,600,'人工每件分鐘'],ai:[1,600,'AI每件總分鐘'],count:[1,10000,'每月件數'],maintain:[0,10000,'每月維護分鐘']};
+  const err=document.getElementById('err'),out=document.getElementById('out');
+  function calc(){
+    const v={};
+    ids.forEach(id=>document.getElementById(id).setAttribute('aria-invalid','false'));
+    for(const id of ids){
+      const el=document.getElementById(id);
+      const raw=el.value.trim();
+      const n=Number(raw);
+      el.setAttribute('aria-invalid','false');
+      const [min,max,name]=rules[id];
+      if(raw===''||!Number.isFinite(n)||n<min||n>max||(id==='count'&&!Number.isInteger(n))){
+        err.textContent=name+'需為 '+min+'–'+max+' 的數值'+(id==='count'?'，且須為整數':'');
+        out.textContent=''; el.setAttribute('aria-invalid','true');
+        return;
+      }
+      v[id]=n;
+    }
+    err.textContent='';
+    const net=((v.manual-v.ai)*v.count-v.maintain)/60;
+    out.classList.toggle('loss',net<0);
+    out.textContent=net<0&&Math.round(Math.abs(net)*10)===0?'每月增加耗時不足 0.1 小時':'每月淨節省：'+net.toFixed(1)+' 小時'+(net<0?'（負值，表示增加工時）':'');
+  }
+  document.getElementById('calcBtn').addEventListener('click',calc);
+  ids.forEach(id=>document.getElementById(id).addEventListener('input',calc));
+  calc();
+})();
+</script>
+</body>
+</html>
