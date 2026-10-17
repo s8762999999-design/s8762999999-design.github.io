@@ -25,7 +25,7 @@
   <div class="meta"><span>研究報告｜2026 年 10 月 17 日</span><span>資料查核截止：2026-10-17 17:07（臺北時間）</span><span>範圍：一般成人；非個人診斷或用藥指示</span></div>
 </header>
 <div class="layout">
-<nav class="toc" aria-label="報告目錄"><strong>報告目錄</strong><ol><li><a href="#summary">摘要</a></li><li><a href="#intro">前言與問題</a></li><li><a href="#method">研究方法</a></li><li><a href="#mechanism">作用與記憶</a></li><li><a href="#evidence">人體研究與仿單</a></li><li><a href="#discussion">討論與限制</a></li><li><a href="#advice">實際建議</a></li><li><a href="#participants">AI 參與紀錄</a></li><li><a href="#references">參考文獻</a></li></ol></nav>
+<nav class="toc" aria-label="報告目錄"><strong>報告目錄</strong><ol><li><a href="#summary">摘要</a></li><li><a href="#intro">前言與問題</a></li><li><a href="#method">研究方法</a></li><li><a href="#mechanism">作用與記憶</a></li><li><a href="#evidence">人體研究與仿單</a></li><li><a href="#discussion">討論與限制</a></li><li><a href="#advice">實際建議</a></li><li><a href="#participants">AI 參與紀錄</a></li><li><a href="#limitations">研究限制</a></li><li><a href="#references">參考文獻</a></li></ol></nav>
 <main id="main" class="content">
 <section id="summary">
   <h2>摘要</h2>
@@ -102,7 +102,7 @@
   <h2>討論：共識、分歧與證據品質</h2>
   <h3>有原始資料支持的結論</h3>
   <ul>
-    <li>四藥均可能透過增強 GABA-A 相關抑制訊號造成鎮靜與認知表現改變；產品標示或人體研究中可見記憶／注意相關警示。<sup>[<a href="#ref1">1</a>–<a href="#ref10">10</a>]</sup></li>
+    <li>四藥均可能透過增強 GABA-A 相關抑制訊號造成鎮靜與認知表現改變；產品標示或人體研究中可見記憶／注意相關警示。<sup>[<a href="#ref1">1</a>, <a href="#ref2">2</a>, <a href="#ref4">4</a>, <a href="#ref5">5</a>, <a href="#ref10">10</a>]</sup></li>
     <li>順行性健忘可與藥效期間形成新事件記憶困難相符；「人當下看來能行動」不保證之後能記得。</li>
     <li>對注意、工作記憶、自由回想與再認的影響不能混為單一指標。劑量、時間點、睡眠中斷、併用鎮靜物質及測驗類型都影響可觀察結果。</li>
   </ul>
@@ -140,11 +140,12 @@
     <tr><th scope="row">OpenEvidence</th><td>模型與推理／搜尋設定未顯示。</td><td>首輪有非空回答。</td><td>本輪未能完成第二輪；其回答中的來源沒有全數逐篇獨立核對，不作獨立證據。</td></tr>
     <tr><th scope="row">Perplexity</th><td>Free 方案；Search 顯示開啟；模型未顯示。</td><td>首輪完成。</td><td>第二輪兩次因瀏覽器焦點逾時未能完成。</td></tr>
     <tr><th scope="row">Duck.ai</th><td>介面顯示 Claude Haiku 4.5；搜尋狀態未確認。</td><td>沒有送出本題。</td><td>顯示每日額度已用完，約 16 小時後重設。</td></tr>
-    <tr><th scope="row">Antigravity Claude Sonnet 5.5</th><td>選單僅顯示 Medium；無 High。</td><td>閱讀已發布 HTML 後提出複核意見。</td><td>無法渲染畫面，未能直接檢查視覺版面；指出文中引用缺少內部錨點、建議把「Invomin」提醒前置及明確列出記憶階段。已加入引用連結、前置藥名提醒並強化小節標題；整合者另以 390px 寬度檢視手機版，DOM 確認 SVG 替代文字、表格標題及欄標記。</td></tr>
-    <tr><th scope="row">Antigravity Claude Opus 5.5</th><td>選單僅顯示 Medium；無 High。</td><td>未執行 PDF 審核。</td><td>沒有送出檔案或取得回答。</td></tr>
-    <tr><th scope="row">Antigravity Gemini 4 Argon</th><td>選單顯示 Medium；無 High 選項。</td><td>未執行高階設定的任務。</td><td>不以 Medium 取代使用者指定的 High。這與 Google Gemini 獨立分頁的 Argon 高點不同。</td></tr>
+    <tr><th scope="row">Antigravity Claude Sonnet 5.5</th><td>實際使用 Medium。</td><td>閱讀已發布 HTML 後提出複核意見。</td><td>沒有畫面渲染能力；引用錨點、藥名提醒與記憶階段建議已納入。整合者另以 390px 寬度檢視手機版。</td></tr>
+    <tr><th scope="row">Antigravity Claude Opus 5.5</th><td>實際使用 Medium。</td><td>2026-10-17 17:27（臺北）完成 PDF 雜湊、頁數與六張頁面圖的視覺審核。</td><td>遠端電腦無本機路徑，改用固定 GitHub 快照下載；PDF 雜湊一致、結構解析為六頁。指出圖超出正文與封面標點起行，已修正。未獨立重新渲染 PDF。</td></tr>
+    <tr><th scope="row">Antigravity Gemini 4 Argon</th><td>實際使用 High；由模型項目的右側子選單選取，介面確認。</td><td>2026-10-17 17:30（臺北）完成 PDF／HTML 雜湊、六張頁面圖與 HTML 原碼審核。</td><td>發現圖文差異、表名、目錄、引文及舊參與狀態等問題，已整合修正。手機樣式僅查原碼；未做醫學來源重查。先前「沒有 High」的判讀已撤回。</td></tr>
     </tbody></table></div>
   <p class="footnote">Gemini 生成圖片及 DeepSeek 圖像審核未進行；圖 1 為本報告整合者繪製的 SVG 概念圖。跨平台辯論僅限實際收到交叉質疑內容並回覆的平台。</p>
+  <p class="footnote">上述品質審核輸入為修復前的固定快照；修訂後檔案另行檢查。<a href="drug-memory-mechanism-report.pdf">下載完整 PDF</a> · <a href="antigravity-repair-log.md">修復與審核紀錄</a> · <a href="review-inputs/before-antigravity-repair/manifest.json">審核輸入與 SHA-256 清單</a>。醫學資料截止時間維持 17:07；後續作業為品質修訂。</p>
 </section>
 <section id="limitations">
   <h2>研究限制與後續查核需求</h2>
@@ -177,4 +178,3 @@
 </div>
 </body>
 </html>
-

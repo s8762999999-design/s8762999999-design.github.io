@@ -1,0 +1,46 @@
+{
+  "purpose": "Revised report for final Antigravity verification",
+  "report_cutoff": "2026-10-17 17:07 Asia/Taipei",
+  "files": [
+    {
+      "name": "report.pdf",
+      "bytes": 406638,
+      "sha256": "1bfa347caab8f3263a3f58f60ccce013a64a6c5e6699ac1e8f948ca2aa976ebb"
+    },
+    {
+      "name": "index.html",
+      "bytes": 34429,
+      "sha256": "b1885079c8215b2ed7a05e6e8724d040cab9f03b28ac1c914b5e8143902151fa"
+    },
+    {
+      "name": "page-1.png",
+      "bytes": 157284,
+      "sha256": "a563547fb76f0b2489d72f4b378040826a725dcead0a12daa864e8b8d042d2b1"
+    },
+    {
+      "name": "page-2.png",
+      "bytes": 267875,
+      "sha256": "6ec350cd3f1e5318f276dcfdcadc20e7a6ca222f8b734f7988bf9d3ff35d6706"
+    },
+    {
+      "name": "page-3.png",
+      "bytes": 331553,
+      "sha256": "c6bf1f027f2dc07747a30f73397360d1c706a55089321b3b5942004e272f3ee0"
+    },
+    {
+      "name": "page-4.png",
+      "bytes": 207141,
+      "sha256": "bb6e2fbd00b6fc70f59bc32b60c27001b54e4baebff97eb4fe46bb57301aa4bc"
+    },
+    {
+      "name": "page-5.png",
+      "bytes": 240188,
+      "sha256": "259ef1cc6408b44829fc4c96fefcee0da8b203b3c1a25a31a8fc77b2eedbe575"
+    },
+    {
+      "name": "page-6.png",
+      "bytes": 235794,
+      "sha256": "50d15eef4851ef431860f397afa06f3dd1b5e43b986fa73efdce2ae5176bf68a"
+    }
+  ]
+}
