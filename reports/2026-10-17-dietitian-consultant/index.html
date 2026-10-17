@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>臺灣團膳營養師顧問｜會談前研究報告與互動查核清單</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --ink: #1f2933;
+    --muted: #5c6b7a;
+    --line: #d9e0e8;
+    --accent: #1f6feb;
+    --accent-soft: #e8f0fe;
+    --warn: #b54708;
+    --warn-bg: #fff4e5;
+    --danger: #b42318;
+    --danger-bg: #fef3f2;
+    --ok: #1a7f37;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(16,24,40,.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 18px 64px; }
+  header.hero {
+    background: linear-gradient(135deg, #0b2e59, #1f4e8c);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.35; }
+  header.hero p { margin: 6px 0 0; color: #dbe7f5; font-size: .95rem; }
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.28);
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: .78rem;
+    margin-right: 6px;
+    margin-top: 8px;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 10px;
+    align-items: center;
+  }
+  .btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: .92rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    min-height: 44px;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.primary:hover { background: #1557b0; }
+  .btn.ghost { background: transparent; box-shadow: none; }
+  .save-note { font-size: .82rem; color: var(--muted); }
+  .grid { display: grid; gap: 18px; }
+  @media (min-width: 820px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h2 {
+    margin: 0 0 12px;
+    font-size: 1.12rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .card h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: .78rem;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 2px 8px;
+    flex: 0 0 auto;
+  }
+  .card h3 { margin: 16px 0 6px; font-size: .98rem; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  .small { font-size: .84rem; }
+  .note {
+    background: var(--warn-bg);
+    border-left: 4px solid var(--warn);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: .88rem;
+    margin: 12px 0;
+  }
+  .note.danger { background: var(--danger-bg); border-left-color: var(--danger); }
+  .note.info { background: var(--accent-soft); border-left-color: var(--accent); }
+  ul, ol { padding-left: 1.25em; margin: 8px 0; }
+  li { margin: 4px 0; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 9px 4px;
+    border-bottom: 1px solid #eef2f6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type="checkbox"] {
+    width: 20px; height: 20px; margin-top: 2px; flex: 0 0 auto;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .checklist label { cursor: pointer; flex: 1; }
+  .checklist label strong { display: block; font-size: .95rem; }
+  .checklist label span { display: block; color: var(--muted); font-size: .84rem; margin-top: 2px; }
+  .checklist .tag {
+    display: inline-block; font-size: .72rem; font-weight: 600;
+    border-radius: 4px; padding: 1px 6px; margin-right: 6px;
+    background: #eef2f6; color: #445;
+  }
+  .progress-wrap { margin: 10px 0 4px; }
+  .progress-bar {
+    height: 8px; background: #e6ebf1; border-radius: 999px; overflow: hidden;
+  }
+  .progress-bar span {
+    display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, #1f6feb, #3b82f6);
+    border-radius: 999px; transition: width .25s ease;
+  }
+  .progress-text { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+  details {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin: 10px 0;
+    background: #fbfcfd;
+  }
+  details summary {
+    cursor: pointer;
+    padding: 12px 14px;
+    font-weight: 600;
+    font-size: .92rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before {
+    content: "▸";
+    color: var(--accent);
+    font-size: .8rem;
+    transition: transform .15s ease;
+  }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .details-body { padding: 0 14px 14px; border-top: 1px solid #eef2f6; font-size: .9rem; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: 10px 0; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e8edf3; vertical-align: top; }
+  th { background: #f4f7fa; font-weight: 600; }
+  .pill { display: inline-block; font-size: .75rem; font-weight: 600; border-radius: 999px; padding: 2px 9px; }
+  .pill.law { background: #e8f0fe; color: #1f4e8c; }
+  .pill.contract { background: #fff4e5; color: #8a4b00; }
+  .pill.check { background: #e6f4ea; color: #1a5c2e; }
+  .calc label { display: block; font-size: .88rem; font-weight: 600; margin: 12px 0 4px; }
+  .calc input[type="number"] {
+    width: 100%; padding: 10px 12px; font-size: 1rem;
+    border: 1px solid var(--line); border-radius: 8px; background: #fff;
+  }
+  .calc input[type="number"]:focus { outline: 3px solid #93c5fd; border-color: var(--accent); }
+  .calc .row { display: grid; gap: 12px; }
+  @media (min-width: 560px) { .calc .row { grid-template-columns: 1fr 1fr; } }
+  .result-box {
+    background: #f4f7fa; border: 1px solid var(--line);
+    border-radius: 8px; padding: 14px 16px; margin-top: 16px;
+  }
+  .result-box .big { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .result-box .line { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; font-size: .9rem; }
+  .result-box .line span:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .src-list { list-style: none; padding: 0; margin: 0; }
+  .src-list li {
+    padding: 10px 0; border-bottom: 1px solid #eef2f6;
+    font-size: .88rem;
+  }
+  .src-list li:last-child { border-bottom: none; }
+  .src-list .src-name { font-weight: 600; display: block; }
+  .src-list .src-note { color: var(--muted); font-size: .8rem; display: block; margin-top: 2px; }
+  .src-list a { word-break: break-all; }
+  footer {
+    margin-top: 28px; padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: .82rem; color: var(--muted);
+  }
+  .kbd { font-family: ui-monospace, monospace; background: #eef2f6; border-radius: 4px; padding: 1px 5px; font-size: .8rem; }
+  @media print {
+    .toolbar, .no-print { display: none !important; }
+    body { background: #fff; font-size: 12pt; }
+    .card { box-shadow: none; break-inside: avoid; border-color: #ccc; }
+    header.hero { background: #fff; color: #000; border: 1px solid #999; }
+    header.hero p, .badge { color: #333; background: none; border-color: #999; }
+    details { break-inside: avoid; }
+    details .details-body { display: block !important; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>臺灣團膳供應商聘請營養師顧問｜會談前研究報告</h1>
+    <p>研究更新：2026 年 10 月 17 日｜供 2026 年 10 月 18 日 13:00 初談使用。依可查核法規與主管機關資料整理；個案門檻及契約要求仍須逐案確認。</p>
+    <div>
+      <span class="badge">查閱日期：2026-10-17</span>
+      <span class="badge">不使用外部 CDN</span>
+      <span class="badge">勾選進度可嘗試保存在本機瀏覽器</span>
+    </div>
+  </header>
+
+  <div class="toolbar no-print">
+    <button class="btn primary" onclick="window.print()">列印本頁</button>
+    <button class="btn" id="expandAllBtn" aria-controls="schoolContractDetails" aria-expanded="false">展開學校供餐補充說明</button>
+    <button class="btn ghost" id="resetBtn">重設勾選</button>
+      <span class="save-note" id="saveNote">勾選狀態會嘗試保存在此瀏覽器；若瀏覽器限制本機儲存，關閉後可能不會保留。</span>
+  </div>
+
+  <!-- 0. 10 分鐘重點 -->
+  <section class="card" aria-labelledby="focus-title">
+    <h2 id="focus-title"><span class="num">0</span>明日會談前 10 分鐘重點</h2>
+    <div class="grid two">
+      <div>
+        <h3>先核對工廠登記與食品業者登錄</h3>
+        <p class="muted">GHP 適用食品業者。若屬具工廠登記的餐盒食品製造、加工或調配業，官方資料指出須符合 HACCP，且落入公告範圍時須至少配置一名專任食品技師或營養師。請以登記類別、製程及現行公告核實。</p>
+        <h3>再問「供餐量與機構類型」</h3>
+        <p class="muted">營養師法的特定群體門檻依公告的機構類別、供餐人數與餐次判斷；舊公告列有學校及醫療、護理機構門檻。老人福利、一般長照、軍隊與矯正機關不能直接套用同一門檻，應核對設立類別與招標文件。</p>
+        <h3>最後才談「顧問要做什麼」</h3>
+        <p class="muted">團體膳食設計及供應營養監督屬《營養師法》第 12 條第 1 項第 3 款；通訊執業辦法僅允許第 1、2 款。不要把事前報准當成團膳監督可遠距執行的許可；先把管理諮詢與法定營養師業務拆清楚。</p>
+      </div>
+      <div>
+        <div class="note danger">
+          <strong>三個不能急著承諾的事：</strong><br>
+          ① 不能保證得標或通過稽查；② 不能以掛名、代簽或通訊報准取代團膳營養監督的親自執行；③ 不可把學校或單一標案條件直接當成所有機構的通案義務。
+        </div>
+        <div class="note info">
+          <strong>會談最低限度要拿到的資料：</strong>工廠登記證、食品業者登錄字號與業別、近一次 GHP／HACCP 稽查紀錄、專門職業／技術證照人員及登錄狀況、各類供餐量與餐次、至少一份代表性標案文件。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. 會談查核清單 -->
+  <section class="card" aria-labelledby="checklist-title">
+    <h2 id="checklist-title"><span class="num">1</span>會談查核清單（可勾選並保存在瀏覽器）</h2>
+    <p class="muted small">以下為會談時逐項確認的「問題」，不是已經確認的事實。勾選代表你已在會談中問到並記錄，不代表該項已符合法規或標案要求。</p>
+    <div class="progress-wrap" aria-live="polite">
+      <div class="progress-bar" id="progressMeter" role="progressbar" aria-label="會談查核清單完成度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progressBar"></span></div>
+      <div class="progress-text" id="progressText">已完成 0 / 0 項</div>
+      <p class="save-note" id="storageStatus" role="status" aria-live="polite"></p>
+    </div>
+
+    <h3>A. 工廠登記與食品業者登錄</h3>
+    <ul class="checklist" data-group="factory">
+      <li><input type="checkbox" id="c1"><label for="c1"><strong>確認工廠登記證的產業類別與主要產品</strong><span>是否屬「餐盒食品製造、加工、調配業」？餐盒食品涵蓋盒餐及大容器團膳；工廠登記規模會影響 HACCP 與專任人員義務。<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c2"><label for="c2"><strong>確認食品業者登錄字號與登錄業別</strong><span>登錄地址是否與實際作業場所一致？登錄業別是否包含團膳供應或餐盒製造？可至食品藥物業者登錄平台查詢。<span class="tag">官方查詢</span></span></label></li>
+      <li><input type="checkbox" id="c3"><label for="c3"><strong>確認最近一次地方衛生局稽查日期與結果</strong><span>有無 GHP／HACCP 缺失、限期改善、罰鍰或停工紀錄？投標文件可能要求近 2 年稽查紀錄。<span class="tag">逐案確認</span></span></label></li>
+    </ul>
+
+    <h3>B. GHP／HACCP</h3>
+    <ul class="checklist" data-group="ghp">
+      <li><input type="checkbox" id="c4"><label for="c4"><strong>GHP 是自述還是有可查核的自主管理紀錄？</strong><span>場所、人員、設施衛生表單、清潔消毒紀錄、員工體檢與衛生講習紀錄是否齊備？<span class="tag">法定最低</span></span></label></li>
+      <li><input type="checkbox" id="c5"><label for="c5"><strong>HACCP 是「符合準則」還是「取得驗證」？</strong><span>有無危害分析、CCP 監控紀錄、內部稽核與確認有效性文件？標案是否額外要求 HACCP 驗證、ISO 22000 或食品安全監測計畫？<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c6"><label for="c6"><strong>確認 HACCP 強制適用與契約要求的區別</strong><span>法定強制看工廠登記與食藥署公告；契約要求看招標文件。兩者不能混為一談。<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c21"><label for="c21"><strong>確認法定專門職業與技術證照人員配置</strong><span>具工廠登記且屬餐盒食品業者，應核對至少一名專任食品技師或營養師、平台登錄及訓練紀錄（初訓至少 30 小時、在職每年至少 8 小時）；餐飲業技術士比例另依業別、規模及辦法核實。外聘顧問不當然可替代法定專任人員。<span class="tag">法定義務／逐案核對</span></span></label></li>
+    </ul>
+
+    <h3>C. 供餐量與機構類型</h3>
+    <ul class="checklist" data-group="volume">
+      <li><input type="checkbox" id="c7"><label for="c7"><strong>各機構實際供餐人數、餐次、頻率各為何？</strong><span>2006 年中央公告列醫療／護理機構每日供餐 200 人次以上，以及學校每日 500 人以上、每週至少供餐一次；先核對機構法定類別及目前適用性。<span class="tag">公告門檻／逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c8"><label for="c8"><strong>多校、多點供餐的門檻計算方式如何認定？</strong><span>2006 年公告未明確說明跨校、跨場址供餐能否合併計算；不要自行加總，請所在地衛生局或法規主管機關確認並留存答覆。<span class="tag">待主管機關確認</span></span></label></li>
+    </ul>
+
+    <h3>D. 標案資格與評選</h3>
+    <ul class="checklist" data-group="bid">
+      <li><input type="checkbox" id="c9"><label for="c9"><strong>取得至少一份代表性招標文件或契約範本</strong><span>確認資格文件、評選項目、配分、違約記點、溫度規格、食材溯源等級與通報流程。<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c10"><label for="c10"><strong>確認「近 2 年稽查紀錄」「5 年內食安事件」的配分或扣分方式</strong><span>有違規紀錄時，標案是否允許提出改善說明？機關如何認定「情節重大」？<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c11"><label for="c11"><strong>確認食材產地、標章與追溯文件要求</strong><span>產地證明、有機、CAS、TAP、產銷履歷或追溯條碼等，哪些是法令要求、哪些是本案契約或評選加分？<span class="tag">逐案確認</span></span></label></li>
+    </ul>
+
+    <h3>E. 營養師角色與通訊核准</h3>
+    <ul class="checklist" data-group="dietitian">
+      <li><input type="checkbox" id="c12"><label for="c12"><strong>營養師的執業登記處所在哪裡？</strong><span>是否完成執業登記？執業以一處為限，機構間支援或事先報准之情形須釐清。<span class="tag">法定義務</span></span></label></li>
+      <li><input type="checkbox" id="c13"><label for="c13"><strong>先按實際工作內容區分通訊服務與團膳監督</strong><span>2026-10-01 施行辦法第 2 條僅限《營養師法》第 12 條第 1 項第 1、2 款；第 3 款團膳飲食設計與供應營養監督不在通訊執業範圍。第 3、4 條的執業年資、執行單位及事前核准條件，不能擴張第 2 條的業務範圍。<span class="tag">重大法規界線</span></span></label></li>
+      <li><input type="checkbox" id="c14"><label for="c14"><strong>顧問是否具名？具名後實際簽核行為為何？</strong><span>若投標文件或契約表徵有營養師把關，就必須有實際參與菜單設計、營養分析覆核或膳食供應監督的紀錄，不能只有掛名。<span class="tag">高風險</span></span></label></li>
+    </ul>
+
+    <h3>F. 履約與事故流程</h3>
+    <ul class="checklist" data-group="performance">
+      <li><input type="checkbox" id="c15"><label for="c15"><strong>確認 GHP 的溫度義務與契約運送條件</strong><span>屬 GHP 第 32 條餐飲業製備／供應範圍時，室溫存放不得達 2 小時以上，熟食熱藏須維持 60°C 以上；其他製程、運輸及供餐時限依適用規定和標案逐項確認。<span class="tag">法定＋契約核對</span></span></label></li>
+      <li><input type="checkbox" id="c16"><label for="c16"><strong>確認客訴與疑似食品中毒的通報窗口、時限與替代供餐</strong><span>機關通報與衛生局通報是雙軌；契約的記點、罰款、暫停供餐、終止契約條件須逐條確認為何。<span class="tag">逐案確認</span></span></label></li>
+      <li><input type="checkbox" id="c17"><label for="c17"><strong>確認留樣、回收、根因調查與保險安排</strong><span>契約是否要求批次留樣、48 小時冷藏、產品責任保險？顧問在事件中的角色是支援調查還是代為決策？<span class="tag">逐案確認</span></span></label></li>
+    </ul>
+
+    <h3>G. 服務時數、責任與報酬</h3>
+    <ul class="checklist" data-group="contract">
+      <li><input type="checkbox" id="c18"><label for="c18"><strong>確認管理諮詢與法定營養師業務各由誰實際執行</strong><span>列明現場執行、會議、菜單、供應監督、文件審閱與事故支援；團膳第 3 款不得以通訊報准代替親自執行。<span class="tag">合約談判</span></span></label></li>
+      <li><input type="checkbox" id="c19"><label for="c19"><strong>確認責任範圍與合理風險分配</strong><span>列出雙方提供資料、現場控制、專業審查與事故通報責任；顧問按實際承接工作及可歸責事由負責，不能只用「純顧問」文字排除自身過失。<span class="tag">合約談判</span></span></label></li>
+      <li><input type="checkbox" id="c20"><label for="c20"><strong>確認報酬計價方法與超額計費</strong><span>按月固定、按次計件、總包價或服務成本加公費；預設不宣稱行情，以實際投入時數與責任範圍估算。<span class="tag">估算</span></span></label></li>
+    </ul>
+  </section>
+
+  <!-- 2. GHP vs HACCP -->
+  <section class="card" aria-labelledby="ghp-title">
+    <h2 id="ghp-title"><span class="num">2</span>GHP 與 HACCP：法定強制範圍與核對方式</h2>
+    <div class="grid two">
+      <div>
+        <h3>GHP（食品良好衛生規範準則）</h3>
+        <p>食安法第 8 條第 1 項規定，食品業者之從業人員、作業場所、設施衛生管理及其品保制度，均應符合 GHP。GHP 的適用規模為<strong>所有食品業者</strong>，不是只有工廠或大企業。因此「自述符合 GHP」不等於法定義務已了結；地方衛生局稽查時可直接依 GHP 準則檢查場所、人員、設施與製程衛生。</p>
+        <p class="small muted">GHP 或 HACCP 缺失經命限期改正而屆期不改正，可能依食安法第 44 條處罰；實際法定要件及裁罰金額須依違規事實核對。</p>
+      </div>
+      <div>
+        <h3>HACCP（食品安全管制系統準則）</h3>
+        <p>食安法第 8 條第 2 項規定，經中央主管機關公告類別及規模之食品業應符合 HACCP。食藥署資料指出，餐盒食品包含調理包裝成盒，或直接以大容器運送供團體食用的盒餐與團膳；具工廠登記規模的餐盒食品製造、加工、調配業者已全面強制實施 HACCP。</p>
+        <p class="small muted">不要只依「團膳公司」名稱判斷。核對工廠登記與食品業者登錄的實際類別、工廠、製程，並查食藥署符合性參考名單及地方衛生局紀錄。無工廠登記的餐盒食品業者可能自願執行 HACCP；採購文件也可能另要求 HACCP 或驗證。制度符合、主管機關符合性稽查及第三方驗證是不同概念。</p>
+      </div>
+    </div>
+    <div class="note danger">
+      <strong>專任人員容易被忽略：</strong>依現行《食品業者專門職業或技術證照人員設置及管理辦法》第 2 至 4 條及公告類別／規模，落入公告範圍的餐盒食品製造、加工、調配業者至少應置一名專任專門職業人員；該業別可配置食品技師或營養師。工廠登記規模是重要判斷點。外部按月顧問不當然符合「專任」要求；另須核實人員訓練、平台登錄及法定職責是否實際執行。
+      <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040115" target="_blank" rel="noopener">查看設置及管理辦法</a>
+    </div>
+    <div class="note">
+      <strong>核對重點：</strong>不要只問「有沒有 GHP 文件」。核對食品業者登錄、工廠登記、HACCP 計畫與執行紀錄、專任人員與登錄狀態、衛生管理人員、稽查及改善紀錄。區分法定強制、主管機關符合性稽查與標案契約要求。
+    </div>
+  </section>
+
+  <!-- 3. 營養師法規與門檻 -->
+  <section class="card" aria-labelledby="dietitian-law-title">
+    <h2 id="dietitian-law-title"><span class="num">3</span>營養師法規與學校／護理機構門檻：逐案限制</h2>
+
+    <h3>營養師法定業務、執業登記與親自執行</h3>
+    <p>營養師法第 12 條第 1 項第 3 款包括特定群體飲食設計及膳食製備、供應的營養監督。第 7 條要求辦妥執業登記並領有執業執照；第 10 條原則上一處執業；第 13 條要求<strong>親自執行，不得由他人代理</strong>。第 14 條要求作成業務紀錄並至少保存五年。特定業務是否已達公告對象與門檻，須依實際機構、供餐群體與地方衛生主管機關認定。</p>
+
+    <div class="note danger">
+      <strong>重要更新｜通訊執業辦法自 2026-10-01 施行：</strong>辦法第 2 條明定通訊方式僅限營養師法第 12 條第 1 項第 1、2 款（個別對象營養評估、個別飲食設計及諮詢），沒有列第 3 款團體膳食飲食設計及供應監督。因此不能把「事前申請通訊執業」寫成團膳法定營養監督可遠距辦理的通用許可。辦法第 3、4 條另要求合格執業處所、合計兩年以上實際執業經驗及執行單位事前提計畫申請。服務若混合行政顧問與法定營養師業務，應拆分工作項目並向執業所在地衛生局確認。
+      <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0020261" target="_blank" rel="noopener">查看通訊執業辦法全文</a>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>群體</th><th>公開門檻</th><th>必須逐案確認的事</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>學校</strong></td>
+            <td>2006 年公告列明：學校每日供餐 500 人以上、每週至少 1 次的群體，其營養設計與供應監督由營養師為之。另《學校衛生法》第 23 條規定學校供餐應由營養師督導及執行；第 23-1 條規定高級中等以下學校 40 班以上至少置營養師 1 人。</td>
+            <td>學校自身的膳食督導與員額義務，不等於外包廠商的聘用資格；廠商角色及投標佐證須按當年度契約確認。跨校供餐門檻如何計算，2006 年公告未明示。</td>
+          </tr>
+          <tr>
+            <td><strong>醫療／護理機構</strong></td>
+            <td>2006 年公告列明：醫療機構、護理機構每日供餐 200 人次以上的群體，營養設計與供應監督由營養師為之。</td>
+            <td>公告中的「醫療／護理機構」不應自動擴張到所有老人福利或長照機構；核對機構許可類別、服務對象、供餐量及其他設置／評鑑規定。</td>
+          </tr>
+          <tr>
+            <td><strong>軍隊</strong></td>
+            <td>本次未確認與學校／醫療及護理機構門檻相同的中央供餐人數公告。</td>
+            <td>逐案查看國防採購公告、規格及履約契約，確認是否須配置營養專業人力、資格佐證、駐點或菜單審查；未查得通案門檻不代表個案無要求。</td>
+          </tr>
+          <tr>
+            <td><strong>老人福利／一般長照</strong></td>
+            <td>2006 年公告沒有列出老人福利或一般長照機構的獨立供餐門檻。</td>
+            <td>先確認實際許可類別；長照服務、住宿式機構規範及個別評鑑／採購文件可能另訂菜單、特殊餐或營養服務要求。</td>
+          </tr>
+          <tr>
+            <td><strong>矯正／收容機構</strong></td>
+            <td>本次公開法規查核未確認與學校或醫療／護理機構相同的通用供餐人數門檻。</td>
+            <td>逐一查當年度標案、機關規範、契約及履約表單；不得從「未查得通案門檻」推論個案不需要營養師。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note danger">
+      <strong>通訊服務與掛名風險：</strong>「顧問」名稱不改變實際業務性質。團膳第 3 款業務不得以通訊執業方式執行；營養師須親自執行並留存業務紀錄。不要借用證照、代簽、虛列法定專任人員，或在投標資料聲稱未實際提供的服務。行政管理諮詢若與法定業務交疊，先向地方衛生局確認界線。
+    </div>
+  </section>
+
+  <!-- 4. 政府採購文件準備清單 -->
+  <section class="card" aria-labelledby="procurement-title">
+    <h2 id="procurement-title"><span class="num">4</span>政府採購文件準備清單（常見構面，逐案確認）</h2>
+    <p class="muted small">以下不是所有團膳案的通案資格；每一項都是「標案有寫才要求」。請以實際招標文件與契約逐項核對。</p>
+    <div class="grid two">
+      <div>
+        <h3>資格文件</h3>
+        <ul>
+          <li>廠商登記或設立證明、納稅證明、信用證明</li>
+          <li>近三年承包團膳或供餐規模相當之實績</li>
+          <li>專業人員證照（營養師、食品衛生管理人員等）</li>
+          <li>HACCP 或衛生管理相關證明（若標案要求）</li>
+          <li>食品業者登錄字號、產品責任保險</li>
+        </ul>
+      </div>
+      <div>
+        <h3>評選常見構面</h3>
+        <ul>
+          <li>經營與組織、履約實績、專業人員規劃</li>
+          <li>供應計畫、菜單設計、製程衛生與品質管理</li>
+          <li>食材溯源、採購驗收、倉儲管理</li>
+          <li>熟食餐車設備、運送時間／里程／路線、司機衛生管理</li>
+          <li>食安可靠度：稽查紀錄、食安事件紀錄、緊急應變</li>
+          <li>簡報與答詢</li>
+        </ul>
+      </div>
+    </div>
+    <details id="schoolContractDetails">
+      <summary>學校供餐的法律要求與契約核對</summary>
+      <div class="details-body">
+        <p>現行《學校衛生法》第 23 條要求學校供膳依學校午餐食物內容及營養基準提供餐食，並由營養師督導及執行；食材應優先採用中央農業主管機關認證的在地優良農產品，並禁止特定基改生鮮食材及其初級加工品。學校自身義務與供應商資格須分開閱讀。機關可能在契約加列檢驗、溯源、配送溫度、留樣、駐點或人力條件；例如各縣市當年度採購文件有不同評選項目，須以本案招標文件為準，不把舊版「四章一Q」當作現行通案規定。</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 5. 服務交付物與合約條款 -->
+  <section class="card" aria-labelledby="deliverables-title">
+    <h2 id="deliverables-title"><span class="num">5</span>服務交付物與合約條款建議</h2>
+    <div class="grid two">
+      <div>
+        <h3>可交付成果</h3>
+        <ul>
+          <li><strong>GHP／HACCP 差距分析報告：</strong>對照現行法規與標案要求，列出缺失、風險等級、改善時程與責任人。</li>
+          <li><strong>投標資格與評選文件檢核表：</strong>逐項對應招標文件，標示已有／待補／需外部取得。</li>
+          <li><strong>菜單營養分析與業務紀錄：</strong>含適用營養基準對照、循環菜單、特殊飲食處理原則；涉及團膳第 3 款法定業務時，由合格、已登記且親自執行的營養師辦理，不能以通訊核准取代。</li>
+          <li><strong>食材溯源與供應商管理表單、溫度與運送監控表單、稽核報告與缺失改善追蹤表。</strong></li>
+          <li><strong>客訴與食安事件處理流程圖／通報演練紀錄、教育訓練教材與簽到紀錄。</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h3>合約應明訂的界線</h3>
+        <ul>
+          <li><strong>服務方式與時數上限：</strong>遠距／現場／駐廠；每月會議次數、稽核次數、菜單審閱份數、事件待命是否含固定費。</li>
+          <li><strong>責任範圍與風險分配：</strong>列明顧問與廠商各自承接的現場、文件、專業判斷及事故處理工作；依實際履約與可歸責事由分配責任。對依法不得免除的責任，不以契約排除。</li>
+          <li><strong>通訊業務界線：</strong>如提供第 12 條第 1 項第 1、2 款個人營養評估或諮詢，才按辦法確認執業年資、執行單位、事前核准及紀錄要求；團膳第 3 款不能列為通訊執行項目。</li>
+          <li><strong>智慧財產、保密、利益衝突、終止與交接。</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <strong>避免承諾「保證得標」「保證通過稽查」或無上限服務。</strong>這類承諾可能造成合約爭議；是否另有法律責任須看實際表示、文件及履約情形。顧問可以協助準備與改善，但不能代替機關評選、衛生局稽查認定或廠商現場控制。
+    </div>
+  </section>
+
+  <!-- 6. 風險提示 -->
+  <section class="card" aria-labelledby="risk-title">
+    <h2 id="risk-title"><span class="num">6</span>高風險法規陷阱</h2>
+    <ol>
+      <li><strong>「自述符合 GHP」不等於法定義務完成。</strong>GHP 適用食品業者；須留存可核對的衛生管理、教育訓練、製程、清潔與改善紀錄。食藥署 2026 年餐盒食品稽查仍發現 GHP/HACCP、登錄及專任人員缺失。</li>
+      <li><strong>漏掉餐盒工廠的 HACCP 與專任人員。</strong>餐盒食品包括盒餐及大容器團膳；具工廠登記規模者須核實 HACCP 義務。公告範圍內也至少須有一名專任食品技師或營養師；月聘外部顧問不自動滿足這項義務。</li>
+      <li><strong>營養師「掛名」或遠距簽團膳文件。</strong>《營養師法》第 13 條要求親自執行；2026-10-01 施行的通訊執業辦法只允許第 12 條第 1 項第 1、2 款，沒有納入團膳第 3 款。借證、代簽、虛列專任人力或提交不實服務承諾，可能分別引發專業法規與採購文件／履約風險。</li>
+      <li><strong>把一個機構門檻套用到所有標案。</strong>2006 年公告的 500 人學校及 200 人次醫療／護理門檻，與《學校衛生法》對學校供膳督導及員額的規定不同；老人福利、長照、軍隊及收容個案須按許可類型及招標文件查核。</li>
+      <li><strong>忽略 GHP 的法定溫度要求。</strong>如業者屬 GHP 第 32 條適用的餐飲業，菜餚室溫存放不得達 2 小時以上，熟食熱藏須達 60°C 以上；不可把它寫成「60°C 以上或 4 小時內」二選一。配送、留樣及其他時限則再核對適用法規及契約。</li>
+      <li><strong>把外聘顧問一概視為轉包，或忽略真正轉包。</strong>採購法第 65 條針對原契約應自行履行的全部或主要部分；第 67 條允許部分分包。是否適用及是否須事先核准，要按契約性質、主要履約內容及招標文件判斷。借用／冒用證件投標是另一項風險。</li>
+      <li><strong>食安事件通報與契約應變脫節。</strong>契約的機關通報、暫停供餐、替代餐及記點責任，與衛生主管機關通報程序分別核對；保存批次、溫度、留樣與客訴資料，才能支援調查和改善。</li>
+    </ol>
+  </section>
+
+  <!-- 7. 報酬估算器 -->
+  <section class="card" aria-labelledby="calc-title">
+    <h2 id="calc-title"><span class="num">7</span>報酬估算器（估算，不宣稱行情）</h2>
+    <div class="note info">
+      <strong>目前可核實資料：</strong>本次未找到可直接適用於團膳營養師顧問的官方／公會顧問費率表。營養師公會全聯會 2026-01-19 建議團膳相關新進營養師第一年專任起薪不低於月薪 4 萬元；這是薪資建議，不是顧問報酬行情。政府機關委託專業服務的計費規則列有總包價、單價、按月／按日／按時及成本加公費等方式，僅作計價架構參考，不是私聘顧問價格表。請依服務範圍、工時、現場頻率、交通、待命與責任逐項報價。
+    </div>
+    <div class="calc">
+      <div class="row">
+        <div>
+          <label for="hours">每月投入時數（小時）</label>
+          <input type="number" id="hours" min="0" step="0.5" placeholder="例如 8" inputmode="decimal">
+        </div>
+        <div>
+          <label for="rate">你設定的時薪（新臺幣／小時）</label>
+          <input type="number" id="rate" min="0" step="50" placeholder="由你自行決定" inputmode="decimal">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="months">合約月數</label>
+          <input type="number" id="months" min="1" step="1" placeholder="例如 12" inputmode="numeric">
+        </div>
+        <div>
+          <label for="travel">每月差旅與其他直接費用（新臺幣）</label>
+          <input type="number" id="travel" min="0" step="100" placeholder="例如 2000" inputmode="decimal">
+        </div>
+      </div>
+      <div class="result-box" aria-live="polite">
+        <div class="line"><span>每月顧問費（時數 × 時薪）</span><span id="monthlyFee">—</span></div>
+        <div class="line"><span>每月含差旅合計</span><span id="monthlyTotal">—</span></div>
+        <div class="line"><span>合約期間總額（不含稅、不含超額）</span><span id="grandTotal" class="big">—</span></div>
+        <p class="small muted" style="margin:10px 0 0;">以上僅為算術結果，未包含稅務、保險、超額服務或待命成本。實際報價應在確認供餐量、機構類型、專任人力與服務責任後另行議定。團膳第 3 款現場監督不能改列為通訊執業。</p>
+        <p class="small muted" id="calcStatus" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 官方來源 -->
+  <section class="card" aria-labelledby="sources-title">
+    <h2 id="sources-title"><span class="num">8</span>官方來源連結（查閱日期 2026-10-17）</h2>
+    <p class="muted small">以下連結直接指向全國法規資料庫、主管機關公告或已查核的公開參考。部分公告之生效日、適用門檻與最新修正，仍應以查閱當日官方公告為準；標案文件須逐案確認。</p>
+    <ul class="src-list">
+      <li>
+        <span class="src-name">食品安全衛生管理法（第 8 條、第 44 條）</span>
+        <span class="src-note">GHP 所有食品業者適用；HACCP 依中央公告類別規模；屆期不改正之罰則。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040001" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">食品良好衛生規範準則（GHP）</span>
+        <span class="src-note">第 2 條適用食品業者；第 32 條第 5 款規定餐飲業製備菜餚室溫存放時限及熟食熱藏溫度。現行頁面修正日期 114-06-04；個別業者適用章節依實際登錄類別確認。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040122" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">營養師法（第 7、10、12–14 條）</span>
+        <span class="src-note">執業登記、一處執業、特定群體膳食設計與供應監督、親自執行、紀錄保存至少五年。修正日期 112-04-26。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040006" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">營養師通訊執行業務辦法</span>
+        <span class="src-note">2026-09-01 發布、10-01 施行。第 2 條只允許營養師法第 12 條第 1 項第 1、2 款；第 3、4 條另定執業處所、兩年實際執業經驗及執行單位事前申請條件；不包含團膳第 3 款。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0020261" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">食品業者專門職業或技術證照人員設置及管理辦法</span>
+        <span class="src-note">修正日期 109-11-06。第 2–4 條：公告類別及規模者，餐盒食品製造／加工／調配業得配置食品技師或營養師，至少一名專任；初訓 30 小時、在職每年 8 小時。第 5 條技術士比例按適用業別查核。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040115" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">衛福部公告：應置專門職業或技術證照人員之食品業者類別及規模規定</span>
+        <span class="src-note">行政院公報，107-05-01 發布施行；餐盒食品製造／加工／調配業的適用規模與工廠登記條件須對照公告附表及實際登記類別。</span>
+        <a href="https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg024079/ch08/type1/gov70/num29/Eg.htm" target="_blank" rel="noopener">行政院公報資訊網</a>
+      </li>
+      <li>
+        <span class="src-name">食藥署：餐盒食品工廠 HACCP 符合性稽查說明</span>
+        <span class="src-note">官方說明盒餐與大容器團膳定義、具工廠登記規模餐盒食品業者自 99-09-15 起全面強制 HACCP；無工廠登記者可依規定自願申請符合性稽查。</span>
+        <a href="https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f638733092092410695" target="_blank" rel="noopener">衛生福利部食品藥物管理署文件</a>
+      </li>
+      <li>
+        <span class="src-name">食藥署：115 年度餐盒食品工廠及製造業稽查結果</span>
+        <span class="src-note">發布及維護日期 2026-10-01；查核登錄、GHP、HACCP、追溯及專任人員，報告了複查缺失及依法處理情形。</span>
+        <a href="https://www.fda.gov.tw/TC/siteContent.aspx?sid=13760" target="_blank" rel="noopener">衛生福利部食品藥物管理署</a>
+      </li>
+      <li>
+        <span class="src-name">營養師法第 12 條第 2 項所稱特定群體其類別、人數、用膳餐次之規定</span>
+        <span class="src-note">行政院公報 95-02-07：醫療／護理機構每日供餐 200 人次以上；學校每日 500 人以上且每週至少供餐一次。公告未明確說明多校跨址加總，其他機構勿直接類推。</span>
+        <a href="https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg012023/ch08/type1/gov70/num1/OEg.pdf" target="_blank" rel="noopener">行政院公報</a>
+      </li>
+      <li>
+        <span class="src-name">學校衛生法（第 22、23、23-1、23-3 條）</span>
+        <span class="src-note">修正日期 115-09-23。學校供膳營養師督導及執行、40 班以上學校設置營養師、學校 GHP 自主管理及採購契約要求；學校義務與廠商標案資格分開判斷。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0020050" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">食品藥物業者登錄平台（非登不可）</span>
+        <span class="src-note">可查詢食品業者登錄字號、地址、統一編號與登錄業別；核對團膳供應或餐盒製造之登錄狀態。</span>
+        <a href="https://fadenbook.fda.gov.tw/" target="_blank" rel="noopener">食品藥物業者登錄平台</a>
+      </li>
+      <li>
+        <span class="src-name">基隆市教育處：2026 年校園午餐採購評選示例</span>
+        <span class="src-note">單一地方政府當年度評選範例，列出人員、菜單、溯源、食品安全紀錄與應變計畫等評選面向；僅供會談準備參考，不代表全國一致規則。</span>
+        <a href="https://www.klcg.gov.tw/tw/education/4427-314450.html" target="_blank" rel="noopener">基隆市政府教育處</a>
+        <br><a href="https://www.klcg.gov.tw/wSite/public/Attachment/01006/f1774605228749.pdf" target="_blank" rel="noopener">評選文件 PDF（修訂日期 2026-03-25）</a>
+      </li>
+      <li>
+        <span class="src-name">政府採購法（第 50 條、第 65 條）</span>
+        <span class="src-note">第 50 條處理借用／冒用名義或證件投標等情形；第 65 條定義轉包為將應自行履行的全部或主要部分交由其他廠商履行，第 67 條另有分包規定。具體適用依契約及事實判斷。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030057" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">機關委託專業服務廠商評選及計費辦法</span>
+        <span class="src-note">修正日期 114-05-23。列總包／單價、按月／日／時計酬及服務成本加公費等計價方法；非團膳營養師顧問價格表，適用時須看機關採購性質及招標文件。</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030076" target="_blank" rel="noopener">全國法規資料庫</a>
+      </li>
+      <li>
+        <span class="src-name">中華民國營養師公會全國聯合會：團膳相關新進營養師起薪建議</span>
+        <span class="src-note">公告日期 2026-01-19；建議團膳相關工作新進營養師第一年合理起薪不低於月薪 4 萬元。這是公會非強制的專任薪資建議，不是顧問費率。</span>
+        <a href="https://www.dietitians.org.tw/publicUI/B/B10101.aspx?arg=8DE58D7BB12A89F053" target="_blank" rel="noopener">中華民國營養師公會全國聯合會公告</a>
+      </li>
+    </ul>
+    <div class="note">
+      <strong>查閱日期：2026-10-17。</strong>上開連結與摘要均在該日檢視；法規或公告後續如有修正，以官方最新公布為準。本頁不是法律意見，也不取代招標文件判讀或個案合約審閱。
+    </div>
+  </section>
+
+  <footer>
+    <p>本頁為獨立研究初稿，依公開法規、主管機關文件與可查證契約範本整理。所有涉及「是否已達法定門檻」的判斷，均須以實際工廠登記資料、食品業者登錄、供餐規模與招標文件逐案確認。不構成法律意見，亦不保證投標或稽查結果。</p>
+    <p class="no-print">鍵盤操作：使用 <span class="kbd">Tab</span> 移動焦點、<span class="kbd">Space</span> 切換勾選、<span class="kbd">Enter</span> 展開／收合來源區塊。</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "tf_dietitian_consult_checklist_v1";
+  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.checklist input[type="checkbox"]'));
+
+  function getState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      var parsed = raw ? JSON.parse(raw) : {};
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      var status = document.getElementById("storageStatus");
+      if (status) status.textContent = "勾選狀態已儲存在此瀏覽器。";
+      return true;
+    } catch (e) {
+      var status = document.getElementById("storageStatus");
+      if (status) status.textContent = "本機儲存目前不可用；勾選只在此頁開啟期間保留。";
+      return false;
+    }
+  }
+
+  function updateProgress() {
+    var total = checkboxes.length;
+    var checked = checkboxes.filter(function (cb) { return cb.checked; }).length;
+    var pct = total ? Math.round((checked / total) * 100) : 0;
+    var bar = document.getElementById("progressBar");
+    var meter = document.getElementById("progressMeter");
+    var text = document.getElementById("progressText");
+    if (bar) bar.style.width = pct + "%";
+    if (meter) meter.setAttribute("aria-valuenow", String(pct));
+    if (text) text.textContent = "已完成 " + checked + " / " + total + " 項（" + pct + "%）";
+  }
+
+  function restore() {
+    var state = getState();
+    checkboxes.forEach(function (cb) {
+      if (Object.prototype.hasOwnProperty.call(state, cb.id) && typeof state[cb.id] === "boolean") {
+        cb.checked = state[cb.id];
+      }
+    });
+    updateProgress();
+  }
+
+  checkboxes.forEach(function (cb) {
+    cb.addEventListener("change", function () {
+      var state = getState();
+      state[cb.id] = cb.checked;
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  restore();
+
+  // 展開／收合學校供餐補充說明
+  var expandBtn = document.getElementById("expandAllBtn");
+  if (expandBtn) {
+    expandBtn.addEventListener("click", function () {
+      var details = document.getElementById("schoolContractDetails");
+      if (!details) return;
+      details.open = !details.open;
+      expandBtn.setAttribute("aria-expanded", String(details.open));
+      expandBtn.textContent = details.open ? "收合學校供餐補充說明" : "展開學校供餐補充說明";
+    });
+  }
+
+  // 重設勾選
+  var resetBtn = document.getElementById("resetBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      if (!window.confirm("確定要清除所有勾選嗎？此動作無法復原。")) return;
+      checkboxes.forEach(function (cb) { cb.checked = false; });
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      updateProgress();
+    });
+  }
+
+  // 報酬估算器
+  function numberField(id) {
+    var el = document.getElementById(id);
+    if (!el || !el.value.trim()) return { valid: false, value: null };
+    var v = Number(el.value);
+    if (!Number.isFinite(v) || !el.checkValidity()) return { valid: false, value: null };
+    return { valid: true, value: v };
+  }
+
+  function fmt(n) {
+    if (!isFinite(n)) return "—";
+    return "NT$ " + Math.round(n).toLocaleString("zh-TW");
+  }
+
+  function calc() {
+    var fields = ["hours", "rate", "months", "travel"].map(numberField);
+    var status = document.getElementById("calcStatus");
+    var mf = document.getElementById("monthlyFee");
+    var mt = document.getElementById("monthlyTotal");
+    var gt = document.getElementById("grandTotal");
+    if (fields.some(function (f) { return !f.valid; })) {
+      if (mf) mf.textContent = "—";
+      if (mt) mt.textContent = "—";
+      if (gt) gt.textContent = "—";
+      if (status) status.textContent = "請填入有效數值；月數須為正整數，並符合欄位的最小值與步進設定。";
+      return;
+    }
+    var hours = fields[0].value;
+    var rate = fields[1].value;
+    var months = fields[2].value;
+    var travel = fields[3].value;
+    if (!Number.isInteger(months) || months < 1) {
+      if (mf) mf.textContent = "—";
+      if (mt) mt.textContent = "—";
+      if (gt) gt.textContent = "—";
+      if (status) status.textContent = "合約月數請輸入 1 以上的整數。";
+      return;
+    }
+
+    var monthlyFee = hours * rate;
+    var monthlyTotal = monthlyFee + travel;
+    var grandTotal = monthlyTotal * months;
+    if (![monthlyFee, monthlyTotal, grandTotal].every(Number.isFinite) || grandTotal > Number.MAX_SAFE_INTEGER) {
+      if (mf) mf.textContent = "—";
+      if (mt) mt.textContent = "—";
+      if (gt) gt.textContent = "—";
+      if (status) status.textContent = "數值超出安全計算範圍，請調整輸入。";
+      return;
+    }
+
+    if (mf) mf.textContent = (hours && rate) ? fmt(monthlyFee) : "—";
+    if (mt) mt.textContent = (hours && rate) ? fmt(monthlyTotal) : "—";
+    if (gt) gt.textContent = (hours && rate && months) ? fmt(grandTotal) : "—";
+    if (status) status.textContent = "此為依輸入金額計算的估算，並非市場費率。";
+  }
+
+  ["hours", "rate", "months", "travel"].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener("input", calc);
+  });
+
+  calc();
+})();
+</script>
+</body>
+</html>
