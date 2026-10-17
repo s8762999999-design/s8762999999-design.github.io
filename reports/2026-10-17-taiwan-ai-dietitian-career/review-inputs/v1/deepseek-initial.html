@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>臺灣營養師AI應用與團膳顧問服務研究報告</title>
+<style>
+:root{--fg:#111;--bg:#fff;--accent:#0b4f8a;--muted:#555;--line:#ccc;--err:#b00020;--ok:#0a6b3d}
+*{box-sizing:border-box}
+html{font-size:18px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+header{padding:1rem;border-bottom:3px solid var(--accent)}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+h2{font-size:1.2rem;margin:1.5rem 0 .5rem;padding-bottom:.2rem;border-bottom:2px solid var(--line)}
+h3{font-size:1.05rem;margin:1rem 0 .3rem}
+p,li{font-size:1rem}
+a{color:var(--accent);text-decoration:underline}
+nav{padding:.8rem 1rem;background:#f2f6fa;border-bottom:1px solid var(--line)}
+nav ol{margin:0;padding-left:1.2rem}
+nav li{margin:.15rem 0}
+main{padding:1rem;max-width:60rem;margin:0 auto}
+section{margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;margin:.5rem 0;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:.4rem;text-align:left;vertical-align:top}
+th{background:#eef3f8}
+.note{color:var(--muted);font-size:.9rem}
+.calc{background:#f7f9fb;border:2px solid var(--accent);border-radius:8px;padding:1rem;margin:1rem 0}
+.calc label{display:block;margin:.5rem 0 .2rem;font-weight:600}
+.calc input{width:100%;padding:.5rem;font-size:1rem;border:1px solid #777;border-radius:4px}
+.calc button{margin-top:.8rem;padding:.6rem 1.2rem;font-size:1rem;background:var(--accent);color:#fff;border:0;border-radius:4px;cursor:pointer}
+.calc button:hover{background:#083a66}
+#err{color:var(--err);font-weight:600;min-height:1.4em;margin:.5rem 0}
+#out{font-size:1.15rem;font-weight:700;color:var(--ok);min-height:1.5em}
+footer{padding:1rem;border-top:3px solid var(--accent);text-align:center;font-size:.95rem}
+@media print{nav,.calc button{display:none}body{font-size:12pt}a{color:#000}header,footer{border-color:#000}}
+</style>
+</head>
+<body>
+<header>
+<h1>臺灣營養師AI應用與團膳顧問服務研究報告</h1>
+<p class="note">研究日期：2026-10-17｜定位：營養／團膳AI流程顧問，非轉工程師</p>
+</header>
+<nav aria-label="報告目錄">
+<ol>
+<li><a href="#summary">摘要</a></li>
+<li><a href="#intro">前言</a></li>
+<li><a href="#method">方法</a></li>
+<li><a href="#market">市場</a></li>
+<li><a href="#skills">能力</a></li>
+<li><a href="#works">作品</a></li>
+<li><a href="#plan90">90天路線</a></li>
+<li><a href="#bizrisk">商業與風險</a></li>
+<li><a href="#ai">AI參與</a></li>
+<li><a href="#limits">限制與文獻</a></li>
+</ol>
+</nav>
+<main>
+<section id="summary">
+<h2>1. 摘要</h2>
+<p>目標是提升現有工作效率與顧問收入，不是立刻轉工程師。優先能力為資料結構與單位、來源版本查證、工作流程與驗收、簡單HTML／Git及維護、需求訪談與報價。三件作品：招標原文需求對照表、可稽核營養成本表、履約缺失追蹤。90天內先保一件完整，另兩件雛形。所有案例數與時數均為自訂建議，不是實證門檻；不承諾個人省時或收入。</p>
+</section>
+<section id="intro">
+<h2>2. 前言</h2>
+<p>一位臺灣營養師正拓展團膳顧問服務，已會跨AI查資料、製作報告與HTML，但程式／資料能力未確認。本報告回答「如何跟上」，以提升現有工作效率與增加顧問收入為目標，區分事實、建議與未知。</p>
+</section>
+<section id="method">
+<h2>3. 方法</h2>
+<p>以官方與原始直接來源核對，標註日期；不以AI票數或未核來源裁決。凡無原文支持者列為未知或自訂經驗法則。市場數字僅用於理解趨勢，不用於推導個人付費需求或收入。</p>
+</section>
+<section id="market">
+<h2>4. 市場</h2>
+<table>
+<tr><th>事實</th><th>來源與日期</th><th>限制</th></tr>
+<tr><td>數產署AI人才指引3.0新增「AI治理素養」與「AI協作與開發」</td><td><a href="https://web.moda.gov.tw/ADI/news/latest-news/19724" target="_blank" rel="noopener">數產署 2026-05-19</a></td><td>能力參考框架，非強制證照</td></tr>
+<tr><td>行政院分應用／開發／研究</td><td><a href="https://www.ey.gov.tw/Page/9277F759E41CCD91/082215d1-ebe7-40dc-b258-f74ef00657f5" target="_blank" rel="noopener">行政院 2026-05-21</a></td><td>政策分類，非個人職能標準</td></tr>
+<tr><td>104平台民生服務業每月1.7萬名AI招募需求</td><td><a href="https://blog.104.com.tw/104data-service-industry-report-2026/" target="_blank" rel="noopener">104 2026-07-22</a></td><td>非全國唯一職缺、未明細統計月份、非營養顧問付費需求</td></tr>
+</table>
+<p class="note">未知：營養顧問AI服務的實際付費市場規模與成交價，尚無官方統計。</p>
+</section>
+<section id="skills">
+<h2>5. 能力</h2>
+<ul>
+<li>資料結構與單位：每100g vs 每份、生熟重、可食率、缺值。</li>
+<li>來源版本查證：法規、招標原文、營養基準的版本與頁碼。</li>
+<li>工作流程與驗收：誰負責、期限、證據、複核狀態。</li>
+<li>簡單HTML／Git及維護：固定版型、可重複產出、版本紀錄。</li>
+<li>需求訪談與報價：需求診斷→付費試作→按月維護。</li>
+</ul>
+</section>
+<section id="works">
+<h2>6. 作品</h2>
+<table>
+<tr><th>作品</th><th>驗收重點</th></tr>
+<tr><td>招標原文需求對照表</td><td>原文頁碼／適用／缺件／待確認，每項可回溯原文</td></tr>
+<tr><td>可稽核營養成本表</td><td>成分出處／每100g vs 每份／生熟重／可食率／缺值；公式確定計算，非LLM心算</td></tr>
+<tr><td>履約缺失追蹤</td><td>責任人／期限／證據／複核狀態／週報</td></tr>
+</table>
+<p class="note">90天內先保一件完整，另兩件雛形。</p>
+</section>
+<section id="plan90">
+<h2>7. 90天路線</h2>
+<p>每週5小時為假設，非實證。</p>
+<ol>
+<li>第1–14天：盤點與人工基準。</li>
+<li>第15–30天：先完成作品1。</li>
+<li>第31–60天：固定20案例／驗證重現，與3–5位業者訪談。</li>
+<li>第61–90天：一次限定範圍付費試作，決定續約與技術升級。</li>
+</ol>
+<p class="note">案例數與時數均為自訂建議，不是實證門檻。</p>
+</section>
+<section id="bizrisk">
+<h2>8. 商業與風險</h2>
+<h3>商業驗證</h3>
+<p>需求診斷→付費試作→按月維護。總成本含需求、資料清理、覆核、返工、維護、工具、交通；客戶願付低於成本則縮範圍或停止。不採「50%加價」、「免費試用等於有需求」、「文件50份需RAG」等未核說法。</p>
+<h3>Python／API／RAG</h3>
+<p>依瓶頸、可靠性、保密、總成本判斷，不設通用筆數。RAG不是安全保證；是否需本地部署取決於保密與法遵，非固定文件數。</p>
+<h3>法遵與責任</h3>
+<ul>
+<li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021" target="_blank" rel="noopener">個資法第5／6／8條</a>：第6條列病歷、醫療、健康檢查等，並非所有健康敘述皆屬第6條；部分2025修法未施行需分開。</li>
+<li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0040006" target="_blank" rel="noopener">營養師法7／10／12／13／14／16</a>：不因AI免除親自執業、保密與紀錄義務。</li>
+<li><a href="https://www.president.gov.tw/Page/294/50131" target="_blank" rel="noopener">人工智慧基本法2026-01-14</a>：第4條為政府推動AI原則，不能當全由某一方負責的法源。</li>
+</ul>
+<h3>效果風險</h3>
+<p><a href="https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf" target="_blank" rel="noopener">Organization Science 2026-03-11 DellAcqua等758顧問隨機實驗</a>：同一流程有任務改善也有變差，不能當個人省時或收入保證。</p>
+<h3>工具事實</h3>
+<p><a href="https://learn.microsoft.com/zh-tw/power-query/power-query-what-is-power-query" target="_blank" rel="noopener">Power Query 2026-08-21</a>：圖形介面資料清理可重複刷新，可作為非程式自動化選項。</p>
+</section>
+<section id="ai">
+<h2>9. AI參與</h2>
+<p>整合者稍後依實際完成更新。</p>
+</section>
+<section id="limits">
+<h2>10. 限制與文獻</h2>
+<p>限制：無官方營養顧問AI付費市場統計；無個人成功率或收入實證；法遵責任邊界尚待個案判斷。文獻見上列可點連結與日期。</p>
+</section>
+<section class="calc" aria-labelledby="calcTitle">
+<h2 id="calcTitle">每月省時估算（不換算收入、不存資料）</h2>
+<p class="note">僅供流程檢核；淨節省可為負。數值範圍：分鐘1–600、件數1–10000、維護0–10000。</p>
+<label for="manual">人工每件分鐘</label>
+<input id="manual" type="number" min="1" max="600" step="1" value="30" inputmode="numeric">
+<label for="ai">AI處理＋覆核＋返工總分鐘／件</label>
+<input id="ai" type="number" min="1" max="600" step="1" value="15" inputmode="numeric">
+<label for="count">每月件數</label>
+<input id="count" type="number" min="1" max="10000" step="1" value="20" inputmode="numeric">
+<label for="maintain">每月維護分鐘</label>
+<input id="maintain" type="number" min="0" max="10000" step="1" value="60" inputmode="numeric">
+<button type="button" id="calcBtn">計算淨節省</button>
+<p id="err" role="alert" aria-live="assertive"></p>
+<p id="out" aria-live="polite"></p>
+</section>
+</main>
+<footer>[亮亮營養師 AI研究開發]</footer>
+<script>
+(function(){
+  const ids=['manual','ai','count','maintain'];
+  const rules={manual:[1,600,'人工每件分鐘'],ai:[1,600,'AI每件總分鐘'],count:[1,10000,'每月件數'],maintain:[0,10000,'每月維護分鐘']};
+  const err=document.getElementById('err'),out=document.getElementById('out');
+  function calc(){
+    const v={};
+    for(const id of ids){
+      const el=document.getElementById(id);
+      const n=parseFloat(el.value);
+      const [min,max,name]=rules[id];
+      if(!Number.isFinite(n)||n<min||n>max){
+        err.textContent=name+'需為 '+min+'–'+max+' 的數值';
+        out.textContent='';
+        return;
+      }
+      v[id]=n;
+    }
+    err.textContent='';
+    const net=((v.manual-v.ai)*v.count-v.maintain)/60;
+    out.textContent='每月淨節省：'+net.toFixed(1)+' 小時'+(net<0?'（負值，表示增加工時）':'');
+  }
+  document.getElementById('calcBtn').addEventListener('click',calc);
+  ids.forEach(id=>document.getElementById(id).addEventListener('input',calc));
+})();
+</script>
+</body>
+</html>
