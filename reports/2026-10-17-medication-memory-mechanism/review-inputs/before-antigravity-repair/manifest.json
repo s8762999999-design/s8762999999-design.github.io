@@ -1,0 +1,46 @@
+{
+  "purpose": "Immutable inputs for Antigravity PDF and HTML review",
+  "report_cutoff": "2026-10-17 17:07 Asia/Taipei",
+  "files": [
+    {
+      "name": "report.pdf",
+      "bytes": 397526,
+      "sha256": "431672a4b274ab5f7d67b44143fc15eff07040e913093e8a77df08507cdf5eea"
+    },
+    {
+      "name": "index.html",
+      "bytes": 33711,
+      "sha256": "045f059db8e136346335e13f8b724602fbd0817f4d5b949345fb8ff0e61c658a"
+    },
+    {
+      "name": "page-1.png",
+      "bytes": 157297,
+      "sha256": "0666a2a479cce602366ab4923cc44d8f00072349728f3bb3e6df370e5041cb67"
+    },
+    {
+      "name": "page-2.png",
+      "bytes": 271201,
+      "sha256": "7dc72ec2cf87bf186ce768bbaed5020faaae3f0ebdce6d3d992ea3ce228c861d"
+    },
+    {
+      "name": "page-3.png",
+      "bytes": 321693,
+      "sha256": "b40aa93615e1a67d7be40900dbe7a42470c7055366017fff5b8ca5a58e82358e"
+    },
+    {
+      "name": "page-4.png",
+      "bytes": 206550,
+      "sha256": "afe50359e47ae07999efe875ba3be293cbd66813242df173003457c7b504fb38"
+    },
+    {
+      "name": "page-5.png",
+      "bytes": 208853,
+      "sha256": "1f7faa1ad98953e3452ca2b6d7a8d1b8338d1d46ab07602d32c78dd4f34f7f06"
+    },
+    {
+      "name": "page-6.png",
+      "bytes": 232716,
+      "sha256": "ed732a5436446301d0b3504fa8592488295c2ec0c0acf57fb8a51df7501f128f"
+    }
+  ]
+}
