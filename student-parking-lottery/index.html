@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="供高職行政端釐清學生停車位抽籤規則、準備簽呈、校驗名單與演練現場抽籤的本機處理工具。">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>停車位抽籤工作台｜行政需求探明與公文準備</title>
+<style>:root{--bg:#f3f6f8;--paper:#fff;--ink:#182d3e;--muted:#576d7d;--line:#dce5eb;--accent:#126c68;--deep:#0c4f4c;--pale:#eaf5f1;--navy:#15374c;--amber:#8a510a;--red:#a12c39;--shadow:0 12px 36px #17384c08}
+*{box-sizing:border-box}html{scroll-behavior:auto;scroll-padding-top:20px}body{margin:0;font:16px/1.65 system-ui,-apple-system,'Microsoft JhengHei',sans-serif;color:var(--ink);background:var(--bg)}.shell{max-width:1240px;margin:auto;padding-left:28px;padding-right:28px}button,input,select,textarea{font:inherit}button,.file-button{min-height:44px;border:1px solid #afc5cd;border-radius:9px;padding:9px 15px;background:#fff;color:var(--navy);font-weight:650;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-align:center;text-decoration:none}button:hover:not(:disabled),.file-button:hover{background:#eef5f6;border-color:#5a8b94}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button.primary:hover:not(:disabled){background:var(--deep)}button.soft{background:#edf5f3;border-color:#c6dfd7;color:var(--deep)}button.danger{color:var(--red);border-color:#d6aab1}button:disabled{opacity:.46;cursor:not-allowed}a{color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d28c23;outline-offset:3px}.skip{position:absolute;left:20px;top:-80px;background:#fff;padding:12px;z-index:99}.skip:focus{top:10px}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.topbar{display:flex;align-items:center;gap:14px;padding:23px 0}.brand{display:flex;align-items:center;gap:12px;flex:1}.brandmark{display:grid;place-items:center;background:var(--accent);color:#fff;font-size:26px;font-weight:800;width:43px;height:43px;border-radius:12px}.brand strong{display:block;font-size:17px}.brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:.04em}.privacy{font-size:12px;color:var(--deep);background:var(--pale);padding:6px 11px;border-radius:20px;font-weight:650}.hero{display:grid;grid-template-columns:1fr 300px;gap:40px;background:var(--navy);border-radius:20px;color:#fff;padding:34px 42px;position:relative;overflow:hidden}.hero:after{content:'';position:absolute;right:-120px;top:-180px;width:470px;height:470px;border:1px solid #ffffff12;border-radius:50%;pointer-events:none}.eyebrow{font-size:11px;font-weight:750;letter-spacing:.14em;color:var(--muted)}.hero .eyebrow{color:#a5d8cb}.hero h1{font-size:clamp(28px,3.1vw,40px);line-height:1.35;letter-spacing:.02em;margin:13px 0}.hero p{font-size:15px;color:#c7dbe5;margin:0 0 18px}.textlink{font-size:13px;color:#b9e7d9;text-decoration:none;border-bottom:1px solid #b9e7d94a}.hero-flow{align-self:center;background:#ffffff09;border:1px solid #ffffff16;border-radius:14px;padding:17px 22px;z-index:1}.hero-flow div{display:grid;grid-template-columns:38px 1fr;align-items:center;column-gap:12px}.hero-flow b{grid-row:span 2;font-size:20px;color:#9dd8c4;font-variant-numeric:tabular-nums}.hero-flow span{font-size:15px;font-weight:700}.hero-flow small{color:#b5cad5;font-size:11px}.hero-flow i{display:block;font-style:normal;color:#8ab6b7;margin:2px 0 2px 12px;font-size:14px}
+.banner{margin:18px 0 14px;border:1px solid #e3cf9b;border-radius:9px;padding:10px 14px;font-size:13px;font-weight:650;background:#fff7e6;color:var(--amber)}.banner.ok{background:var(--pale);border-color:#bcded0;color:var(--deep)}.steps{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:0 0 13px;overflow-x:auto}.steps button{background:transparent;border:0;white-space:nowrap;font-size:14px;color:var(--muted);flex:1;padding:10px 8px}.steps .step-num{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#e5ecef;font-size:12px}.steps button[aria-current=step]{background:#e2f0eb;color:var(--deep)}.steps button[aria-current=step] .step-num{background:var(--accent);color:#fff}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 254px;gap:24px;margin-top:22px;align-items:start}main{min-width:0}main>section{background:#fff;border:1px solid var(--line);border-radius:15px;padding:28px;box-shadow:var(--shadow)}[hidden]{display:none!important}.section-head{padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px}.step-label{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.12em}h2{font-size:24px;line-height:1.4;margin:5px 0 9px}h3{font-size:16px;line-height:1.5;margin:0 0 13px}.section-head p{font-size:14px;color:var(--muted);margin:0}.subcard,fieldset.group{background:#fff;border:1px solid var(--line);border-radius:11px;padding:20px;margin:18px 0}.subcard h3,fieldset.group legend{color:var(--navy)}fieldset{min-width:0}#lk1,#lk2{border:0;margin:0;padding:0}.grid2,.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 20px}.span2{grid-column:1/-1}.field-row label:first-child,label{font-weight:650;font-size:14px}.field-row>label:first-child,.grid2>label{display:flex;flex-direction:column;gap:6px}.pending-label{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:12px;font-weight:450;margin-top:5px}input:not([type=checkbox]):not([type=file]),textarea,select{width:100%;border:1px solid #bfcfd8;background:#fff;border-radius:7px;padding:10px 11px;color:var(--ink);min-height:44px}input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);flex:none}input:disabled,select:disabled,textarea:disabled{background:#f0f4f6;color:#617483}textarea{resize:vertical;min-height:88px;line-height:1.6}input[readonly]{background:#f2f6f7}label small,.hint{color:var(--muted);font-size:12px;font-weight:450;line-height:1.7}p.hint{margin:12px 0 0}.check{display:flex;align-items:flex-start;gap:9px;line-height:1.6;font-weight:500;margin:14px 0}.check input{margin:3px 0 0}.actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:18px 0}.actions .push{margin-left:auto}.file-button{position:relative;overflow:hidden;font-size:14px}.file-button input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}.file-button:focus-within{outline:3px solid #d28c23;outline-offset:3px}.notice,.callout{background:#edf5f8;border:1px solid #c9dfe7;border-radius:9px;padding:14px 17px;margin:0 0 18px;font-size:13px;line-height:1.8}.notice.error{background:#fff1f1;color:#8e2430;border-color:#e6bdc3}.callout p{margin:7px 0}.callout code{display:block;margin:6px 0}.doc{min-height:540px;font:14px/1.85 system-ui,'Microsoft JhengHei',sans-serif;background:#fbfcfd}.messages{font-size:13px;padding-left:23px}.messages:empty{display:none}.messages .err{color:#a02737}.messages .good{color:var(--deep)}.messages .warn{color:var(--amber)}
+.snapshot{border:1px solid #a9cec1;background:#f2f9f6;border-radius:10px;padding:17px 18px;margin:20px 0}.snapshot-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:13px}.snapshot-top span{color:var(--muted)}code{overflow-wrap:anywhere;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.9}.snapshot code{display:block;color:#155b4e;background:#fff;padding:10px;border:1px dashed #c7ded5;border-radius:6px}.snapshot small{display:block;color:var(--muted);font-size:11px;margin-top:9px}.small-label{font-size:11px;color:var(--muted)}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px;margin:14px 0}table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}th,td{text-align:left;border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top}th{font-size:12px;background:#edf2f5;color:#506777;font-weight:700}tr:last-child td{border-bottom:0}td code{font-size:10px;white-space:normal;display:block;min-width:110px;max-width:260px}.empty{text-align:center;color:var(--muted);padding:35px 12px;white-space:normal}.status-pill{display:inline-block;padding:3px 9px;border-radius:14px;font-size:11px;font-weight:700;background:#eaf3f7;color:#376278}.status-pill.win{color:#0b6652;background:#e3f3eb}.status-pill.wait{color:#8a510a;background:#fff2d5}.readiness{font-size:13px;background:#fff8e9;border:1px solid #e8d7ac;padding:12px 15px;border-radius:9px}.readiness ul{padding-left:20px;color:var(--amber)}summary{font-weight:700;cursor:pointer;min-height:28px}details[open]>summary{margin-bottom:14px}#approvalFields,.checks{border:1px solid var(--line);border-radius:9px;padding:14px 18px;margin:16px 0}#approvalFields legend,.checks legend{font-size:13px;font-weight:700;color:var(--muted)}.draw-button{width:100%;min-height:66px;font-size:19px;font-weight:750;color:#fff;background:var(--accent);border-color:var(--accent);border-radius:11px;box-shadow:0 7px 16px #146c6815}.draw-button:hover:not(:disabled){background:var(--deep)}.draw-note{text-align:center;font-size:12px;color:var(--muted)}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:23px 0}.result-stats:empty{display:none}.stat{border:1px solid var(--line);border-radius:9px;padding:15px}.stat b{display:block;font-size:28px;line-height:1.3;color:var(--navy);font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:var(--muted)}.stat:first-child{background:var(--pale);border-color:#c0ddd0}.search{margin-left:auto;max-width:270px}.pager{font-size:12px;color:var(--muted);justify-content:flex-end}.pager span{margin-right:auto}.pager button{font-size:12px;min-height:36px;padding:5px 12px}.audit{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.export-grid .subcard{margin:0}.export-grid p,.subcard>p{font-size:13px;color:var(--muted)}.export-icon{display:grid;place-items:center;width:36px;height:36px;background:#e6f3ee;color:var(--accent);border-radius:9px;font-size:21px;margin-bottom:14px}.sidebar{position:sticky;top:20px}.summary-card{border:1px solid var(--line);border-radius:13px;padding:21px;background:#fff;box-shadow:var(--shadow)}.summary-card h3{margin:10px 0 19px;font-size:16px;overflow-wrap:anywhere}.summary-card dl{margin:0}.summary-card dl>div{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;padding:11px 0;border-top:1px solid var(--line)}.summary-card dt{color:var(--muted)}.summary-card dd{margin:0;font-size:13px;font-weight:750}.wide{width:100%;font-size:12px}.local-card{padding:21px 10px;font-size:13px;color:var(--muted)}.local-card strong{color:var(--navy);font-size:13px}.local-card p{font-size:12px;line-height:1.8}.guide{margin:26px auto}.guide>details{background:#eaf0f3;border-radius:11px;padding:18px 23px;font-size:13px;color:var(--muted)}.guide h3{margin-top:13px}.guide ol{padding-left:20px}.guide summary{color:var(--navy)}footer{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#6a7f8d;padding-top:20px!important;padding-bottom:28px!important}footer strong{font-size:12px;color:var(--accent)}#printArea{display:none}
+body.proj .hero,body.proj .steps,body.proj .sidebar,body.proj .guide,body.proj .admin-only,body.proj .section-head p,body.proj footer span{display:none!important}body.proj .workspace{grid-template-columns:1fr}body.proj .shell{max-width:1440px}body.proj #s3{padding:32px}body.proj .topbar{padding:12px 0}body.proj h2{font-size:32px}body.proj table{font-size:20px}body.proj th{font-size:16px}body.proj .snapshot code{font-size:18px}body.proj .checks{font-size:20px}body.proj .result-stats b{font-size:38px}
+@media(max-width:1000px){.workspace{grid-template-columns:minmax(0,1fr) 220px;gap:17px}.hero{padding:28px}.hero-flow{width:240px}.hero{grid-template-columns:1fr 240px;gap:20px}main>section{padding:23px}.shell{padding-left:20px;padding-right:20px}}
+@media(max-width:760px){.shell{padding-left:15px;padding-right:15px}.topbar{padding:16px 0;gap:9px}.brandmark{width:35px;height:35px;font-size:21px;border-radius:9px}.brand strong{font-size:14px}.brand small{font-size:10px}.privacy{display:none}.topbar button{font-size:12px;padding:7px 10px}.hero{grid-template-columns:1fr;padding:25px;border-radius:15px}.hero h1{font-size:29px}.hero p{font-size:13px}.hero-flow{display:none}.desktop{display:none}.steps{gap:4px}.steps button{font-size:12px;flex:0 0 auto;padding:8px 10px;gap:5px}.steps .step-num{width:23px;height:23px}.workspace{display:flex;flex-direction:column;margin-top:14px;gap:14px}.workspace main,.workspace aside{width:100%}.sidebar{position:static}.summary-card{padding:17px}.summary-card h3{margin:7px 0 10px}.summary-card dl{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.summary-card .hint,.local-card{display:none}main>section{padding:21px 17px;border-radius:12px}h2{font-size:22px}.section-head{margin-bottom:17px}.grid2,.fields-grid,.export-grid{grid-template-columns:1fr;gap:14px}.span2{grid-column:auto}.subcard,fieldset.group{padding:16px;margin:15px 0}.field-row label:first-child,label{font-size:14px}.actions{gap:8px}.actions button,.file-button{font-size:12px;padding:8px 11px}.actions .push{margin-left:0}.actions .primary{flex:1}.snapshot-top{display:block}.snapshot-top span{display:block;margin-top:6px}.snapshot{padding:15px}.snapshot code{font-size:11px}.callout{padding:13px}.doc{font-size:13px}.draw-button{font-size:17px}.stat{padding:11px}.stat b{font-size:25px}.result-controls{display:flex;flex-wrap:wrap}.result-controls .search{max-width:none;margin:0;width:100%;order:3}.pager button{font-size:12px}.guide .grid2{gap:0}footer{flex-direction:column;gap:6px;text-align:center}.brand small{letter-spacing:0}.hero .eyebrow{font-size:9px}.banner{font-size:12px}body.proj table{font-size:17px}body.proj #s3{padding:17px}body.proj .snapshot code{font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{@page{size:A4;margin:16mm}body>*:not(#printArea){display:none!important}#printArea{display:block;white-space:pre-wrap;font:10.5pt/1.7 'Microsoft JhengHei',sans-serif;color:#000;overflow-wrap:anywhere}body{background:#fff}}
+
+.proj [data-next]{display:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳至目前步驟</a>
+<header class="shell">
+ <div class="topbar"><div class="brand"><span class="brandmark" aria-hidden="true">P</span><div><strong>停車位抽籤工作台</strong><small>校務行政 · 需求探明與現場作業</small></div></div><span class="privacy">● 名單在本機處理</span><button id="bdemo" class="soft">載入示範</button></div>
+ <div class="hero"><div><div class="eyebrow">SCHOOL ADMINISTRATION TOOLKIT · v1.0</div><h1>先確認規則，<br>再公開抽出每一個位置。</h1><p>從行政需求、公文簽辦到主管現場抽籤，<br class="desktop">把需要決定、需要核對、需要留存的事一次整理好。</p><a href="#guide" class="textlink">第一次使用？查看操作與適用範圍 ↗</a></div><div class="hero-flow" aria-label="三階段流程"><div><b>01</b><span>釐清需求</span><small>規則、資格與名額</small></div><i aria-hidden="true">↓</i><div><b>02</b><span>簽辦核對</span><small>草稿、名冊與驗證碼</small></div><i aria-hidden="true">↓</i><div><b>03</b><span>公開抽籤</span><small>配位、備取與紀錄</small></div></div></div>
+ <div id="banner" class="banner drill" role="status" aria-live="polite">演練模式 · 尚未鎖定名單</div>
+ <nav id="nav" class="steps" aria-label="作業步驟"></nav>
+</header>
+<div class="shell workspace">
+<main id="main" tabindex="-1">
+<div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+<section id="s0" aria-labelledby="h0">
+ <div class="section-head"><span class="step-label">STEP 01</span><h2 id="h0">先把行政需求填清楚</h2><p>空白或「待確認」會彙整到公文草稿。此處填寫的是擬議規則，核准後才依正式流程操作。</p></div>
+ <fieldset id="lk1"><legend class="sr-only">行政需求設定</legend><div id="ff"></div>
+ <div class="subcard"><h3>車位與抽籤範圍</h3><div class="grid2">
+ <label>車位類型名稱<input type="text" id="ptype" maxlength="80" placeholder="例如：一般機車位"></label>
+ <label>備取名額上限<input type="number" id="W" min="0" max="2000" step="1" value="0"><small>不足時按剩餘人數列備取，不會產生重複名額。</small></label>
+ <label class="span2">車位代碼（每行一個）<textarea id="slots" rows="5" placeholder="A001&#10;A002&#10;A003" spellcheck="false"></textarea><small>清單順序會鎖定。抽出的完整排名，前 K 人依此順序配位。</small></label>
+ <label>優先保留名額／多池需求<select id="pool"><option value="undec">待主管確認</option><option value="none">無，單一同資格池</option><option value="prio">需要優先池（須另行設計）</option><option value="multi">需要多個池（須另行設計）</option></select></label>
+ <label>學號大小寫比對<select id="case"><option value="cs">區分大小寫（A01 與 a01 不同）</option><option value="ci">不分大小寫（統一轉大寫）</option></select></label>
+ </div><label class="check"><input type="checkbox" id="pre"><span>已由人工審核資格，預先核配者已從本次抽籤名單排除。</span></label>
+ <p class="hint">本版執行單一同資格池的等機率抽籤。需優先、多池、不同權重或逐筆放棄遞補時，會列為另外需要確認／開發的規則；系統不判定學生資格。</p></div></fieldset>
+ <div class="actions"><button id="bexp">匯出需求 JSON（不含學生名單）</button><label class="file-button">匯入需求 JSON<input type="file" id="fimp" accept=".json,application/json"></label><button class="primary push" data-next="1">下一步：公文草稿 →</button></div>
+</section>
+<section id="s1" aria-labelledby="h1" hidden>
+ <div class="section-head"><span class="step-label">STEP 02</span><h2 id="h1">把待裁示事項帶進公文</h2><p>這是簽呈草稿，不會代送公文或產生核准。請依學校格式調整，並由主管核定規則。</p></div>
+ <div id="pendingBox" class="callout"></div>
+ <div class="actions"><button id="bcopy">複製草稿</button><button id="btxt">下載 TXT</button><button id="bprt">列印簽辦／結果紀錄</button></div>
+ <label class="sr-only" for="doc">公文草稿全文</label><textarea id="doc" readonly rows="24" class="doc"></textarea>
+ <p class="hint">名單尚未鎖定時，草稿會標示「尚未鎖定」。完成下一步後回來下載，才會帶入本次名單與規則的 SHA-256。</p>
+ <div class="actions"><button data-next="0">← 回需求填寫</button><button class="primary push" data-next="2">下一步：名單檢核 →</button></div>
+</section>
+<section id="s2" aria-labelledby="h2" hidden>
+ <div class="section-head"><span class="step-label">STEP 03</span><h2 id="h2">確認名單，再鎖定快照</h2><p>使用唯一學號去重，同名學生可以保留。鎖定後的規則、名單與車位將作為本次抽籤的唯一資料來源。</p></div>
+ <div class="callout"><strong>CSV 只需要三欄</strong><code>student_id,class_name,full_name</code><p>學號當文字處理，保留前導零，採 NFKC 正規化並去頭尾空白。可處理 BOM、逗號與雙引號。上限 2,000 人／1 MB；只匯入已經人工審核合格的名單。</p><button id="bcsvsample">下載空白 CSV 範本</button></div>
+ <fieldset id="lk2"><legend class="sr-only">學生名單</legend><div class="actions"><label class="file-button">選擇 CSV 檔<input type="file" id="fcsv" accept=".csv,.txt,text/csv"></label><span class="hint">或直接貼在下方，不會上傳名單</span></div><label for="csv">名單 CSV</label><textarea id="csv" rows="9" spellcheck="false" placeholder="student_id,class_name,full_name&#10;0001,商經一甲,示範學生甲"></textarea></fieldset>
+ <div class="actions"><button id="bval">檢核名單與車位</button><button id="block" class="primary">確認並鎖定快照</button></div>
+ <ul id="msgs" class="messages" aria-live="polite" tabindex="-1"></ul>
+ <div class="snapshot"><div class="snapshot-top"><strong id="lst">尚未鎖定</strong><span id="lcnt">人數／車位數／備取上限</span></div><span class="small-label">規則＋名單＋車位 · SHA-256</span><code id="lh">鎖定後顯示完整 64 碼，請附於簽呈並在現場核對。</code></div>
+ <details class="subcard"><summary>查看名單前 50 筆（行政核對用）</summary><div class="table-wrap"><table><caption class="sr-only">名單預覽</caption><thead><tr><th scope="col">序</th><th scope="col">學號</th><th scope="col">班級</th><th scope="col">姓名</th></tr></thead><tbody id="prev"></tbody></table></div></details>
+ <div class="actions"><button data-next="1">← 回簽呈草稿</button><button class="primary push" data-next="3">下一步：現場抽籤 →</button></div>
+</section>
+<section id="s3" aria-labelledby="h3" hidden>
+ <div class="section-head"><span class="step-label">STEP 04</span><h2 id="h3">主管現場抽籤</h2><p>先公開核對人數、規則與完整驗證碼，再一次產生全體排名。畫面動畫與排序展示不參與亂數計算。</p></div>
+ <div class="admin-only subcard"><label>本次操作模式<select id="runmode"><option value="demo">演練模式（結果供測試）</option><option value="approved">依已登錄核准規則執行</option></select></label><p class="hint">正式作業仍需學校完成規則核定、個資與資安檢視。登錄欄位不會驗證主管是否真的核准。</p>
+ <fieldset id="approvalFields"><legend>核准登錄</legend><label class="check"><input type="checkbox" id="apon"><span>確認本案規則與鎖定名單已奉核</span></label><div class="grid2"><label>核准文號／批示識別<input type="text" id="apno" maxlength="160"></label><label>核准日期<input type="date" id="apdt"></label><label class="span2">奉核附件上的 SHA-256<input type="text" id="aphs" maxlength="64" spellcheck="false" placeholder="請由奉核文件核對，不提供一鍵填入"></label></div></fieldset></div>
+ <details class="readiness admin-only"><summary id="readinessTitle">正式操作前待確認事項</summary><ul id="why"></ul></details>
+ <div class="snapshot"><div class="snapshot-top"><strong>現場公開核對</strong><span id="liveCounts">尚未鎖定</span></div><code id="dh">尚未鎖定</code><small>主持與見證人請核對紙本簽呈附件、名單人數及車位數；驗證碼只代表資料一致，不證明程序未被重抽。</small></div>
+ <fieldset id="prechecks" class="checks"><legend>抽籤前確認</legend><label class="check"><input type="checkbox" class="pc"><span>已當眾核對人數、車位與完整 SHA-256</span></label><label class="check"><input type="checkbox" class="pc"><span>主持人與見證人在場，且已確認本次使用的模式</span></label><label class="check"><input type="checkbox" class="pc"><span>資格經人工確認，預先核配者已排除</span></label></fieldset>
+ <button id="bdraw" class="draw-button" disabled>先鎖定快照，再勾選核對事項</button><p class="draw-note" id="drawNote">每次只抽出一份完整排名；如需重抽，必須先取消舊結果並記錄原因。</p>
+ <div id="sum" class="result-stats" role="status" aria-live="polite"></div>
+ <div class="actions result-controls"><label class="check admin-only"><input type="checkbox" id="full"><span>行政檢視完整姓名／學號</span></label><label class="search"><span class="sr-only">搜尋結果</span><input type="search" id="resultSearch" placeholder="搜尋排名、班級或顯示中的資料"></label><button id="bproj" aria-pressed="false">開啟投影模式</button></div>
+ <div class="table-wrap"><table><caption class="sr-only">本次抽籤結果與車位配對</caption><thead><tr><th scope="col">排名</th><th scope="col">結果</th><th scope="col">車位</th><th scope="col">班級</th><th scope="col">學號</th><th scope="col">姓名</th></tr></thead><tbody id="res"><tr><td colspan="6" class="empty">完成抽籤後，正取、備取與車位配對會顯示在這裡。</td></tr></tbody></table></div>
+ <div class="actions pager"><span id="pageInfo"></span><button id="bprev">上一頁</button><button id="bnext">下一頁</button></div>
+ <details class="subcard admin-only"><summary>取消結果／解除鎖定（會保留本頁歷史）</summary><p class="hint">如需重抽，須先取消舊結果。重新整理或開新分頁仍可重置，請依賴現場見證與匯出紀錄控管。</p><div class="grid2"><label>操作人<input type="text" id="cop" maxlength="80"></label><label>原因<input type="text" id="crs" maxlength="500"></label></div><div class="actions"><button id="bcan" class="danger">取消本次結果</button><button id="bunl">解除鎖定以修改規則</button></div></details>
+ <details class="subcard"><summary>歷次抽籤與操作紀錄</summary><div class="table-wrap"><table><caption class="sr-only">抽籤歷史</caption><thead><tr><th scope="col">次</th><th scope="col">本機時間</th><th scope="col">模式</th><th scope="col">狀態</th><th scope="col">結果驗證碼</th></tr></thead><tbody id="hist"></tbody></table></div><ol id="aud" class="audit"></ol></details>
+ <div class="actions"><button data-next="2">← 查看鎖定名單</button><button class="primary push" data-next="4">下一步：匯出留存 →</button></div>
+</section>
+<section id="s4" aria-labelledby="h4" hidden>
+ <div class="section-head"><span class="step-label">STEP 05</span><h2 id="h4">帶走結果與留存紀錄</h2><p>資料只保存在目前分頁記憶體。請在關閉或重新整理前完成匯出，再依校內核定期限保存。</p></div>
+ <div class="export-grid"><div class="subcard"><span class="export-icon" aria-hidden="true">↗</span><h3>公告版結果</h3><p>遮罩姓名與學號，保留班級、排名及車位。遮罩後仍可能辨識，公告前仍須由學校確認。</p><button id="bcm" class="primary">下載遮罩 CSV</button></div><div class="subcard"><span class="export-icon" aria-hidden="true">▤</span><h3>行政留存</h3><p>含完整姓名、學號、鎖定快照、各次結果及取消紀錄。請僅交付有權限的行政人員。</p><div class="actions"><button id="bcf">完整結果 CSV</button><button id="baj">完整稽核 JSON</button></div></div></div>
+ <div class="subcard"><h3>核對紀錄一致性</h3><p>重算名單與結果驗證碼、重播洗牌索引及核對車位配對。這是資料一致性檢查；未使用外部簽章，不能證明亂數真實、公文核准或不可竄改。</p><div class="actions"><button id="brp">驗證本頁完整紀錄</button><label class="file-button">選擇稽核 JSON 核對<input id="faudit" type="file" accept=".json,application/json"></label></div><p id="rpl" role="status" aria-live="polite"></p></div>
+ <div class="actions"><button id="bprintResult">列印簽名紀錄</button><button id="breset" class="danger push">開始新案件（先匯出留存）</button></div>
+</section>
+</main>
+<aside class="sidebar" aria-label="案件摘要"><div class="summary-card"><div class="eyebrow">本次案件</div><h3 id="sideTitle">尚未命名</h3><dl><div><dt>行政項目待確認</dt><dd id="sidePending">--</dd></div><div><dt>合格名單</dt><dd id="sideCount">未檢核</dd></div><div><dt>車位／備取上限</dt><dd id="sideSlots">--</dd></div><div><dt>快照狀態</dt><dd id="sideLock">編輯中</dd></div></dl><p id="sideTip" class="hint">先填需求，未定項目可以直接標記待主管確認。</p><button id="bnew" class="wide">開始新案件</button></div><div class="local-card"><strong>你的名單留在這裡</strong><p>不使用後端、追蹤或自動儲存。名單不會提交 GitHub；開啟網站本身仍會向 GitHub 請求頁面。</p><span class="small-label">重新整理前，記得匯出。</span></div></aside>
+</div>
+<section id="guide" class="shell guide"><details><summary>操作說明、範圍與技術依據</summary><div class="grid2"><div><h3>建議行政流程</h3><ol><li>需求填寫：由承辦彙整資格、名額、缺席、遞補、異議與留存規則。</li><li>簽辦：先核定規則；名單截止且人工審查後鎖定快照，將驗證碼附於簽呈或核定附件。</li><li>現場：主管與見證人核對相同快照，執行一次完整排名。</li><li>留存：當場匯出及列印，由承辦、主持、見證簽名。</li></ol></div><div><h3>本版適用範圍</h3><p>支援單一同資格池、正備取排序及停車位配對。優先池、多池、加權、多次抽籤資格與逐筆放棄遞補須另行設計；本版不會替學校決定政策，也不會自動寄出公文或結果。</p><p>靜態頁面無法獨立阻止跨分頁重抽、提供可信時間或不可竄改紀錄。請勿將驗證碼視為資安認證或數位簽章。</p></div></div><p class="hint">亂數與雜湊依據：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues" target="_blank" rel="noopener noreferrer">MDN Web Crypto</a>、<a href="https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/" target="_blank" rel="noopener noreferrer">W3C Web Cryptography API</a>。以 getRandomValues、拒絕採樣及 Fisher–Yates 產生無放回排名。軟體測試檢查實作，不等同獨立資安稽核。版本 1.0.0 · 2026/10/21。</p></details></section>
+<footer class="shell"><span>校務行政需求與抽籤輔助工具</span><strong>[亮亮營養師 AI研究開發]</strong></footer>
+<pre id="printArea"></pre>
+<script id="lottery-core">/* Pure data and lottery functions. No network, storage, DOM, or eligibility decisions. */
+(function(root){
+'use strict';
+const VERSION='parking-lottery/1.0.0', ALGORITHM='fisher-yates-u32-rejection-v1';
+const LIMIT=2000, MAX_TEXT=1024*1024;
+const FIELD_KEYS=['title','org','dead','when','place','elig','wait','abs','chair','wit','app','ret','mask'];
+const norm=v=>String(v??'').normalize('NFKC').trim();
+const idNorm=(v,mode)=>mode==='ci'?norm(v).toUpperCase():norm(v);
+const clone=v=>JSON.parse(JSON.stringify(v));
+function freeze(v){if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}return v;}
+function canonical(v){
+ if(v===null||typeof v!=='object')return JSON.stringify(v);
+ if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';
+ return '{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';
+}
+async function hash(v){const s=typeof v==='string'?v:canonical(v);const b=await root.crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b),x=>x.toString(16).padStart(2,'0')).join('');}
+function parseCSV(text){
+ if(typeof text!=='string'||text.length>MAX_TEXT||new TextEncoder().encode(text).byteLength>MAX_TEXT)throw Error('CSV 超過 1 MB 文字上限，請分批整理後再匯入。');
+ text=text.replace(/^\uFEFF/,'');let state='start',field='',row=[],rows=[],lines=[],line=1,rowLine=1;
+ function cell(){row.push(field);field='';state='start';}
+ function end(){const structured=row.length>0||state==='closed';cell();if(structured||row.some(x=>x.trim()!=='')){rows.push(row);lines.push(rowLine);}row=[];if(rows.length>LIMIT+1)throw Error('CSV 超過 2000 人上限。');}
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(state==='quoted'){
+   if(c==='"'){if(text[i+1]==='"'){field+='"';i++;}else state='closed';}
+   else {field+=c;if(c==='\n')line++;}
+   continue;
+  }
+  if(state==='closed'&&c!==','&&c!=='\r'&&c!=='\n')throw Error('CSV 第 '+line+' 行：結束引號後只能接逗號或換行。');
+  if(c===','){cell();continue;}
+  if(c==='\r'||c==='\n'){end();if(c==='\r'&&text[i+1]==='\n')i++;line++;rowLine=line;continue;}
+  if(c==='"'){if(state!=='start')throw Error('CSV 第 '+line+' 行：未加引號的欄位中出現引號。');state='quoted';continue;}
+  state='plain';field+=c;
+ }
+ if(state==='quoted')throw Error('CSV 第 '+rowLine+' 行：引號尚未結束。');
+ if(field!==''||row.length||state==='closed')end();
+ return {rows,lines};
+}
+function validText(value,label,line){
+ const s=norm(value);if(!s)throw Error('第 '+line+' 行：'+label+'不可空白。');
+ if(s.length>80||/[\u0000-\u001F\u007F]/.test(s))throw Error('第 '+line+' 行：'+label+'須為 1–80 字且不可含控制字元。');
+ return s;
+}
+function validateRoster(text,mode='cs'){
+ const errors=[],warnings=[];let roster=[];
+ if(!['cs','ci'].includes(mode))return {errors:['學號大小寫規則不合法。'],warnings,roster};
+ try{
+  const {rows,lines}=parseCSV(text);if(!rows.length)throw Error('請貼上名單或載入示範名單。');
+  const headers=rows[0].map(x=>norm(x).toLowerCase()),expected=['student_id','class_name','full_name'];
+  if(headers.length!==3||new Set(headers).size!==3||expected.some(k=>!headers.includes(k)))throw Error('標題列只能包含 student_id,class_name,full_name 三欄；可調整順序。');
+  const ix=expected.map(k=>headers.indexOf(k)),seen=new Map(),names=new Map();
+  rows.slice(1).forEach((row,i)=>{
+   const line=lines[i+1];try{
+    if(row.length!==3)throw Error('第 '+line+' 行：應為 3 欄，實際為 '+row.length+' 欄。');
+    const id=idNorm(validText(row[ix[0]],'學號',line),mode),cl=validText(row[ix[1]],'班級',line),nm=validText(row[ix[2]],'姓名',line);
+    if(seen.has(id))throw Error('第 '+line+' 行：學號 '+id+' 與第 '+seen.get(id)+' 行重複。');
+    seen.set(id,line);roster.push({id,cl,nm});names.set(nm,(names.get(nm)||0)+1);
+   }catch(e){errors.push(e.message);}
+  });
+  if(!roster.length&&!errors.length)errors.push('標題列下方沒有申請人。');
+  const same=[...names].filter(([,n])=>n>1);if(same.length)warnings.push('同名 '+same.length+' 組：'+same.map(([n])=>n).join('、')+'。學號不同可保留，請用班級與學號核對。');
+ }catch(e){errors.push(e.message);}
+ return {errors,warnings,roster};
+}
+function validateSlots(text){
+ const errors=[],slots=[],seen=new Set();if(String(text).length>MAX_TEXT)return {errors:['車位資料超過大小上限。'],slots};
+ String(text).split(/\r\n|\r|\n/).forEach((x,i)=>{if(!norm(x))return;try{const s=validText(x,'車位代碼',i+1);if(seen.has(s))throw Error('車位代碼 '+s+' 重複。');seen.add(s);slots.push(s);}catch(e){errors.push(e.message);}});
+ if(!slots.length)errors.push('至少填入一個車位代碼。');if(slots.length>LIMIT)errors.push('車位上限為 2000 個。');return {errors,slots};
+}
+function waitCount(value){if(!/^\d+$/.test(String(value))||!Number.isSafeInteger(Number(value))||Number(value)>LIMIT)throw Error('備取名額須為 0–2000 的整數。');return Number(value);}
+function localEpoch(s){
+ const m=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(s||'');if(!m)return NaN;
+ const [y,mo,d,h,mi]=m.slice(1).map(Number),u=new Date(Date.UTC(y,mo-1,d,h,mi));
+ if(y<1900||y>2200||u.getUTCFullYear()!==y||u.getUTCMonth()!==mo-1||u.getUTCDate()!==d||u.getUTCHours()!==h||u.getUTCMinutes()!==mi)return NaN;
+ return u.getTime()-8*3600000;
+}
+function makeSnapshot(rules,roster,slots){
+ const copy=clone(rules);copy.W=waitCount(copy.W);if(!['cs','ci'].includes(copy.case))throw Error('學號大小寫規則不合法。');
+ if(typeof copy.pre!=='boolean'||typeof copy.ptype!=='string'||copy.ptype.length>80||!copy.fields)throw Error('規則欄位型別不合法。');
+ FIELD_KEYS.forEach(k=>{const f=copy.fields[k];if(!f||typeof f.v!=='string'||f.v.length>2000||typeof f.p!=='boolean')throw Error('規則欄位 '+k+' 不完整。');});
+ if(!['none','undec','prio','multi'].includes(copy.pool))throw Error('抽籤池需求不合法。');
+ if(!['demo','administrative'].includes(copy.dataKind))throw Error('資料模式不合法。');
+ if(!Array.isArray(roster)||!roster.length||roster.length>LIMIT||!Array.isArray(slots)||!slots.length||slots.length>LIMIT)throw Error('名單或車位數量不合法。');
+ const seen=new Set(),clean=roster.map((r,i)=>{const id=idNorm(validText(r.id,'學號',i+1),copy.case),cl=validText(r.cl,'班級',i+1),nm=validText(r.nm,'姓名',i+1);if(seen.has(id))throw Error('學號重複：'+id);seen.add(id);return {id,cl,nm};});
+ const cleanSlots=slots.map((s,i)=>validText(s,'車位代碼',i+1));if(new Set(cleanSlots).size!==cleanSlots.length)throw Error('車位代碼重複。');
+ clean.sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0);
+ return freeze({schema:VERSION,rules:copy,roster:clean,slots:cleanSlots});
+}
+function formalIssues(snapshot,approval,fieldLabels,at=Date.now()){
+ const out=[],r=snapshot.rules;
+ if(r.dataKind==='demo')out.push('示範名單僅能演練；正式作業請以新案件匯入經審核名單。');
+ if(r.pool!=='none')out.push('優先／多池需求未定或需另外開發，本版只執行單一同資格池。');
+ if(!r.pre)out.push('請確認預先核配者已經人工審核排除。');
+ for(const [key,label] of Object.entries(fieldLabels||Object.fromEntries(FIELD_KEYS.map(k=>[k,k])))){const f=r.fields?.[key];if(!f||f.p||!norm(f.v)||/待(?:主管)?確認|待填|待定|未定/.test(f.v))out.push(label+'尚未確認。');}
+ if(!norm(r.ptype))out.push('車位類型未填。');
+ const d=localEpoch(r.fields?.dead?.v),w=localEpoch(r.fields?.when?.v);
+ if(!Number.isFinite(d)||!Number.isFinite(w)||d>=w)out.push('截止／抽籤時間須為有效台北時間，且截止時間早於抽籤時間。');
+ if(!approval.on||!norm(approval.no)||!/^\d{4}-\d{2}-\d{2}$/.test(approval.date||'')||!Number.isFinite(localEpoch((approval.date||'')+'T00:00')))out.push('核准勾選、文號與有效核准日期須完整。');
+ if(Number.isFinite(w)&&localEpoch((approval.date||'')+'T00:00')>w)out.push('核准日期不可晚於預計抽籤日期。');
+ if(!Number.isFinite(at)||d>at||w>at)out.push('本機時間尚未到報名截止或預定抽籤時間；不得提前執行。');
+ if(localEpoch((approval.date||'')+'T00:00')>at)out.push('核准日期尚未到達（依本機時間）。');
+ if(!/^[a-f\d]{64}$/.test(approval.hash||'')||approval.hash!==approval.inputHash)out.push('請逐字核對奉核附件中的 SHA-256，須與鎖定值一致。');
+ return out;
+}
+function randomInt(bound,getU32){
+ if(!Number.isInteger(bound)||bound<1||bound>4294967296)throw Error('隨機抽樣範圍不合法。');
+ const next=getU32||(()=>{const a=new Uint32Array(1);root.crypto.getRandomValues(a);return a[0];});
+ const limit=4294967296-(4294967296%bound);let x;
+ do{x=next();if(!Number.isInteger(x)||x<0||x>=4294967296)throw Error('亂數值不合法。');}while(x>=limit);
+ return x%bound;
+}
+function shuffle(ids,getU32){const ranking=ids.slice(),choices=[];for(let i=ranking.length-1;i>0;i--){const j=randomInt(i+1,getU32);choices.push(j);[ranking[i],ranking[j]]=[ranking[j],ranking[i]];}return {ranking,choices};}
+function replay(ids,choices){
+ if(!Array.isArray(choices)||choices.length!==Math.max(0,ids.length-1))throw Error('洗牌索引數量不一致。');
+ const a=ids.slice();for(let i=a.length-1,k=0;i>0;i--,k++){const j=choices[k];if(!Number.isInteger(j)||j<0||j>i)throw Error('洗牌索引超出範圍或不是整數。');[a[i],a[j]]=[a[j],a[i]];}return a;
+}
+function allocate(snapshot,ranking){
+ const byId=new Map(snapshot.roster.map(r=>[r.id,r]));if(ranking.length!==byId.size||new Set(ranking).size!==byId.size||ranking.some(id=>!byId.has(id)))throw Error('排名不是完整且無重複的名單。');
+ const k=snapshot.slots.length,w=snapshot.rules.W;
+ return ranking.map((id,i)=>({...byId.get(id),rank:i+1,status:i<k?'正取':i<k+w?'備取':'未中籤',slot:i<k?snapshot.slots[i]:'',waitRank:i>=k&&i<k+w?i-k+1:0}));
+}
+async function createRecord(snapshot,meta,getU32){
+ if(meta.mode==='已登錄核准'&&formalIssues(snapshot,meta.approval,undefined,Date.parse(meta.time)).length)throw Error('核准或執行時程條件不完整。');
+ const inputHash=await hash(snapshot),{ranking,choices}=shuffle(snapshot.roster.map(x=>x.id),getU32);
+ const payload=freeze({schema:VERSION,algorithm:ALGORITHM,runId:meta.runId,time:meta.time,mode:meta.mode,inputHash,snapshot:clone(snapshot),approval:clone(meta.approval),choices,ranking,results:allocate(snapshot,ranking)});
+ return {payload,postHash:await hash(payload),status:'active',cancel:null};
+}
+async function verifyRecord(record){
+ const errors=[];try{
+  const p=record.payload;if(p.schema!==VERSION||p.algorithm!==ALGORITHM)throw Error('版本／演算法不支援。');
+  const snap=makeSnapshot(p.snapshot.rules,p.snapshot.roster,p.snapshot.slots);
+  if(canonical(snap)!==canonical(p.snapshot))errors.push('快照格式或標準排序不一致。');
+  if(await hash(snap)!==p.inputHash)errors.push('鎖定前雜湊不一致。');
+  if(canonical(replay(snap.roster.map(x=>x.id),p.choices))!==canonical(p.ranking))errors.push('重播排名不一致。');
+  if(canonical(allocate(snap,p.ranking))!==canonical(p.results))errors.push('車位／正備取分配不一致。');
+  if(await hash(p)!==record.postHash)errors.push('結果雜湊不一致。');
+  if(!['演練','已登錄核准'].includes(p.mode))errors.push('模式不合法。');
+  if(p.approval?.inputHash!==p.inputHash||!Array.isArray(p.approval?.checks)||p.approval.checks.length!==3||p.approval.checks.some(x=>x!==true))errors.push('現場勾選或核准資料未綁定本快照。');
+  if(p.mode==='已登錄核准'&&formalIssues(snap,p.approval,undefined,Date.parse(p.time)).length)errors.push('核准模式或執行時程條件不完整。');
+  if(!['active','cancelled'].includes(record.status))errors.push('紀錄狀態不合法。');
+  if(record.status==='cancelled'&&(!norm(record.cancel?.actor)||!norm(record.cancel?.reason)))errors.push('取消紀錄不完整。');
+ }catch(e){errors.push(e.message);}return {ok:!errors.length,errors};
+}
+async function auditEvent(previous,type,actor,reason,details,time){
+ const body=freeze({seq:previous?previous.body.seq+1:1,time,type,actor:norm(actor),reason:norm(reason),details,previousHash:previous?.hash||null});return freeze({body,hash:await hash(body)});
+}
+async function verifyAudit(events){let prev=null;for(let i=0;i<events.length;i++){const e=events[i];if(e.body.seq!==i+1||e.body.previousHash!==(prev?.hash||null)||await hash(e.body)!==e.hash)return false;prev=e;}return true;}
+function verifyCancellation(record,events){
+ const matching=events.filter(e=>e.body.type==='取消抽籤結果'&&e.body.details?.runId===record.payload.runId);
+ if(record.status==='active')return matching.length===0&&record.cancel===null;
+ return record.status==='cancelled'&&matching.length===1&&!!record.cancel&&matching[0].body.actor===record.cancel.actor&&matching[0].body.reason===record.cancel.reason&&matching[0].body.time===record.cancel.time&&matching[0].body.details.postHash===record.postHash;
+}
+function safeCSVCell(value){let s=String(value??'');if(/^[\s\uFEFF]*[=+\-@]/.test(s)||/^[\t\r\n]/.test(s))s="'"+s;return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
+function csv(rows){return '\uFEFF'+rows.map(r=>r.map(safeCSVCell).join(',')).join('\r\n');}
+function maskName(s){const a=Array.from(s);return a.length===1?'○':a.length===2?a[0]+'○':a[0]+'○'.repeat(a.length-2)+a[a.length-1];}
+function maskID(s){const a=Array.from(s),keep=Math.min(3,Math.max(0,a.length-1));return '*'.repeat(a.length-keep)+(keep?a.slice(-keep).join(''):'');}
+function validateRequirements(data,mask){
+ if(data?.schema!=='parking-requirements/1.0'||!data.rules||!Array.isArray(data.slots)||data.slots.length>LIMIT)throw Error('需求 JSON 格式／版本不符。');
+ const r=data.rules;if(!r.fields||!['cs','ci'].includes(r.case)||!['none','undec','prio','multi'].includes(r.pool)||typeof r.pre!=='boolean'||!['demo','administrative'].includes(r.dataKind))throw Error('需求欄位型別不符。');
+ const fields={};for(const key of FIELD_KEYS){const f=r.fields[key];if(!f||typeof f.v!=='string'||f.v.length>2000||typeof f.p!=='boolean')throw Error('需求欄位 '+key+' 不完整。');fields[key]={v:key==='mask'?mask:f.v,p:key==='mask'?false:f.p};}
+ if(typeof r.ptype!=='string'||r.ptype.length>80||data.slots.some(s=>typeof s!=='string'||s.length>80||!norm(s)||/[\r\n]/.test(s)))throw Error('車位資料不合法。');
+ const sl=data.slots.length?validateSlots(data.slots.join('\n')):{errors:[],slots:[]};if(sl.errors.length||sl.slots.length!==data.slots.length)throw Error('車位清單含重複或不合法代碼。');
+ return {rules:{fields,ptype:r.ptype,W:waitCount(r.W),case:r.case,pool:r.pool,pre:r.pre,dataKind:r.dataKind},slots:sl.slots};
+}
+const api={VERSION,ALGORITHM,LIMIT,MAX_TEXT,FIELD_KEYS,norm,idNorm,clone,freeze,canonical,hash,parseCSV,validateRoster,validateSlots,waitCount,localEpoch,makeSnapshot,formalIssues,randomInt,shuffle,replay,allocate,createRecord,verifyRecord,auditEvent,verifyAudit,verifyCancellation,safeCSVCell,csv,maskName,maskID,validateRequirements};
+if(typeof module==='object'&&module.exports)module.exports=api;else root.LotteryCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="lottery-app">'use strict';
+const C=LotteryCore,$=id=>document.getElementById(id),norm=C.norm;
+const MASK='姓名中間字遮罩（單字全遮）；學號最多顯示末 3 碼且至少遮 1 碼；班級仍顯示。';
+const FIELDS=[
+ ['title','案件名稱','text',false,'案件與時程'],['org','承辦單位與承辦人','text',false,'案件與時程'],
+ ['dead','報名截止（台北時間）','datetime-local',true,'案件與時程'],['when','預計抽籤時間（台北時間）','datetime-local',true,'案件與時程'],['place','抽籤地點','text',true,'案件與時程'],
+ ['elig','申請資格與人工審查方式','area',true,'資格與處理規則'],['wait','放棄／逾期與遞補方式','area',true,'資格與處理規則'],['abs','現場缺席處理','area',true,'資格與處理規則'],
+ ['chair','抽籤主持人','text',true,'權責與留存'],['wit','現場見證人','text',true,'權責與留存'],['app','異議管道與期限','area',true,'權責與留存'],['ret','資料留存期限','text',true,'權責與留存'],['mask','公告遮罩方式（本版固定）','text',false,'權責與留存']
+];
+const LABELS=Object.fromEntries(FIELDS.map(f=>[f[0],f[1]]));
+const STEPS=['需求探明','公文草稿','名單鎖定','現場抽籤','匯出留存'];
+const S={locked:false,busy:false,snapshot:null,inputHash:null,lockTime:null,validation:null,draws:[],audit:[],snapshots:[],demo:false,step:0,page:0,revision:0,failedAttempt:null,allowLeave:false};
+function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
+function uid(){if(crypto.randomUUID)return crypto.randomUUID();const b=new Uint8Array(16);crypto.getRandomValues(b);return Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');}
+S.sessionId=uid();
+for(const group of [...new Set(FIELDS.map(f=>f[4]))]){
+ const fieldset=node('fieldset',undefined,'group');fieldset.append(node('legend',group));const grid=node('div',undefined,'fields-grid');
+ for(const [key,label,type,pending,g] of FIELDS.filter(f=>f[4]===group)){
+  const row=node('div',undefined,'field-row'+(type==='area'||key==='mask'?' span2':'')),lab=node('label',label);lab.htmlFor='f_'+key;
+  const input=document.createElement(type==='area'?'textarea':'input');if(type!=='area')input.type=type;input.id='f_'+key;input.maxLength=type==='area'?2000:500;
+  if(key==='title')input.placeholder='例如：115 學年度第 1 學期學生停車位抽籤';
+  if(key==='elig')input.placeholder='請填寫校內核定的資格、申請文件與人工審查方式';
+  if(key==='mask'){input.value=MASK;input.readOnly=true;}
+  lab.append(input);row.append(lab);
+  if(pending){const l=node('label',undefined,'pending-label'),c=document.createElement('input');c.type='checkbox';c.id='p_'+key;l.append(c,document.createTextNode('待主管確認'));row.append(l);}
+  grid.append(row);
+ }
+ fieldset.append(grid);$('ff').append(fieldset);
+}
+STEPS.forEach((title,i)=>{const b=node('button');b.type='button';b.append(node('span',String(i+1),'step-num'),document.createTextNode(title));b.id='n'+i;b.onclick=()=>go(i,true);$('nav').append(b);});
+document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>go(Number(b.dataset.next),true));
+function go(n,focus=false){if(document.body.classList.contains('proj')&&n!==3){say('請先離開投影模式，再檢視行政資料。',true);return;}S.step=n;STEPS.forEach((_,i)=>{$('s'+i).hidden=i!==n;if(i===n)$('n'+i).setAttribute('aria-current','step');else $('n'+i).removeAttribute('aria-current');});refresh();if(focus){$('main').focus({preventScroll:true});$('main').scrollIntoView({block:'start'});}}
+function say(text,error=false){$('notice').hidden=false;$('notice').className='notice'+(error?' error':'');$('notice').textContent=text;}
+function readRules(){return {fields:Object.fromEntries(FIELDS.map(([k,,t,p])=>[k,{v:k==='mask'?MASK:norm($('f_'+k).value),p:p?$('p_'+k).checked:false}])),ptype:norm($('ptype').value),W:$('W').value,pool:$('pool').value,pre:$('pre').checked,case:$('case').value,dataKind:S.demo?'demo':'administrative'};}
+function rNow(){return S.locked?S.snapshot.rules:readRules();}
+function approval(){return {on:$('apon').checked,no:norm($('apno').value),date:$('apdt').value,hash:norm($('aphs').value).toLowerCase(),inputHash:S.inputHash,checks:Array.from(document.querySelectorAll('.pc'),c=>c.checked)};}
+function formalProblems(){return S.snapshot&&S.locked?C.formalIssues(S.snapshot,approval(),LABELS):['請先鎖定規則、名單與車位快照。'];}
+function active(){return S.draws.find(d=>d.status==='active');}
+function pending(r){const p=FIELDS.filter(([k])=>!r.fields[k].v||r.fields[k].p||/待(?:主管)?確認|待填|待定|未定/.test(r.fields[k].v)).map(f=>f[1]);if(r.pool!=='none')p.push('優先名額／多池需求');if(!r.pre)p.push('預先核配名單排除');if(!r.ptype)p.push('車位類型');if(!(S.locked?S.snapshot.slots.length:C.validateSlots($('slots').value).slots.length))p.push('車位代碼清單');try{C.waitCount(r.W);}catch{p.push('備取名額整數');}return p;}
+function readValidation(){
+ const r=C.validateRoster($('csv').value,$('case').value),s=C.validateSlots($('slots').value),errors=[...r.errors,...s.errors],warnings=[...r.warnings];let W=0;
+ try{W=C.waitCount($('W').value);}catch(e){errors.push(e.message);}
+ if(r.roster.length&&s.slots.length){const available=Math.max(0,r.roster.length-s.slots.length);if(r.roster.length<s.slots.length)warnings.push('申請人少於車位，實際正取 '+r.roster.length+' 人；剩餘車位不會重複配給同一人。');if(available<W)warnings.push('備取上限設定 '+W+' 人，實際可列 '+Math.min(available,W)+' 人。');}
+ return {errors,warnings,roster:r.roster,slots:s.slots,W};
+}
+function showValidation(v){S.validation=v;const ul=$('msgs');ul.textContent='';for(const text of v.errors.slice(0,25))ul.append(node('li',text,'err'));if(v.errors.length>25)ul.append(node('li','另有 '+(v.errors.length-25)+' 項錯誤，請先修正上列問題。','err'));for(const t of v.warnings)ul.append(node('li',t,'warn'));if(!v.errors.length)ul.append(node('li','檢核通過：'+v.roster.length+' 人、'+v.slots.length+' 個車位。','good'));const body=$('prev');body.textContent='';v.roster.slice(0,50).forEach((r,i)=>{const tr=body.insertRow();[i+1,r.id,r.cl,r.nm].forEach(t=>tr.append(node('td',String(t))));});refresh();}
+async function addAudit(type,actor,reason,details,time=new Date().toISOString()){const e=await C.auditEvent(S.audit.at(-1),type,actor,reason,details,time);S.audit.push(e);}
+function resetChecks(){document.querySelectorAll('.pc').forEach(c=>c.checked=false);}
+function resetApproval(){$('apon').checked=false;['apno','apdt','aphs'].forEach(id=>$(id).value='');$('runmode').value='demo';resetChecks();}
+function controls(){
+ const frozen=S.locked||S.busy;['lk1','lk2'].forEach(id=>$(id).disabled=frozen);['bdemo','fimp','fcsv'].forEach(id=>$(id).disabled=frozen);$('block').disabled=frozen||!crypto.subtle;
+ $('bval').disabled=S.busy;const has=!!active();$('approvalFields').disabled=S.busy||has;$('runmode').disabled=S.busy||has;$('prechecks').disabled=S.busy||has;
+ ['bcan','bunl','bexp','bcopy','btxt','bprt','bprintResult','bnew','breset','brp','faudit'].forEach(id=>$(id).disabled=S.busy);
+ $('bcan').disabled=S.busy||(!has&&!S.failedAttempt);$('bunl').disabled=S.busy||!S.locked||has||!!S.failedAttempt;
+ $('bcf').disabled=$('bcm').disabled=!has||S.busy;$('baj').disabled=S.busy||!S.audit.length;$('brp').disabled=S.busy||!S.audit.length;
+ const checked=[...document.querySelectorAll('.pc')].every(c=>c.checked),formal=$('runmode').value==='approved',can=S.locked&&checked&&!has&&!S.busy&&!S.failedAttempt&&(!formal||!formalProblems().length);
+ $('bdraw').disabled=!can;$('bdraw').textContent=S.busy?'處理中，請稍候…':has?'本次結果已產生':S.failedAttempt?'嘗試失敗，請先記錄原因並取消':!S.locked?'先鎖定快照，再勾選核對事項':formal?'主管點此執行抽籤':'主管點此開始演練';
+ $('main').setAttribute('aria-busy',String(S.busy));
+}
+function refresh(){
+ const r=rNow(),p=pending(r),d=active(),formal=$('runmode').value==='approved',issues=formalProblems();
+ const banner=$('banner');banner.className='banner'+((d?.payload.mode==='已登錄核准'||(!d&&formal&&!issues.length))?' ok':' drill');
+ banner.textContent=d?'本次結果：'+d.payload.mode+' · '+d.payload.results.length+' 人 · 單一同資格池':S.busy?'正在處理，請勿重複操作':formal&&!issues.length?'已登錄核准 · 待現場抽籤（須以校內文件核對）':'演練模式 · '+(S.locked?'已鎖定快照':'尚未鎖定名單');
+ $('lst').textContent=S.locked?'快照已鎖定 · '+new Date(S.lockTime).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'}):'尚未鎖定';
+ $('lcnt').textContent=S.locked?S.snapshot.roster.length+' 人／'+S.snapshot.slots.length+' 位／備取上限 '+S.snapshot.rules.W:'先檢核名單與車位';
+ $('lh').textContent=$('dh').textContent=S.locked?S.inputHash:'鎖定後顯示完整 64 碼';$('liveCounts').textContent=S.locked?S.snapshot.roster.length+' 人 · '+S.snapshot.slots.length+' 個車位':'尚未鎖定';
+ $('sideTitle').textContent=r.fields.title.v||'尚未命名';$('sidePending').textContent=p.length+' 項';$('sideCount').textContent=S.locked?S.snapshot.roster.length+' 人':S.validation&&!S.validation.errors.length?S.validation.roster.length+' 人':'未通過檢核';
+ $('sideSlots').textContent=(S.locked?S.snapshot.slots.length:C.validateSlots($('slots').value).slots.length)+'／'+(r.W||0);$('sideLock').textContent=S.busy?'處理中':S.locked?'已鎖定':'編輯中';
+ $('sideTip').textContent=S.demo?'目前使用示範資料。正式作業請開始新案件後匯入經審核名單。':S.locked?'簽呈與現場請核對同一份快照驗證碼。':'先填需求，未定項目可以標記待主管確認。';
+ $('pendingBox').textContent=p.length?'待填／待主管確認：'+p.join('、')+'。':'目前未標記待確認欄位；仍須由主管核定，系統不代為確認。';
+ $('why').textContent='';issues.forEach(t=>$('why').append(node('li',t)));$('readinessTitle').textContent='正式操作前待確認：'+issues.length+' 項';
+ if(S.step===1)$('doc').value=docText();renderResults();renderHistory();controls();
+}
+function renderHistory(){const body=$('hist');body.textContent='';S.draws.forEach((d,i)=>{const tr=body.insertRow();[i+1,new Date(d.payload.time).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'}),d.payload.mode,d.status==='active'?'有效':'已取消'].forEach(v=>tr.append(node('td',String(v))));const td=node('td');td.append(node('code',d.postHash));tr.append(td);});const log=$('aud');log.textContent='';S.audit.forEach(e=>log.append(node('li',e.body.seq+' · '+e.body.type+' · '+e.body.actor+(e.body.reason?' · '+e.body.reason:'')+' · '+new Date(e.body.time).toLocaleTimeString('zh-TW',{timeZone:'Asia/Taipei'}))));}
+function displayRows(d,full=false){return d.payload.results.map(r=>({...r,id:full?r.id:C.maskID(r.id),nm:full?r.nm:C.maskName(r.nm)}));}
+function renderResults(){
+ const d=active(),tbody=$('res'),sum=$('sum');tbody.textContent='';sum.textContent='';let rows=[];
+ if(d){const counts=['正取','備取','未中籤'].map(s=>d.payload.results.filter(r=>r.status===s).length);counts.forEach((n,i)=>{const card=node('div',undefined,'stat');card.append(node('b',String(n)),node('span',['正取／已配位','備取／依序候補','未中籤'][i]));sum.append(card);});rows=displayRows(d,$('full').checked&&!document.body.classList.contains('proj'));const q=norm($('resultSearch').value).toLowerCase();if(q)rows=rows.filter(r=>[r.rank,r.cl,r.id,r.nm,r.status,r.slot].some(v=>String(v).toLowerCase().includes(q)));}
+ const size=30,pages=Math.max(1,Math.ceil(rows.length/size));S.page=Math.min(S.page,pages-1);rows.slice(S.page*size,(S.page+1)*size).forEach(r=>{const tr=tbody.insertRow();tr.append(node('td',String(r.rank)));const td=node('td');td.append(node('span',r.status+(r.waitRank?' '+r.waitRank:''),'status-pill '+(r.status==='正取'?'win':r.status==='備取'?'wait':'')));tr.append(td);[r.slot||'—',r.cl,r.id,r.nm].forEach(v=>tr.append(node('td',v)));});
+ if(!rows.length){const tr=tbody.insertRow(),td=node('td',d?'沒有符合搜尋的結果。':'完成抽籤後，正取、備取與車位配對會顯示在這裡。','empty');td.colSpan=6;tr.append(td);}
+ $('pageInfo').textContent=d?'共 '+rows.length+' 筆 · 第 '+(S.page+1)+'／'+pages+' 頁':'';$('bprev').disabled=S.page===0;$('bnext').disabled=S.page>=pages-1;
+ $('drawNote').textContent=d?'本次 '+d.payload.mode+'；車位依鎖定順序配對，結果已保存於本頁記憶體，請立即匯出。':'每次只抽出一份完整排名；如需重抽，必須先取消舊結果並記錄原因。';
+}
+async function lock(){
+ if(S.locked||S.busy)return;const v=readValidation();showValidation(v);if(v.errors.length){$('msgs').focus();return;}
+ try{const snapshot=C.makeSnapshot(readRules(),v.roster,v.slots);S.busy=true;refresh();const inputHash=await C.hash(snapshot),at=new Date().toISOString();
+ await addAudit('鎖定快照',snapshot.rules.fields.org.v||'承辦（未填）','',{inputHash,people:snapshot.roster.length,slots:snapshot.slots.length});
+ S.snapshot=snapshot;S.inputHash=inputHash;S.lockTime=at;S.locked=true;S.snapshots.push({inputHash,lockedAt:at,snapshot});resetApproval();say('快照已鎖定。請回公文草稿下載附驗證碼的版本，並將同一驗證碼交由現場核對。');
+ }catch(e){say('無法鎖定：'+e.message,true);}finally{S.busy=false;refresh();}
+}
+async function draw(){
+ if(S.busy||!S.locked||active()||S.failedAttempt)return;if(![...document.querySelectorAll('.pc')].every(c=>c.checked)){say('請完成全部現場核對事項。',true);return;}
+ const official=$('runmode').value==='approved';if(official&&formalProblems().length){say('正式操作條件未完整，請查看待確認事項。',true);return;}
+ S.busy=true;refresh();const attempt={time:new Date().toISOString(),mode:official?'已登錄核准':'演練'};
+ try{const record=await C.createRecord(S.snapshot,{...attempt,runId:uid(),approval:approval()});if(record.payload.inputHash!==S.inputHash)throw Error('鎖定快照雜湊已變更，停止抽籤。');
+ await addAudit('產生抽籤結果',S.snapshot.rules.fields.chair.v||'主持（未填）','',{runId:record.payload.runId,inputHash:S.inputHash,postHash:record.postHash,mode:attempt.mode});S.draws.push(record);S.page=0;$('full').checked=false;say('已一次產生完整排名及車位配對。請當場匯出、列印並由主持與見證簽名。');
+ }catch(e){S.failedAttempt={...attempt,error:e.message};say('抽籤嘗試未完成：'+e.message+'。已停止再次執行，須記錄操作人與原因後取消失敗嘗試。',true);}finally{S.busy=false;refresh();}
+}
+function operation(){const actor=norm($('cop').value),reason=norm($('crs').value);if(!actor||!reason)throw Error('請填操作人與原因。');return {actor,reason};}
+async function cancel(){if(S.busy)return;const d=active();if(!d&&!S.failedAttempt)return;try{const op=operation();S.busy=true;refresh();const time=new Date().toISOString();await addAudit(d?'取消抽籤結果':'取消失敗嘗試',op.actor,op.reason,d?{runId:d.payload.runId,postHash:d.postHash}:{failedAttempt:S.failedAttempt},time);if(d){d.status='cancelled';d.cancel={...op,time};}S.failedAttempt=null;resetChecks();say('舊結果／嘗試已記錄取消。再次抽籤前須重新完成現場核對，歷史仍可匯出。');}catch(e){say(e.message,true);}finally{S.busy=false;refresh();}}
+async function unlock(){if(S.busy||!S.locked)return;if(active()||S.failedAttempt){say('請先取消目前結果或失敗嘗試。',true);return;}try{const op=operation();S.busy=true;refresh();await addAudit('解除快照',op.actor,op.reason,{inputHash:S.inputHash});S.locked=false;S.snapshot=null;S.inputHash=null;S.lockTime=null;resetApproval();say('已解除鎖定。先前快照與抽籤歷史仍保留於稽核包；新資料須重新鎖定及核准核對。');}catch(e){say(e.message,true);}finally{S.busy=false;refresh();}}
+function docText(){
+ const r=rNow(),p=pending(r),g=k=>r.fields[k].p?'【待主管確認】'+(r.fields[k].v?' '+r.fields[k].v:''):(r.fields[k].v||'【待填】'),slots=S.locked?S.snapshot.slots:C.validateSlots($('slots').value).slots;
+ return ['【簽呈草稿｜須由承辦修訂並送校內公文程序】','主旨：檢陳「'+g('title')+'」需求、抽籤規則及現場公開抽籤程序，簽請核示。','說明：','一、目的：辦理學生停車位分配，擬以事前核定規則、人工資格審查、鎖定名冊與規則快照、主管現場公開抽籤及紙本簽章留存辦理。','二、擬議規則：','（一）申請資格／人工審查：'+g('elig'),'（二）報名截止（台北時間）：'+g('dead'),'（三）抽籤時間／地點：'+g('when')+'／'+g('place'),'（四）車位類型：'+(r.ptype||'【待填】')+'；車位 '+slots.length+' 個；備取上限 '+r.W+' 人。名單不足時按實際可分配人數處理。','（五）優先名額／多池：'+({none:'無，採單一同資格池',undec:'【待主管確認】',prio:'需要優先池（本工具未執行，須另案設計）',multi:'需要多個池（本工具未執行，須另案設計）'}[r.pool]),'（六）預先核配者：'+(r.pre?'已經人工審核並排除於本次抽籤池。':'【待確認】人工審核與排除方式。'),'（七）缺席處理：'+g('abs'),'（八）放棄與遞補：'+g('wait')+'（本版不自動執行逐筆遞補，須依核定規則另行留存紀錄。）','（九）公告：'+MASK+' 遮罩後仍可能辨識，公告範圍應由學校確認。','（十）異議：'+g('app'),'（十一）留存期限：'+g('ret'),'（十二）主持／見證：'+g('chair')+'／'+g('wit'),'三、待主管裁示／待填：'+(p.length?p.join('、'):'本表未標記待確認欄位，仍請主管核定。'),'四、名冊與快照：'+(S.locked?'共 '+S.snapshot.roster.length+' 人；鎖定時間（本機）：'+S.lockTime+'；SHA-256：'+S.inputHash:'【尚未鎖定】名單截止且資格人工審查後，應將鎖定摘要及完整 SHA-256 附於核定附件。'),'五、抽籤：採 Web Crypto getRandomValues、拒絕採樣與 Fisher–Yates 產生完整無放回排名，前 K 人按鎖定車位序配位，其次 W 人依序列備取。以學號為唯一識別碼；'+(r.case==='ci'?'不分大小寫並轉大寫':'區分大小寫')+'，NFKC 正規化及去頭尾空白，保留前導零；同名學生可以保留。','六、現場作業：主持與見證人當眾核對名單人數、車位、規則及核定附件的相同 SHA-256 後執行一次抽籤。若取消或重抽，須記錄操作人及原因，保留前後結果。','七、工具範圍：名單僅在瀏覽器記憶體處理，不自動上傳或儲存；重新整理即可能遺失。靜態網頁無跨分頁／跨裝置防重抽、可信時間或不可竄改保證。雜湊及重播只檢查資料一致性，不能取代現場見證、紙本簽章與學校資安程序。','擬辦：規則如奉核可，請依核定名單／快照及現場程序辦理；本草稿不代表主管已核准。','承辦單位／人員：'+g('org'),'附件：核定規則、人工審查完成名單、鎖定快照摘要及操作檢核表。'].join('\n');
+}
+function download(filename,text,mime){const a=node('a');const url=URL.createObjectURL(new Blob([text],{type:mime}));a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function printReport(){let t=docText();const d=active();if(d){t+='\n\n【本次抽籤結果：'+d.payload.mode+'】\n本機時間：'+d.payload.time+'\n鎖定 SHA-256：'+d.payload.inputHash+'\n結果 SHA-256：'+d.postHash+'\n登錄核准文號／日期：'+(d.payload.approval.no||'無')+'／'+(d.payload.approval.date||'無')+'\n';displayRows(d,false).forEach(r=>t+=r.rank+'　'+r.status+(r.waitRank?r.waitRank:'')+'　'+(r.slot||'—')+'　'+r.cl+'　'+r.id+'　'+r.nm+'\n');}t+='\n【本分頁操作歷史】\n';S.audit.forEach(e=>t+=e.body.seq+'　'+e.body.time+'　'+e.body.type+'　'+e.body.actor+'　'+e.body.reason+'\n');t+='\n本表待現場核對後簽名；系統未代為證明程序完成。\n承辦：____________　主持：____________　見證：____________\n[亮亮營養師 AI研究開發]';$('printArea').textContent=t;window.print();}
+function resultCSV(full){const d=active();if(!d){say('尚無有效結果。',true);return;}if(full&&!confirm('完整結果含完整姓名與學號，請確認僅供有權限的行政留存。'))return;const rows=[['本次模式','排名','結果','備取序','車位','班級','學號','姓名','鎖定SHA256','結果SHA256']];displayRows(d,full).forEach(r=>rows.push([d.payload.mode,r.rank,r.status,r.waitRank||'',r.slot,r.cl,r.id,r.nm,d.payload.inputHash,d.postHash]));download(full?'停車位_完整結果.csv':'停車位_遮罩公告.csv',C.csv(rows),'text/csv;charset=utf-8');say('結果已匯出。公告範圍及可辨識性請依校內核定規則確認。');}
+function auditPackage(){return {schema:'parking-audit/1.0',toolVersion:C.VERSION,sessionId:S.sessionId,exportedAt:new Date().toISOString(),limitations:'資料一致性紀錄；非隨機性、核准或不可竄改證明。時間來自本機。',snapshots:S.snapshots,draws:S.draws,audit:S.audit,failedAttempt:S.failedAttempt};}
+async function verifyPackage(pkg){
+ if(pkg?.schema!=='parking-audit/1.0'||!Array.isArray(pkg.draws)||pkg.draws.length>100||!Array.isArray(pkg.snapshots)||pkg.snapshots.length>100||!Array.isArray(pkg.audit)||pkg.audit.length>1000)throw Error('不支援的稽核包格式或數量超限。');
+ const messages=[];for(const [i,s] of pkg.snapshots.entries()){const rebuilt=C.makeSnapshot(s.snapshot.rules,s.snapshot.roster,s.snapshot.slots);if(C.canonical(rebuilt)!==C.canonical(s.snapshot)||await C.hash(rebuilt)!==s.inputHash)throw Error('快照 '+(i+1)+' 不一致。');}
+ if(!await C.verifyAudit(pkg.audit))throw Error('操作紀錄鏈不一致。');
+ for(const [i,d] of pkg.draws.entries()){const v=await C.verifyRecord(d);if(!v.ok)throw Error('第 '+(i+1)+' 次：'+v.errors.join('；'));if(!pkg.snapshots.some(s=>s.inputHash===d.payload.inputHash))throw Error('第 '+(i+1)+' 次缺少來源快照。');if(!pkg.audit.some(e=>e.body.type==='產生抽籤結果'&&e.body.details.runId===d.payload.runId&&e.body.details.postHash===d.postHash))throw Error('第 '+(i+1)+' 次缺少抽籤事件。');if(!C.verifyCancellation(d,pkg.audit))throw Error('第 '+(i+1)+' 次取消狀態與紀錄不一致。');messages.push('第 '+(i+1)+' 次一致');}
+ return pkg.snapshots.length+' 份快照、'+pkg.draws.length+' 次抽籤與 '+pkg.audit.length+' 筆操作紀錄一致。'+messages.join('；')+'。這不證明隨機來源、真實核准或不可竄改。';
+}
+function validateRequirements(data){
+ return C.validateRequirements(data,MASK);
+}
+async function loadFile(file,limit){if(!file)throw Error('未選擇檔案。');if(file.size>limit)throw Error('檔案超過 '+Math.round(limit/1024/1024)+' MB 上限。');return await file.text();}
+function applyRequirements(data){const r=data.rules;for(const [key,,,hasP] of FIELDS){$('f_'+key).value=r.fields[key].v;if(hasP)$('p_'+key).checked=r.fields[key].p;}$('ptype').value=r.ptype;$('slots').value=data.slots.join('\n');$('W').value=r.W;$('pool').value=r.pool;$('case').value=r.case;$('pre').checked=r.pre;S.demo=S.demo||r.dataKind==='demo';S.validation=null;S.revision++;resetApproval();refresh();}
+function newCase(){if(S.busy)return;if(confirm('開始新案件會清除本分頁名單、快照與全部歷史。請先匯出完整稽核包。確定已留存並清除？')){S.allowLeave=true;location.reload();}}
+function demo(){if(S.locked||S.busy)return;if(($('csv').value||$('f_title').value)&&!confirm('載入示範將取代尚未鎖定的需求與名單，確定嗎？'))return;const rules=readRules();for(const [k] of FIELDS){rules.fields[k]={v:'',p:!!FIELDS.find(f=>f[0]===k)[3]};}Object.assign(rules,{ptype:'一般機車位（示範）',W:5,pool:'none',pre:true,case:'cs',dataKind:'demo'});const values={title:'示範案件：學生停車位抽籤',org:'示範承辦單位',dead:'2026-11-10T12:00',when:'2026-11-11T12:00',place:'示範會議室',elig:'待主管確認申請資格',wait:'待主管確認放棄與遞補期限',abs:'待主管確認缺席是否影響資格',chair:'示範主持人',wit:'示範見證人',app:'待主管確認異議管道',ret:'待主管確認留存期限',mask:MASK};for(const [k,v] of Object.entries(values))rules.fields[k].v=v;const slots=Array.from({length:10},(_,i)=>'A'+String(i+1).padStart(3,'0'));applyRequirements({rules,slots});const rows=[['student_id','class_name','full_name']];for(let i=1;i<=30;i++)rows.push(['DEMO'+String(i).padStart(4,'0'),'示範'+(['商經一甲','會計二乙','資料三甲'][i%3]),i===29||i===30?'示範同名':i===28?'示範,引號"測試':'示範學生'+String(i).padStart(2,'0')]);$('csv').value=C.csv(rows);showValidation(readValidation());go(0);say('已載入 30 位虛擬學生、10 個車位、5 位備取，含同名與引號測試案例。僅能演練；正式作業請開始新案件。');}
+$('bval').onclick=()=>{showValidation(readValidation());$('msgs').focus();};$('block').onclick=lock;$('bdraw').onclick=draw;$('bcan').onclick=cancel;$('bunl').onclick=unlock;$('bdemo').onclick=demo;$('bnew').onclick=$('breset').onclick=newCase;
+$('bcopy').onclick=async()=>{$('doc').value=docText();try{await navigator.clipboard.writeText($('doc').value);say('公文草稿已複製。');}catch{$('doc').focus();$('doc').select();say('瀏覽器未允許自動複製；已選取全文，可手動複製。');}};
+$('btxt').onclick=()=>download('停車位抽籤_簽呈草稿.txt',docText(),'text/plain;charset=utf-8');$('bprt').onclick=$('bprintResult').onclick=printReport;
+$('bcsvsample').onclick=()=>download('停車位名單_空白範本.csv',C.csv([['student_id','class_name','full_name']]),'text/csv;charset=utf-8');$('bcm').onclick=()=>resultCSV(false);$('bcf').onclick=()=>resultCSV(true);
+$('baj').onclick=()=>{if(!S.audit.length)return;if(confirm('完整稽核包含完整學生名單與各次抽籤紀錄，請僅供有權限者留存。確定下載？'))download('停車位抽籤_完整稽核.json',JSON.stringify(auditPackage(),null,2),'application/json');};
+$('brp').onclick=async()=>{if(S.busy)return;S.busy=true;refresh();try{$('rpl').textContent=await verifyPackage(auditPackage());}catch(e){$('rpl').textContent='驗證失敗：'+e.message;}finally{S.busy=false;refresh();}};
+$('faudit').onchange=async e=>{const f=e.target.files[0];if(!f||S.busy)return;S.busy=true;refresh();try{const text=await loadFile(f,10*1024*1024);$('rpl').textContent=await verifyPackage(JSON.parse(text));}catch(x){$('rpl').textContent='驗證失敗：'+x.message;}finally{S.busy=false;refresh();e.target.value='';}};
+$('bexp').onclick=()=>{try{const r=readRules();r.W=C.waitCount(r.W);download('停車位_行政需求.json',JSON.stringify({schema:'parking-requirements/1.0',rules:r,slots:C.validateSlots($('slots').value).slots},null,2),'application/json');say('需求已匯出，不含學生名單或核准登錄；原始 CSV 請另行留存。');}catch(e){say(e.message,true);}};
+$('fimp').onchange=async e=>{const f=e.target.files[0];if(!f||S.locked||S.busy)return;const rev=S.revision;try{const data=validateRequirements(JSON.parse(await loadFile(f,C.MAX_TEXT)));if(S.locked||S.busy||rev!==S.revision)throw Error('讀檔期間資料已變更，未套用。請重新匯入。');applyRequirements(data);say('需求已完整驗證後匯入，核准登錄及現場勾選已重設；未匯入學生名單。');}catch(x){say('未變更表單：'+x.message,true);}finally{e.target.value='';}};
+$('fcsv').onchange=async e=>{const f=e.target.files[0];if(!f||S.locked||S.busy)return;const rev=S.revision;try{const text=await loadFile(f,C.MAX_TEXT);if(S.locked||S.busy||rev!==S.revision)throw Error('讀檔期間資料已變更，請重新選擇。');$('csv').value=text;S.revision++;showValidation(readValidation());}catch(x){say(x.message,true);}finally{e.target.value='';}};
+['s0','csv'].forEach(id=>$(id).addEventListener('input',()=>{if(!S.locked&&!S.busy){S.revision++;S.validation=null;resetApproval();refresh();}}));
+['apon','apno','apdt','aphs','runmode'].forEach(id=>$(id).addEventListener('input',refresh));document.querySelectorAll('.pc').forEach(c=>c.onchange=refresh);
+['full','resultSearch'].forEach(id=>$(id).addEventListener('input',()=>{S.page=0;renderResults();}));$('bprev').onclick=()=>{S.page=Math.max(0,S.page-1);renderResults();};$('bnext').onclick=()=>{S.page++;renderResults();};
+$('bproj').onclick=()=>{const on=document.body.classList.toggle('proj');$('bproj').setAttribute('aria-pressed',String(on));$('bproj').textContent=on?'離開投影模式':'開啟投影模式';if(on){$('full').checked=false;go(3,true);}renderResults();};
+window.addEventListener('beforeunload',e=>{if(!S.allowLeave&&($('csv').value||S.audit.length)){e.preventDefault();e.returnValue='';}});
+go(0);if(!crypto.subtle)say('此環境未提供 Web Crypto 雜湊，需求填寫仍可用；抽籤請改在 HTTPS 的現代瀏覽器操作。',true);
+</script>
+</body></html>

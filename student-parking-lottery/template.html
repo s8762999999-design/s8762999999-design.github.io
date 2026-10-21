@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="供高職行政端釐清學生停車位抽籤規則、準備簽呈、校驗名單與演練現場抽籤的本機處理工具。">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>停車位抽籤工作台｜行政需求探明與公文準備</title>
+<style>/*__STYLE__*/</style>
+</head>
+<body>
+<a class="skip" href="#main">跳至目前步驟</a>
+<header class="shell">
+ <div class="topbar"><div class="brand"><span class="brandmark" aria-hidden="true">P</span><div><strong>停車位抽籤工作台</strong><small>校務行政 · 需求探明與現場作業</small></div></div><span class="privacy">● 名單在本機處理</span><button id="bdemo" class="soft">載入示範</button></div>
+ <div class="hero"><div><div class="eyebrow">SCHOOL ADMINISTRATION TOOLKIT · v1.0</div><h1>先確認規則，<br>再公開抽出每一個位置。</h1><p>從行政需求、公文簽辦到主管現場抽籤，<br class="desktop">把需要決定、需要核對、需要留存的事一次整理好。</p><a href="#guide" class="textlink">第一次使用？查看操作與適用範圍 ↗</a></div><div class="hero-flow" aria-label="三階段流程"><div><b>01</b><span>釐清需求</span><small>規則、資格與名額</small></div><i aria-hidden="true">↓</i><div><b>02</b><span>簽辦核對</span><small>草稿、名冊與驗證碼</small></div><i aria-hidden="true">↓</i><div><b>03</b><span>公開抽籤</span><small>配位、備取與紀錄</small></div></div></div>
+ <div id="banner" class="banner drill" role="status" aria-live="polite">演練模式 · 尚未鎖定名單</div>
+ <nav id="nav" class="steps" aria-label="作業步驟"></nav>
+</header>
+<div class="shell workspace">
+<main id="main" tabindex="-1">
+<div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+<section id="s0" aria-labelledby="h0">
+ <div class="section-head"><span class="step-label">STEP 01</span><h2 id="h0">先把行政需求填清楚</h2><p>空白或「待確認」會彙整到公文草稿。此處填寫的是擬議規則，核准後才依正式流程操作。</p></div>
+ <fieldset id="lk1"><legend class="sr-only">行政需求設定</legend><div id="ff"></div>
+ <div class="subcard"><h3>車位與抽籤範圍</h3><div class="grid2">
+ <label>車位類型名稱<input type="text" id="ptype" maxlength="80" placeholder="例如：一般機車位"></label>
+ <label>備取名額上限<input type="number" id="W" min="0" max="2000" step="1" value="0"><small>不足時按剩餘人數列備取，不會產生重複名額。</small></label>
+ <label class="span2">車位代碼（每行一個）<textarea id="slots" rows="5" placeholder="A001&#10;A002&#10;A003" spellcheck="false"></textarea><small>清單順序會鎖定。抽出的完整排名，前 K 人依此順序配位。</small></label>
+ <label>優先保留名額／多池需求<select id="pool"><option value="undec">待主管確認</option><option value="none">無，單一同資格池</option><option value="prio">需要優先池（須另行設計）</option><option value="multi">需要多個池（須另行設計）</option></select></label>
+ <label>學號大小寫比對<select id="case"><option value="cs">區分大小寫（A01 與 a01 不同）</option><option value="ci">不分大小寫（統一轉大寫）</option></select></label>
+ </div><label class="check"><input type="checkbox" id="pre"><span>已由人工審核資格，預先核配者已從本次抽籤名單排除。</span></label>
+ <p class="hint">本版執行單一同資格池的等機率抽籤。需優先、多池、不同權重或逐筆放棄遞補時，會列為另外需要確認／開發的規則；系統不判定學生資格。</p></div></fieldset>
+ <div class="actions"><button id="bexp">匯出需求 JSON（不含學生名單）</button><label class="file-button">匯入需求 JSON<input type="file" id="fimp" accept=".json,application/json"></label><button class="primary push" data-next="1">下一步：公文草稿 →</button></div>
+</section>
+<section id="s1" aria-labelledby="h1" hidden>
+ <div class="section-head"><span class="step-label">STEP 02</span><h2 id="h1">把待裁示事項帶進公文</h2><p>這是簽呈草稿，不會代送公文或產生核准。請依學校格式調整，並由主管核定規則。</p></div>
+ <div id="pendingBox" class="callout"></div>
+ <div class="actions"><button id="bcopy">複製草稿</button><button id="btxt">下載 TXT</button><button id="bprt">列印簽辦／結果紀錄</button></div>
+ <label class="sr-only" for="doc">公文草稿全文</label><textarea id="doc" readonly rows="24" class="doc"></textarea>
+ <p class="hint">名單尚未鎖定時，草稿會標示「尚未鎖定」。完成下一步後回來下載，才會帶入本次名單與規則的 SHA-256。</p>
+ <div class="actions"><button data-next="0">← 回需求填寫</button><button class="primary push" data-next="2">下一步：名單檢核 →</button></div>
+</section>
+<section id="s2" aria-labelledby="h2" hidden>
+ <div class="section-head"><span class="step-label">STEP 03</span><h2 id="h2">確認名單，再鎖定快照</h2><p>使用唯一學號去重，同名學生可以保留。鎖定後的規則、名單與車位將作為本次抽籤的唯一資料來源。</p></div>
+ <div class="callout"><strong>CSV 只需要三欄</strong><code>student_id,class_name,full_name</code><p>學號當文字處理，保留前導零，採 NFKC 正規化並去頭尾空白。可處理 BOM、逗號與雙引號。上限 2,000 人／1 MB；只匯入已經人工審核合格的名單。</p><button id="bcsvsample">下載空白 CSV 範本</button></div>
+ <fieldset id="lk2"><legend class="sr-only">學生名單</legend><div class="actions"><label class="file-button">選擇 CSV 檔<input type="file" id="fcsv" accept=".csv,.txt,text/csv"></label><span class="hint">或直接貼在下方，不會上傳名單</span></div><label for="csv">名單 CSV</label><textarea id="csv" rows="9" spellcheck="false" placeholder="student_id,class_name,full_name&#10;0001,商經一甲,示範學生甲"></textarea></fieldset>
+ <div class="actions"><button id="bval">檢核名單與車位</button><button id="block" class="primary">確認並鎖定快照</button></div>
+ <ul id="msgs" class="messages" aria-live="polite" tabindex="-1"></ul>
+ <div class="snapshot"><div class="snapshot-top"><strong id="lst">尚未鎖定</strong><span id="lcnt">人數／車位數／備取上限</span></div><span class="small-label">規則＋名單＋車位 · SHA-256</span><code id="lh">鎖定後顯示完整 64 碼，請附於簽呈並在現場核對。</code></div>
+ <details class="subcard"><summary>查看名單前 50 筆（行政核對用）</summary><div class="table-wrap"><table><caption class="sr-only">名單預覽</caption><thead><tr><th scope="col">序</th><th scope="col">學號</th><th scope="col">班級</th><th scope="col">姓名</th></tr></thead><tbody id="prev"></tbody></table></div></details>
+ <div class="actions"><button data-next="1">← 回簽呈草稿</button><button class="primary push" data-next="3">下一步：現場抽籤 →</button></div>
+</section>
+<section id="s3" aria-labelledby="h3" hidden>
+ <div class="section-head"><span class="step-label">STEP 04</span><h2 id="h3">主管現場抽籤</h2><p>先公開核對人數、規則與完整驗證碼，再一次產生全體排名。畫面動畫與排序展示不參與亂數計算。</p></div>
+ <div class="admin-only subcard"><label>本次操作模式<select id="runmode"><option value="demo">演練模式（結果供測試）</option><option value="approved">依已登錄核准規則執行</option></select></label><p class="hint">正式作業仍需學校完成規則核定、個資與資安檢視。登錄欄位不會驗證主管是否真的核准。</p>
+ <fieldset id="approvalFields"><legend>核准登錄</legend><label class="check"><input type="checkbox" id="apon"><span>確認本案規則與鎖定名單已奉核</span></label><div class="grid2"><label>核准文號／批示識別<input type="text" id="apno" maxlength="160"></label><label>核准日期<input type="date" id="apdt"></label><label class="span2">奉核附件上的 SHA-256<input type="text" id="aphs" maxlength="64" spellcheck="false" placeholder="請由奉核文件核對，不提供一鍵填入"></label></div></fieldset></div>
+ <details class="readiness admin-only"><summary id="readinessTitle">正式操作前待確認事項</summary><ul id="why"></ul></details>
+ <div class="snapshot"><div class="snapshot-top"><strong>現場公開核對</strong><span id="liveCounts">尚未鎖定</span></div><code id="dh">尚未鎖定</code><small>主持與見證人請核對紙本簽呈附件、名單人數及車位數；驗證碼只代表資料一致，不證明程序未被重抽。</small></div>
+ <fieldset id="prechecks" class="checks"><legend>抽籤前確認</legend><label class="check"><input type="checkbox" class="pc"><span>已當眾核對人數、車位與完整 SHA-256</span></label><label class="check"><input type="checkbox" class="pc"><span>主持人與見證人在場，且已確認本次使用的模式</span></label><label class="check"><input type="checkbox" class="pc"><span>資格經人工確認，預先核配者已排除</span></label></fieldset>
+ <button id="bdraw" class="draw-button" disabled>先鎖定快照，再勾選核對事項</button><p class="draw-note" id="drawNote">每次只抽出一份完整排名；如需重抽，必須先取消舊結果並記錄原因。</p>
+ <div id="sum" class="result-stats" role="status" aria-live="polite"></div>
+ <div class="actions result-controls"><label class="check admin-only"><input type="checkbox" id="full"><span>行政檢視完整姓名／學號</span></label><label class="search"><span class="sr-only">搜尋結果</span><input type="search" id="resultSearch" placeholder="搜尋排名、班級或顯示中的資料"></label><button id="bproj" aria-pressed="false">開啟投影模式</button></div>
+ <div class="table-wrap"><table><caption class="sr-only">本次抽籤結果與車位配對</caption><thead><tr><th scope="col">排名</th><th scope="col">結果</th><th scope="col">車位</th><th scope="col">班級</th><th scope="col">學號</th><th scope="col">姓名</th></tr></thead><tbody id="res"><tr><td colspan="6" class="empty">完成抽籤後，正取、備取與車位配對會顯示在這裡。</td></tr></tbody></table></div>
+ <div class="actions pager"><span id="pageInfo"></span><button id="bprev">上一頁</button><button id="bnext">下一頁</button></div>
+ <details class="subcard admin-only"><summary>取消結果／解除鎖定（會保留本頁歷史）</summary><p class="hint">如需重抽，須先取消舊結果。重新整理或開新分頁仍可重置，請依賴現場見證與匯出紀錄控管。</p><div class="grid2"><label>操作人<input type="text" id="cop" maxlength="80"></label><label>原因<input type="text" id="crs" maxlength="500"></label></div><div class="actions"><button id="bcan" class="danger">取消本次結果</button><button id="bunl">解除鎖定以修改規則</button></div></details>
+ <details class="subcard"><summary>歷次抽籤與操作紀錄</summary><div class="table-wrap"><table><caption class="sr-only">抽籤歷史</caption><thead><tr><th scope="col">次</th><th scope="col">本機時間</th><th scope="col">模式</th><th scope="col">狀態</th><th scope="col">結果驗證碼</th></tr></thead><tbody id="hist"></tbody></table></div><ol id="aud" class="audit"></ol></details>
+ <div class="actions"><button data-next="2">← 查看鎖定名單</button><button class="primary push" data-next="4">下一步：匯出留存 →</button></div>
+</section>
+<section id="s4" aria-labelledby="h4" hidden>
+ <div class="section-head"><span class="step-label">STEP 05</span><h2 id="h4">帶走結果與留存紀錄</h2><p>資料只保存在目前分頁記憶體。請在關閉或重新整理前完成匯出，再依校內核定期限保存。</p></div>
+ <div class="export-grid"><div class="subcard"><span class="export-icon" aria-hidden="true">↗</span><h3>公告版結果</h3><p>遮罩姓名與學號，保留班級、排名及車位。遮罩後仍可能辨識，公告前仍須由學校確認。</p><button id="bcm" class="primary">下載遮罩 CSV</button></div><div class="subcard"><span class="export-icon" aria-hidden="true">▤</span><h3>行政留存</h3><p>含完整姓名、學號、鎖定快照、各次結果及取消紀錄。請僅交付有權限的行政人員。</p><div class="actions"><button id="bcf">完整結果 CSV</button><button id="baj">完整稽核 JSON</button></div></div></div>
+ <div class="subcard"><h3>核對紀錄一致性</h3><p>重算名單與結果驗證碼、重播洗牌索引及核對車位配對。這是資料一致性檢查；未使用外部簽章，不能證明亂數真實、公文核准或不可竄改。</p><div class="actions"><button id="brp">驗證本頁完整紀錄</button><label class="file-button">選擇稽核 JSON 核對<input id="faudit" type="file" accept=".json,application/json"></label></div><p id="rpl" role="status" aria-live="polite"></p></div>
+ <div class="actions"><button id="bprintResult">列印簽名紀錄</button><button id="breset" class="danger push">開始新案件（先匯出留存）</button></div>
+</section>
+</main>
+<aside class="sidebar" aria-label="案件摘要"><div class="summary-card"><div class="eyebrow">本次案件</div><h3 id="sideTitle">尚未命名</h3><dl><div><dt>行政項目待確認</dt><dd id="sidePending">--</dd></div><div><dt>合格名單</dt><dd id="sideCount">未檢核</dd></div><div><dt>車位／備取上限</dt><dd id="sideSlots">--</dd></div><div><dt>快照狀態</dt><dd id="sideLock">編輯中</dd></div></dl><p id="sideTip" class="hint">先填需求，未定項目可以直接標記待主管確認。</p><button id="bnew" class="wide">開始新案件</button></div><div class="local-card"><strong>你的名單留在這裡</strong><p>不使用後端、追蹤或自動儲存。名單不會提交 GitHub；開啟網站本身仍會向 GitHub 請求頁面。</p><span class="small-label">重新整理前，記得匯出。</span></div></aside>
+</div>
+<section id="guide" class="shell guide"><details><summary>操作說明、範圍與技術依據</summary><div class="grid2"><div><h3>建議行政流程</h3><ol><li>需求填寫：由承辦彙整資格、名額、缺席、遞補、異議與留存規則。</li><li>簽辦：先核定規則；名單截止且人工審查後鎖定快照，將驗證碼附於簽呈或核定附件。</li><li>現場：主管與見證人核對相同快照，執行一次完整排名。</li><li>留存：當場匯出及列印，由承辦、主持、見證簽名。</li></ol></div><div><h3>本版適用範圍</h3><p>支援單一同資格池、正備取排序及停車位配對。優先池、多池、加權、多次抽籤資格與逐筆放棄遞補須另行設計；本版不會替學校決定政策，也不會自動寄出公文或結果。</p><p>靜態頁面無法獨立阻止跨分頁重抽、提供可信時間或不可竄改紀錄。請勿將驗證碼視為資安認證或數位簽章。</p></div></div><p class="hint">亂數與雜湊依據：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues" target="_blank" rel="noopener noreferrer">MDN Web Crypto</a>、<a href="https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/" target="_blank" rel="noopener noreferrer">W3C Web Cryptography API</a>。以 getRandomValues、拒絕採樣及 Fisher–Yates 產生無放回排名。軟體測試檢查實作，不等同獨立資安稽核。版本 1.0.0 · 2026/10/21。</p></details></section>
+<footer class="shell"><span>校務行政需求與抽籤輔助工具</span><strong>[亮亮營養師 AI研究開發]</strong></footer>
+<pre id="printArea"></pre>
+<script id="lottery-core">/*__CORE__*/</script>
+<script id="lottery-app">/*__APP__*/</script>
+</body></html>
