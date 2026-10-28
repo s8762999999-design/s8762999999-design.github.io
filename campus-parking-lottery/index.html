@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="學生手機限時登記、機車（含電動機車）與腳踏車分組亂數配位、正備取排序與行政報表匯出。含本機可操作展示版與 Supabase 正式部署套件。">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>校園車位抽籤系統｜學生登記與行政管理</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui-polish.css">
+  <script src="config.js" defer></script>
+  <script src="core.js" defer></script>
+  <script src="backend.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <noscript><p class="mode-banner">請啟用 JavaScript 後使用本服務，目前登記未啟用。</p></noscript>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="topbar">
+    <div class="shell top-inner">
+      <a class="brand" href="./">
+        <span class="brand-icon" aria-hidden="true">P</span>
+        <span>
+          <strong>校園車位抽籤系統</strong>
+          <small>CAMPUS PARKING LOTTERY</small>
+        </span>
+      </a>
+      <span id="modeBadge" class="badge">正在載入</span>
+    </div>
+  </header>
+  <div class="shell subheader">
+    <p id="modeBanner" class="mode-banner">正在確認系統設定與連線狀態…</p>
+    <nav class="main-nav" aria-label="服務入口切換">
+      <button id="studentNav" aria-current="page">學生車位登記</button>
+      <button id="adminNav" aria-current="false">行政管理與抽籤</button>
+      <button id="logoutButton" class="subtle" hidden>登出管理端</button>
+    </nav>
+  </div>
+  <main id="main" class="shell" tabindex="-1">
+    <div id="notice" role="status" aria-live="polite" class="notice" hidden></div>
+    <!-- 學生登記視圖 -->
+    <section id="studentView" aria-labelledby="eventTitle">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">STUDENT REGISTRATION</span>
+          <h1 id="eventTitle">學生停車位登記</h1>
+          <p>請於開放時段內以手機或電腦完成登記，截止後由學校統一執行亂數抽籤。<br>機車（含電動機車）與腳踏車各自獨立配對車格，未中籤者自動排入隨機備取序。</p>
+        </div>
+        <div class="hero-stamp" aria-label="目前作業階段">
+          <div class="stamp-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong id="studentPhase">讀取中</strong>
+          </div>
+          <small>每位學生限登記一次、擇一車種</small>
+        </div>
+      </div>
+      <div class="student-grid">
+        <aside class="intro-card" aria-label="本輪登記名額與流程說明">
+          <span class="eyebrow">LOTTERY OVERVIEW</span>
+          <h2>名額配置與登記須知</h2>
+          <p id="registrationTime" class="time-range">正在載入開放時段…</p>
+          <div class="slot-counts" aria-label="各車種提供車格數">
+            <div>
+              <strong id="motorCount">0</strong>
+              <span>機車／電動機車位</span>
+            </div>
+            <div>
+              <strong id="bicycleCount">0</strong>
+              <span>腳踏車位</span>
+            </div>
+          </div>
+          <ol class="process">
+            <li>
+              <b>01</b>
+              <div>
+                <strong>核對正式名冊資料</strong>
+                <span>班級、學號（含前導零）與姓名須與學校名冊完全一致。</span>
+              </div>
+            </li>
+            <li>
+              <b>02</b>
+              <div>
+                <strong>擇一車種送出申請</strong>
+                <span>每人限選「機車（含電動機車）」或「腳踏車」其中一類。</span>
+              </div>
+            </li>
+            <li>
+              <b>03</b>
+              <div>
+                <strong>截止後統一亂數配位</strong>
+                <span>兩類車種各自亂數配對車格，落選者各自隨機排列備取序。</span>
+              </div>
+            </li>
+          </ol>
+          <p class="fine">本系統採名冊比對機制，尚未串接校務單一登入。請勿冒用或代填他人資料；若系統提示名冊不符，請向學校管理單位確認學籍資料。</p>
+        </aside>
+        <div class="card form-card">
+          <div class="card-heading">
+            <span class="number-mark">登記</span>
+            <div>
+              <h2>填寫學生申請表</h2>
+              <p>所有欄位皆為必填，學號請完整輸入（包含開頭的 0）。</p>
+            </div>
+          </div>
+          <div id="sampleHelper" class="sample-helper" hidden>
+            <label for="sampleSelect">首次體驗引導：快速帶入內建虛構學生</label>
+            <div class="inline">
+              <select id="sampleSelect"></select>
+              <button id="fillSample" type="button" class="secondary">填入範例資料</button>
+            </div>
+            <small>目前為本機可操作展示版，僅接受內建虛構名冊並保存於本瀏覽器，尚未連線跨裝置雲端資料庫。</small>
+          </div>
+          <form id="studentForm">
+            <div class="two-col">
+              <label for="className">
+                班級
+                <input id="className" autocomplete="off" required maxlength="40" placeholder="例如：商一甲">
+              </label>
+              <label for="studentId">
+                學號
+                <input id="studentId" type="text" autocomplete="off" inputmode="text" required maxlength="40" placeholder="請保留開頭前導零">
+              </label>
+            </div>
+            <label for="studentName">
+              姓名
+              <input id="studentName" autocomplete="off" required maxlength="80" placeholder="請依學校正式名冊填寫">
+            </label>
+            <label for="studentVehicle">
+              申請車種（每人限選一類）
+              <select id="studentVehicle" required>
+                <option value="motorcycle">機車／電動機車（同組抽籤）</option>
+                <option value="bicycle">腳踏車（獨立抽籤）</option>
+              </select>
+            </label>
+            <p class="fine">送出後系統將立即核對名冊。正式模式下匿名端僅能執行登記，無法查閱他人名單；實際車格與備取序將於截止後由主管抽籤產生。</p>
+            <button id="registerButton" class="primary wide" type="submit" disabled>
+              <span>核對名冊並送出登記</span>
+              <span class="btn-tag" aria-hidden="true">確認送出</span>
+            </button>
+          </form>
+          <div id="studentFeedback" role="status" aria-live="polite" class="notice" hidden></div>
+        </div>
+      </div>
+    </section>
+    <!-- 行政管理與抽籤視圖 -->
+    <section id="adminView" hidden aria-labelledby="adminHeading">
+      <div class="page-heading">
+        <div>
+          <span class="eyebrow">ADMINISTRATION WORKSPACE</span>
+          <h1 id="adminHeading">行政管理與現場抽籤</h1>
+          <p>依序完成時程與車格設定、名冊核對、名單檢視，再由主管執行單次正式配位與總表匯出。</p>
+        </div>
+        <span id="phase" class="badge">讀取中</span>
+      </div>
+      <div id="adminGate" class="card gate">
+        <span class="eyebrow">AUTHORIZED ACCESS ONLY</span>
+        <h2>驗證管理端權限</h2>
+        <p>正式模式受資料庫權限控管，僅授權管理員可讀取名冊、檢視登記紀錄與執行抽籤；展示版可直接進入本機演練環境。</p>
+        <button id="demoEntry" class="primary wide" hidden>
+          <span>進入本機示範管理端</span>
+          <span class="btn-tag" aria-hidden="true">展示模式</span>
+        </button>
+        <form id="loginForm" hidden>
+          <label for="adminEmail">
+            管理員電子信箱
+            <input id="adminEmail" type="email" autocomplete="username" required placeholder="admin@school.edu.tw">
+          </label>
+          <label for="adminPassword">
+            管理員密碼
+            <input id="adminPassword" type="password" autocomplete="current-password" required placeholder="請輸入管理密碼">
+          </label>
+          <button id="loginButton" class="primary wide" type="submit">
+            <span>登入行政管理端</span>
+            <span class="btn-tag" aria-hidden="true">驗證登入</span>
+          </button>
+        </form>
+      </div>
+      <div id="adminWorkspace" hidden>
+        <div class="metrics" aria-label="本輪抽籤即時統計">
+          <div>
+            <span>有效申請總數</span>
+            <strong id="registeredCount">0</strong>
+            <small>人</small>
+          </div>
+          <div>
+            <span>正取配位</span>
+            <strong id="selectedCount">0</strong>
+            <small>人</small>
+          </div>
+          <div>
+            <span>隨機備取</span>
+            <strong id="waitCount">0</strong>
+            <small>人</small>
+          </div>
+          <div>
+            <span>剩餘空車格</span>
+            <strong id="vacantCount">0</strong>
+            <small>位</small>
+          </div>
+        </div>
+        <div id="demoTools" class="demo-toolbar" hidden>
+          <div class="demo-toolbar-copy">
+            <strong>首次演練引導（本機虛構資料）</strong>
+            <small>依序點擊：(1) 載入 9 筆示範報名 → (2) 立即截止登記 → (3) 至下方勾選核對並執行抽籤</small>
+          </div>
+          <div class="actions">
+            <button id="seedDemo" class="secondary">步驟 1：載入示範報名</button>
+            <button id="closeDemo" class="secondary">步驟 2：立即截止（示範）</button>
+            <button id="resetDemo" class="subtle">重置本機示範</button>
+          </div>
+        </div>
+        <details class="card settings" open>
+          <summary>
+            <span class="number-mark">01</span>
+            <span class="summary-text">
+              活動時程與車格代碼設定
+              <small>一旦有學生完成登記即鎖定車格與時程；正式作業若需異動請另建新活動。</small>
+            </span>
+          </summary>
+          <form id="settingsForm">
+            <label for="activityTitle">
+              活動名稱
+              <input id="activityTitle" maxlength="100" required value="學生停車位抽籤">
+            </label>
+            <div class="two-col">
+              <label for="startsAt">
+                開始登記時間（臺北時間 UTC+8）
+                <input id="startsAt" type="datetime-local" required>
+              </label>
+              <label for="endsAt">
+                截止登記時間（臺北時間 UTC+8）
+                <input id="endsAt" type="datetime-local" required>
+              </label>
+            </div>
+            <div class="two-col">
+              <label for="motorSlots">
+                機車／電動機車格代碼（每行一格）
+                <textarea id="motorSlots" rows="4" spellcheck="false" placeholder="M01&#10;M02"></textarea>
+              </label>
+              <label for="bicycleSlots">
+                腳踏車格代碼（每行一格）
+                <textarea id="bicycleSlots" rows="4" spellcheck="false" placeholder="B01&#10;B02"></textarea>
+              </label>
+            </div>
+            <div class="actions form-footer">
+              <span class="fine">每行輸入一個車格代碼，同一車種內代碼不得重複。</span>
+              <button id="saveSettings" class="primary" type="submit">儲存活動設定</button>
+            </div>
+          </form>
+        </details>
+        <details class="card">
+          <summary>
+            <span class="number-mark">02</span>
+            <span class="summary-text">
+              正式名冊核對與 CSV 匯入
+              <small>目前已載入 <b id="rosterCount">0</b> 位學生名冊（下方表格預覽前 20 筆）。</small>
+            </span>
+          </summary>
+          <p id="rosterHelp"></p>
+          <p id="demoRosterNote" class="fine">本機展示版固定使用內建虛構學生名冊，不開放匯入真實個資，以確保測試安全。</p>
+          <div class="actions">
+            <label class="file-button" for="rosterFile">
+              選擇正式名冊 CSV 檔案
+              <input id="rosterFile" type="file" accept=".csv,text/csv">
+            </label>
+            <button id="downloadTemplate" class="secondary">下載 CSV 範本</button>
+            <button id="confirmImport" class="primary" disabled>確認匯入預覽名冊</button>
+          </div>
+          <p id="importPreview" role="status" aria-live="polite"></p>
+          <div class="table-wrap" role="region" aria-label="名冊預覽表格" tabindex="0">
+            <table>
+              <caption class="sr-only">學生正式名冊預覽</caption>
+              <thead>
+                <tr>
+                  <th scope="col">班級</th>
+                  <th scope="col">學號</th>
+                  <th scope="col">姓名</th>
+                </tr>
+              </thead>
+              <tbody id="rosterBody"></tbody>
+            </table>
+          </div>
+        </details>
+        <details class="card">
+          <summary>
+            <span class="number-mark">03</span>
+            <span class="summary-text">
+              本輪有效登記名單
+              <small>執行抽籤前，請先核對各車種申請人數與學生資料是否正確。</small>
+            </span>
+          </summary>
+          <div class="actions">
+            <span class="fine">左右滑動可檢視完整欄位；正式模式資料取自受保護之管理端查詢。</span>
+            <button id="refreshAdmin" class="secondary">重新讀取保存資料</button>
+          </div>
+          <div class="table-wrap" role="region" aria-label="本輪有效登記名單表格" tabindex="0">
+            <table>
+              <caption class="sr-only">本輪已完成登記之有效學生名單</caption>
+              <thead>
+                <tr>
+                  <th scope="col">申請車種</th>
+                  <th scope="col">班級</th>
+                  <th scope="col">學號</th>
+                  <th scope="col">姓名</th>
+                </tr>
+              </thead>
+              <tbody id="registeredBody"></tbody>
+            </table>
+          </div>
+        </details>
+        <section class="draw-stage" aria-labelledby="drawHeading">
+          <div class="draw-info">
+            <span class="eyebrow">STEP 04 · SUPERVISOR LIVE LOTTERY</span>
+            <h2 id="drawHeading">主管現場抽籤作業</h2>
+            <p id="readiness" aria-live="polite"></p>
+            <p id="countdown"></p>
+            <p id="drawMeta" class="fine"></p>
+          </div>
+          <div class="draw-action">
+            <label class="check" for="verified">
+              <input id="verified" type="checkbox">
+              <span>本人已核對本輪申請名單、各車種車格數與截止狀態，確認執行單次抽籤</span>
+            </label>
+            <button id="drawButton" class="draw-button" type="button" disabled>開始抽籤配位</button>
+            <small>點擊後將顯示至少 3 秒「車位配對中」作業畫面，完成後一次公布全體正備取結果。</small>
+          </div>
+        </section>
+        <section id="resultSection" class="card result-card" hidden aria-labelledby="resultHeading">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">FINAL LOTTERY RESULTS</span>
+              <h2 id="resultHeading" tabindex="-1">全體正取與備取總表</h2>
+              <p>含班級、姓名、學號及配得車格／備取序。匯出 Excel 與列印 PDF 皆為完整名單，不受下方篩選或分頁影響。</p>
+            </div>
+            <div class="actions export-actions">
+              <button id="exportExcel" class="primary">匯出 Excel 總表</button>
+              <button id="exportPDF" class="secondary">列印／另存全名單 PDF</button>
+              <button id="exportAudit" class="subtle">下載稽核 JSON</button>
+            </div>
+          </div>
+          <div class="filters" aria-label="結果名單篩選器">
+            <label for="searchResults">
+              關鍵字搜尋
+              <input id="searchResults" type="search" placeholder="輸入班級、姓名、學號或車格代碼">
+            </label>
+            <label for="vehicleFilter">
+              車種篩選
+              <select id="vehicleFilter">
+                <option value="">所有車種</option>
+                <option value="motorcycle">機車／電動機車</option>
+                <option value="bicycle">腳踏車</option>
+              </select>
+            </label>
+            <label for="outcomeFilter">
+              配位結果篩選
+              <select id="outcomeFilter">
+                <option value="">所有結果</option>
+                <option value="selected">正取（已配車格）</option>
+                <option value="waitlist">備取（依序遞補）</option>
+                <option value="vacant">空車格（無人登記）</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-wrap" role="region" aria-label="正取與備取總表" tabindex="0">
+            <table>
+              <caption class="sr-only">車位配對及備取排序完整總表</caption>
+              <thead>
+                <tr>
+                  <th scope="col">車種</th>
+                  <th scope="col">結果</th>
+                  <th scope="col">車格／備取序</th>
+                  <th scope="col">班級</th>
+                  <th scope="col">姓名</th>
+                  <th scope="col">學號</th>
+                </tr>
+              </thead>
+              <tbody id="resultBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <span id="resultCount"></span>
+            <div class="actions">
+              <button id="previousPage" class="subtle">上一頁</button>
+              <button id="nextPage" class="subtle">下一頁</button>
+            </div>
+          </div>
+          <details class="audit-note">
+            <summary>檢視本輪輸入資料快照指紋（SHA-256）</summary>
+            <code id="fingerprint"></code>
+            <p class="fine">此雜湊指紋僅用於核對本輪抽籤前的輸入名單與車格設定，不涵蓋結果，也不是第三方公平性認證或電子簽章。</p>
+          </details>
+        </section>
+      </div>
+    </section>
+    <section class="help" aria-label="系統架構與部署說明">
+      <details>
+        <summary>系統操作說明與 Supabase 正式部署指南</summary>
+        <p>目前發布套件包含「本機可操作展示版」與「Supabase 正式部署套件」。展示版僅使用內建虛構學生名冊並將操作狀態保存於本機瀏覽器，供校方演練完整登記與抽籤流程，尚未建立跨裝置雲端資料庫。</p>
+        <p>正式跨裝置上線時，須由學校建立自有之 Supabase 專案，依部署指南設定資料表、Row Level Security（RLS）、授權管理員帳號與匿名登記 RPC。正式模式下，完整名冊、登記紀錄與抽籤結果僅限授權管理員讀取；列印全名單時請點擊「列印／另存全名單 PDF」並於瀏覽器列印對話框選擇「另存為 PDF」。</p>
+        <a href="DEPLOYMENT.md">閱讀正式部署指南（DEPLOYMENT.md）</a>
+      </details>
+    </section>
+  </main>
+  <footer class="shell footer">
+    <span>校園車位登記與抽籤系統 · v1.0.0（本機展示與正式部署套件）</span>
+    <strong>[亮亮營養師 AI研究開發]</strong>
+  </footer>
+  <div id="pairingOverlay" class="pairing-overlay" role="dialog" aria-modal="true" aria-label="車位配對中" tabindex="-1" hidden>
+    <div class="pairing-card">
+      <div class="spinner" aria-hidden="true"></div>
+      <span class="eyebrow">RANDOM PAIRING IN PROGRESS</span>
+      <h2>車位配對中</h2>
+      <p>系統正在執行「機車／電動機車」與「腳踏車」分組亂數車格配對及落選者隨機備取排序</p>
+      <small>作業畫面至少維持 3 秒，完成後將一次顯示全體正備取完整結果，請勿關閉視窗。</small>
+    </div>
+  </div>
+  <dialog id="resetDialog">
+    <h2>確定重置本輪虛構示範資料？</h2>
+    <p>此操作將清除保存在本機瀏覽器中的虛構學生報名紀錄與抽籤結果，並恢復初始待登記狀態（僅影響本機展示模式）。</p>
+    <div class="actions dialog-actions">
+      <button id="cancelReset" class="secondary">保留目前資料</button>
+      <button id="confirmReset" class="primary">確認重置示範</button>
+    </div>
+  </dialog>
+  <section id="printArea" aria-hidden="true"></section>
+</body>
+</html>

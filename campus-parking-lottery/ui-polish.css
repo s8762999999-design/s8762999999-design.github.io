@@ -1,0 +1,96 @@
+/* ui-polish.css：於 style.css 之後載入，僅做補強，不改業務流程 */
+:root { --tap: 48px; --focus-dark: #ffd88a; --ok: #0a7d4f; }
+html { scroll-padding-top: 16px; }
+body[aria-busy="true"] { cursor: progress; }
+:focus-visible { scroll-margin: 96px; }
+/* 字級與對比：最小字級提高，深色區塊次要文字提亮 */
+small, .fine { font-size: 14px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; }
+.intro-card .fine, .process span { color: #d0e0e9; }
+.draw-stage .fine, .draw-stage small, .pairing-card small { color: #d3e2eb; }
+.subtle { color: #3f5563; }
+/* 狀態回饋：全域訊息固定在頂端，長頁面操作後仍看得到 */
+#notice { position: sticky; top: 8px; z-index: 40; box-shadow: 0 6px 18px rgba(15,45,66,.14); }
+#studentFeedback { scroll-margin: 96px; }
+.notice.success { background: #e8f6ef; border-color: #a9d9c1; border-left-color: var(--ok); color: #0b5a3a; }
+/* 鍵盤焦點：程式設定的焦點不顯示外框，深色區塊改用亮金色外框 */
+[tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+#resultHeading:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+.draw-stage :focus-visible, .intro-card :focus-visible, .pairing-overlay :focus-visible { outline-color: var(--focus-dark); }
+/* 觸控目標 */
+.card > summary { min-height: var(--tap); padding-block: 4px; }
+.card > summary::after { align-self: center; }
+.check { padding: 10px 12px; margin-inline: -12px; border-radius: 10px; }
+.check:hover { background: rgba(255,255,255,.07); }
+.check input { width: 22px; height: 22px; min-height: 22px; }
+.file-button { min-height: var(--tap); }
+/* 停用狀態：不再只靠透明度，讓「不能按」一眼可辨 */
+button:disabled { opacity: 1; background: #e3e9ed; color: #55666f; border-color: #cfd9df; box-shadow: none; }
+button:disabled .btn-tag { background: #cfd9df; color: #33444f; }
+.draw-stage .draw-button:disabled {
+  background: rgba(255,255,255,.08); color: #d3e2eb;
+  border: 1px dashed rgba(255,255,255,.45); box-shadow: none;
+}
+.draw-button:not(:disabled) { outline: 2px solid transparent; }
+/* 表格：表頭固定時保留分隔線、可橫捲時顯示左右陰影提示 */
+thead th { position: sticky; top: 0; background: #e6eff4; box-shadow: inset 0 -2px 0 var(--line-strong); z-index: 2; }
+tbody tr:nth-child(even) { background: rgba(15,45,66,.03); }
+.table-wrap {
+  background:
+    linear-gradient(90deg, #fff 30%, rgba(255,255,255,0)) left / 40px 100% no-repeat local,
+    linear-gradient(270deg, #fff 30%, rgba(255,255,255,0)) right / 40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(15,45,66,.2), transparent) left / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(15,45,66,.2), transparent) right / 14px 100% no-repeat scroll;
+  background-color: #fff;
+  overscroll-behavior-x: contain;
+}
+#resultBody td:nth-child(3), #resultBody td:nth-child(6), #registeredBody td:nth-child(3), #rosterBody td:nth-child(2) {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px;
+}
+/* 桌面資訊密度：表格與統計更緊湊，讓抽籤區更早出現在畫面中 */
+@media (min-width: 961px) {
+  th, td { padding: 9px 14px; }
+  .metrics > div { padding: 16px 20px; }
+  .metrics strong { font-size: 32px; }
+  .card[open] > summary { margin-bottom: 18px; }
+  .table-wrap { max-height: 520px; }
+}
+/* 手機：頂列可換行、匯出鈕分格、表格高度依螢幕 */
+@media (max-width: 650px) {
+  .top-inner { flex-wrap: wrap; row-gap: 8px; }
+  .badge { font-size: 13px; }
+  .brand small { font-size: 10px; }
+  .hero-stamp { flex-wrap: wrap; }
+  .hero-stamp small { text-align: left; font-size: 13px; }
+  .metrics strong { font-size: 28px; }
+  .table-wrap { max-height: 70vh; }
+  table { font-size: 15px; }
+  .section-heading .actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .section-heading .actions .primary { grid-column: 1 / -1; }
+  .demo-toolbar .actions { display: grid; grid-template-columns: 1fr; }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .form-footer button { width: 100%; }
+  .pairing-card { padding: 28px 20px; }
+  .pairing-card h2 { font-size: 26px; }
+  .dialog-actions { flex-direction: column-reverse; align-items: stretch; }
+  .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) {
+  .main-nav button { font-size: 13px; padding-inline: 8px; }
+  .brand strong { font-size: 15px; }
+}
+/* 列印：完整名單、斑馬紋、簽核區不被切開；支援的瀏覽器加頁碼 */
+@media print {
+  @page { @bottom-right { content: counter(page) " / " counter(pages); font-size: 8pt; } }
+  html, body { background: #fff !important; }
+  #printArea:empty::before { content: "尚未產生抽籤結果，請於抽籤完成後使用「列印／另存全名單 PDF」。"; }
+  #printArea h1 { break-after: avoid; }
+  #printArea table { page-break-inside: auto; }
+  #printArea tbody tr:nth-child(even) td { background: #f3f3f3 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #printArea td:nth-child(3), #printArea td:nth-child(6) { font-family: ui-monospace, Consolas, monospace; }
+  #printArea table + p { word-break: break-all; font-size: 7.5pt; margin-top: 8pt; }
+  #printArea p:nth-of-type(4) { margin-top: 22pt; font-size: 10pt; letter-spacing: .04em; break-inside: avoid; break-before: avoid; }
+  #printArea p:last-child { text-align: right; margin-top: 10pt; }
+}
+/* Codex：列印表頭不採sticky，避免跨頁重疊。 */
+@media print { #printArea thead th { position: static; box-shadow: none; } }
