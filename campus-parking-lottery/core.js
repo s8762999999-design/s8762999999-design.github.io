@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const norm=x=>String(x??'').trim().normalize('NFC');
- const vehicleLabel=v=>v==='motorcycle'?'機車／電動機車':'腳踏車';
+ const vehicleLabel=v=>v==='motorcycle'?'機車（含微電機）':'腳踏車';
  function uniform(n){
   if(!Number.isInteger(n)||n<1||n>4294967296)throw Error('亂數範圍不正確');
   const lim=4294967296-(4294967296%n),a=new Uint32Array(1);let x;

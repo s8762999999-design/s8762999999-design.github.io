@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="學生手機限時登記、機車（含電動機車）與腳踏車分組亂數配位、正備取排序與行政報表匯出。含本機可操作展示版與 Supabase 正式部署套件。">
+  <meta name="description" content="學生手機限時登記、機車（含微電機）與腳踏車分組亂數配位、正備取排序與行政報表匯出。含本機可操作展示版與 Supabase 正式部署套件。">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
   <title>校園車位抽籤系統｜學生登記與行政管理</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ui-polish.css">
   <script src="config.js" defer></script>
-  <script src="core.js" defer></script>
+  <script src="core.js?v=1.0.1" defer></script>
   <script src="backend.js" defer></script>
   <script src="app.js" defer></script>
 </head>
@@ -45,7 +45,7 @@
         <div class="hero-copy">
           <span class="eyebrow">STUDENT REGISTRATION</span>
           <h1 id="eventTitle">學生停車位登記</h1>
-          <p>請於開放時段內以手機或電腦完成登記，截止後由學校統一執行亂數抽籤。<br>機車（含電動機車）與腳踏車各自獨立配對車格，未中籤者自動排入隨機備取序。</p>
+          <p>請於開放時段內以手機或電腦完成登記，截止後由學校統一執行亂數抽籤。<br>機車（含微電機）與腳踏車各自獨立配對車格，未中籤者自動排入隨機備取序。</p>
         </div>
         <div class="hero-stamp" aria-label="目前作業階段">
           <div class="stamp-status">
@@ -63,7 +63,7 @@
           <div class="slot-counts" aria-label="各車種提供車格數">
             <div>
               <strong id="motorCount">0</strong>
-              <span>機車／電動機車位</span>
+              <span>機車（含微電機）車位</span>
             </div>
             <div>
               <strong id="bicycleCount">0</strong>
@@ -82,7 +82,7 @@
               <b>02</b>
               <div>
                 <strong>擇一車種送出申請</strong>
-                <span>每人限選「機車（含電動機車）」或「腳踏車」其中一類。</span>
+                <span>每人限選「機車（含微電機）」或「腳踏車」其中一類。</span>
               </div>
             </li>
             <li>
@@ -129,7 +129,7 @@
             <label for="studentVehicle">
               申請車種（每人限選一類）
               <select id="studentVehicle" required>
-                <option value="motorcycle">機車／電動機車（同組抽籤）</option>
+                <option value="motorcycle">機車（含微電機）</option>
                 <option value="bicycle">腳踏車（獨立抽籤）</option>
               </select>
             </label>
@@ -235,7 +235,7 @@
             </div>
             <div class="two-col">
               <label for="motorSlots">
-                機車／電動機車格代碼（每行一格）
+                機車（含微電機）車格代碼（每行一格）
                 <textarea id="motorSlots" rows="4" spellcheck="false" placeholder="M01&#10;M02"></textarea>
               </label>
               <label for="bicycleSlots">
@@ -348,7 +348,7 @@
               車種篩選
               <select id="vehicleFilter">
                 <option value="">所有車種</option>
-                <option value="motorcycle">機車／電動機車</option>
+                <option value="motorcycle">機車（含微電機）</option>
                 <option value="bicycle">腳踏車</option>
               </select>
             </label>
@@ -403,7 +403,7 @@
     </section>
   </main>
   <footer class="shell footer">
-    <span>校園車位登記與抽籤系統 · v1.0.0（本機展示與正式部署套件）</span>
+    <span>校園車位登記與抽籤系統 · v1.0.1（本機展示與正式部署套件）</span>
     <strong>[亮亮營養師 AI研究開發]</strong>
   </footer>
   <div id="pairingOverlay" class="pairing-overlay" role="dialog" aria-modal="true" aria-label="車位配對中" tabindex="-1" hidden>
@@ -411,7 +411,7 @@
       <div class="spinner" aria-hidden="true"></div>
       <span class="eyebrow">RANDOM PAIRING IN PROGRESS</span>
       <h2>車位配對中</h2>
-      <p>系統正在執行「機車／電動機車」與「腳踏車」分組亂數車格配對及落選者隨機備取排序</p>
+      <p>系統正在執行「機車（含微電機）」與「腳踏車」分組亂數車格配對及落選者隨機備取排序</p>
       <small>作業畫面至少維持 3 秒，完成後將一次顯示全體正備取完整結果，請勿關閉視窗。</small>
     </div>
   </div>
