@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="在瀏覽器匯入 Excel 名冊與車證號，一鍵隨機配對並匯出結果。">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>校園車證隨機分配</title>
+  <link rel="stylesheet" href="assignment.css">
+  <script src="../core.js" defer></script>
+  <script src="jszip.min.js" defer></script>
+  <script src="workbook.js" defer></script>
+  <script src="assignment.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="masthead">
+    <div class="shell bar">
+      <a href="../" class="brand"><span class="mark" aria-hidden="true">P</span>校園車位抽籤系統</a>
+      <span class="local">僅在本機處理</span>
+    </div>
+    <div class="shell intro">
+      <h1>校園車證隨機分配</h1>
+      <p>匯入 Excel 名冊與車證號，核對資料後一鍵完成配對。</p>
+    </div>
+  </header>
+  <main class="shell" id="main" tabindex="-1">
+    <div class="workflow">
+      <section class="card" aria-labelledby="import-title">
+        <h2 id="import-title">匯入 Excel</h2>
+        <p id="file-help">選擇含有「班級、學號、姓名」與「車證號」欄位的 .xlsx 檔案。</p>
+        <div class="file-area">
+          <label for="file" class="file-label">選擇 Excel 檔案</label>
+          <input id="file" type="file" accept=".xlsx" aria-describedby="file-help">
+        </div>
+        <p id="file-name" class="file-name" hidden></p>
+        <button id="clear" class="secondary" type="button" hidden>清除本次資料</button>
+        <p id="error" tabindex="-1" role="alert" class="error" hidden></p>
+      </section>
+      <section class="card" aria-labelledby="review-title">
+        <h2 id="review-title">核對與分配</h2>
+        <dl class="stats">
+          <div><dt>學生人數</dt><dd id="student-count">—</dd></div>
+          <div><dt>可用車證</dt><dd id="permit-count">—</dd></div>
+        </dl>
+        <p id="status" role="status" aria-atomic="true">請先選擇 Excel 檔案。</p>
+        <button id="assign" class="primary" type="button" aria-describedby="status" aria-disabled="true">隨機分配車證號</button>
+      </section>
+    </div>
+    <section class="card data" id="preview" aria-labelledby="preview-title" hidden>
+      <h2 id="preview-title">匯入預覽</h2>
+      <p id="preview-meta"></p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="名冊預覽">
+        <table><caption>名冊預覽</caption><thead><tr><th scope="col">班級</th><th scope="col">學號</th><th scope="col">姓名</th></tr></thead><tbody id="preview-rows"></tbody></table>
+      </div>
+      <p id="permit-preview" class="permit-list"></p>
+    </section>
+    <section class="card data" id="results" aria-labelledby="results-title" hidden>
+      <div class="results-header">
+        <div><h2 id="results-title" tabindex="-1">分配結果</h2><p id="result-meta"></p></div>
+        <button id="download" class="primary" type="button">下載配對結果（.xlsx）</button>
+      </div>
+      <p id="download-status" role="status"></p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="完整分配結果">
+        <table><caption>完整分配結果</caption><thead><tr><th scope="col">班級</th><th scope="col">學號</th><th scope="col">姓名</th><th scope="col">車證號</th></tr></thead><tbody id="result-rows"></tbody></table>
+      </div>
+    </section>
+    <noscript><p>請啟用 JavaScript 後使用車證分配功能。</p></noscript>
+  </main>
+  <footer class="shell">關閉或重新整理此頁會清除資料。分配完成後請下載 Excel 留存。</footer>
+</body>
+</html>

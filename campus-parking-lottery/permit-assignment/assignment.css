@@ -1,0 +1,74 @@
+:root {
+  font-family: "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+  color: #142d3c;
+  background: #f0f5f6;
+  line-height: 1.55;
+  color-scheme: light;
+  --navy: #102f44;
+  --teal: #056b65;
+  --muted: #4a6270;
+  --line: #d4e0e5;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+.shell { width: min(68rem, calc(100% - 2rem)); margin-inline: auto; }
+.skip { position: absolute; z-index: 1; left: 1rem; top: 1rem; transform: translateY(-200%); background: white; padding: .5rem; }
+.skip:focus { transform: none; }
+:focus-visible { outline: 3px solid #b46e0d; outline-offset: 4px; }
+.masthead { background: linear-gradient(120deg,#102b40,#154656); color: white; }
+.bar { min-height: 4.6rem; display: flex; justify-content: space-between; gap: .75rem; align-items: center; border-bottom: 1px solid #ffffff30; }
+.brand { color: white; display: flex; align-items: center; gap: .65rem; text-decoration: none; font-weight: 700; }
+.brand:hover { text-decoration: underline; text-underline-offset: 4px; }
+.mark { display: grid; place-items: center; border-radius: .55rem; width: 2.1rem; height: 2.1rem; background: #a7e5d9; color: #15383c; font-size: 1.15rem; flex: none; }
+.local { font-size: .82rem; color: #d4ebe8; }
+.intro { padding-block: 2.6rem 3rem; }
+h1, h2 { margin: 0; line-height: 1.2; }
+h1 { font-size: clamp(1.9rem, 5vw, 3rem); letter-spacing: .025em; }
+.intro p { margin: .8rem 0 0; color: #d7e8ed; }
+main { padding-top: 1.5rem; }
+.workflow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.card { min-width: 0; border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1rem, 3vw, 1.7rem); background: white; box-shadow: 0 5px 15px #102f4408; }
+.card h2 { font-size: 1.25rem; color: var(--navy); }
+p { margin: .65rem 0 1rem; color: var(--muted); overflow-wrap: anywhere; }
+.file-area { border: 1px dashed #8caab4; border-radius: .65rem; background: #f5f9fa; padding: 1rem; }
+.file-label { display: block; font-weight: 700; margin-bottom: .5rem; }
+input[type=file] { display: block; font: inherit; width: 100%; color: var(--muted); }
+input::file-selector-button, button { min-height: 44px; font: inherit; font-weight: 700; border-radius: .5rem; padding: .55rem .85rem; cursor: pointer; }
+input::file-selector-button { border: 1px solid #89a8b0; color: var(--navy); background: white; margin-right: .6rem; }
+.primary { border: 1px solid var(--teal); background: var(--teal); color: white; }
+.primary:hover:not(:disabled):not([aria-disabled=true]) { background: #064e4b; }
+.primary:disabled, .primary[aria-disabled=true] { color: #425a60; background: #e7eff0; border-color: #c4d5d9; cursor: not-allowed; }
+.secondary { border: 1px solid var(--line); color: var(--navy); background: white; }
+.secondary:hover { background: #eef5f6; }
+.file-name { font-weight: 700; margin-bottom: .65rem; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin: 1rem 0; }
+.stats div { padding: .65rem .85rem; border-radius: .6rem; background: #e9f4f1; }
+.stats dt { font-size: .88rem; color: #34565b; }
+.stats dd { margin: 0; font-size: 1.6rem; font-weight: 750; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.error { border-left: 4px solid #a42e27; color: #7c211a; background: #fff2f1; border-radius: .3rem; padding: .6rem .8rem; margin-bottom: 0; }
+.data { margin-top: 1rem; }
+.table-scroll { overflow: auto; border: 1px solid var(--line); border-radius: .55rem; }
+caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .55rem .7rem; text-align: left; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+th { background: #edf4f7; color: var(--navy); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:nth-child(even) { background: #f9fbfc; }
+td:nth-child(2), td:nth-child(4) { font-variant-numeric: tabular-nums; }
+td:nth-child(4) { font-weight: 750; color: #05625c; }
+.permit-list { margin-bottom: 0; }
+.results-header { display: flex; justify-content: space-between; align-items: start; gap: .8rem; }
+#download-status:empty { margin: 0; }
+footer { padding-block: 1.4rem 2.4rem; color: var(--muted); font-size: .9rem; }
+@media (max-width: 42rem) {
+  .workflow { grid-template-columns: 1fr; }
+  .intro { padding-block: 1.85rem 2.1rem; }
+  .results-header { flex-direction: column; }
+  .primary { width: 100%; }
+  .results-header p { margin-bottom: 0; }
+}
+@media (max-width: 23rem) {
+  .brand { font-size: .88rem; }
+  th, td { padding-inline: .4rem; }
+}
